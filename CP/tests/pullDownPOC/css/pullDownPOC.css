@@ -1,0 +1,44 @@
+	.tao-drop-wrap {
+	    width: 250px;
+	    height: 10px;
+	    padding: 0px 5px 10px 5px;
+	    border: 1px inset;
+	    position: relative;
+	    font-size: .917em;
+	}
+
+	.tao-drop {
+	    display: none;
+	    position: absolute;
+	    width: 254px;
+	    max-height: 150px;
+	    overflow: auto;
+	    padding: 2px 2px 2px 4px;
+	    top: 21px;
+	    left: -1px;
+	    background: #fff;
+	    border: 1px solid #ccc;
+	    border-radius: 0 0 5px 5px;
+	    box-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+	    -webkit-box-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+	    -mox-box-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+	    z-index: 1;
+	}
+
+	.tao-drop input[type="radio"] {
+	    display: none;
+	}
+
+	.tao-drop label {
+	    display: block;
+	}
+
+	.tao-choose {
+		margin-top: 4px;
+	}
+
+	.tao-result span.tao-arrow {
+		float: right;
+		font-size: 20px;
+		margin-top: -6px;
+	}

@@ -183,15 +183,6 @@ $RECYCLE.BIN/
 # Mac crap
 .DS_Store
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
 
 #############
 ## Python
@@ -224,44 +215,42 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-######################################
-# SASS
-*.scssc
-*.css.map
-
-######################################
-# Node/grunt stuff
-node_modules/*
-
-######################################
-# Projects
+# Ignore the following TAO-specific directories
 
 # CP
-CP/tests/pullDownPOC/index_files/*
-CP/tests/pullDownPOC/node_modules/*
-CP/tests/pullDownPOC/.sass-cache/*
+CP/tests/Book-Today-Messaging-v3/.sass-cache/
+CP/tests/Book-Today-Messaging-v3/node_modules/
+
+# EX
+EX/tests/book-today-messaging/index.html
+EX/tests/book-today-messaging/node_modules/
+EX/tests/Book-Today-Messaging-V2/.sass-cache/
+EX/tests/Book-Today-Messaging-V2/node_modules/
+EX/tests/Book-Today-Messaging-v3/.sass-cache/
+EX/tests/Book-Today-Messaging-v3/node_modules/
+EX/tests/Book-Today-Messaging-V2/img/
+EX/tests/Quick-Enroll/node_modules/
+# EX/node_modules/
+EX/tests/Quick-Enroll-Free-Internet/node_modules/
+EX/tests/Quick-Enroll-Free-Internet/.sass-cache/
+EX/tests/Quick-Enroll-Free-Internet/package.json
+EX/tests/Quick-Enroll-Free-Internet/gruntfile.js
+
+# IHG
+IHG/tests/sign-in-sign-up-simp/node_modules/
+IHG/tests/sign-in-sign-up-simp/css/site.css
+IHG/tests/sign-in-sign-up-simp/js/bootstrapper-page-flicker.js
+IHG/tests/RC-Join-CTA-Emphasis/.sass-cache/
+IHG/tests/RC-Join-CTA-Emphasis/node_modules/
+
+IHG/tests/Chase-Offer-My-Account/node_modules/
+IHG/tests/Chase-Offer-My-Account/package.json
+IHG/tests/Chase-Offer-My-Account/gruntfile.js
+IHG/tests/Chase-Offer-My-Account/index.html
+
+IHG/tests/Funnel-Button-Text-Update/node_modules/
+
+
+.sass-cache/
+gruntfile.js
+package.json
