@@ -1,4 +1,17 @@
-/* future stuff goes here */
+/* variables */
+
+$primaryColor: #ff0000;
+$secondaryColor: #00ffff;
+$mainBorderColor: #dddddd;
+
+$mainBorder: 1px solid $mainBorderColor;
+
+$headPointSize: 28px;
+$subheadPointSize: 18px;
+
+$bodyPadding: 8px;
+
+
 
 body {
 	font-size: 15px;

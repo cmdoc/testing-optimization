@@ -1,14 +1,14 @@
 {
   "name": "Template",
   "version": "1.0.0",
-  "description": "CP: pulldown POC",
+  "description": "EX: Guest Info Trust Messages",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:chrisdaquin/Testing-Optimization.git"
+    "url": "git@github.com:brionkeith/Testing-Optimization.git"
   },
   "author": "Chris d'Aquin",
   "license": "ISC",

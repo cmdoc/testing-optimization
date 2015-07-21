@@ -1,7 +1,7 @@
 {
   "name": "Template",
   "version": "1.0.0",
-  "description": "CP: pulldown POC",
+  "description": "IHG: Rewards Club Enrollment",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

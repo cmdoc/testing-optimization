@@ -1,0 +1,80 @@
+.form_row .form_leftcol {
+  width: 0; }
+
+.form_leftcol .form_leftcollabel {
+  position: relative;
+  left: 0px;
+  top: 10px;
+  white-space: nowrap;
+  text-align: left;
+  float: left; }
+
+.form_rightcol img {
+  position: relative;
+  left: -18px;
+  float: right;
+  top: 5px; }
+
+input, select {
+  padding: 10px; }
+
+.formField {
+  float: left;
+  margin-right: 10px; }
+
+.dropdown.section {
+  float: left;
+  margin-right: 10px; }
+
+.parsys > .indicatesRequiredFields {
+  float: left;
+  padding-top: 0; }
+
+#contentWrapper > #contentSlot {
+  display: none; }
+
+#contentWrapper > #mainContentContainer {
+  width: 100%; }
+
+#pcrMemberRegistration > #content {
+  width: 100%; }
+
+div#introWrapper {
+  width: 635px;
+  float: left; }
+
+.parsys > div {
+  float: left; }
+
+table#formHeaderWrapper {
+  border: none;
+  height: 0;
+  margin-bottom: 0; }
+
+#formHeaderWrapper h2.section,
+.title.section > h2 {
+  font: inherit;
+  font-size: 1.2em;
+  font-weight: bold;
+  -webkit-margin-after: 0;
+  margin-bottom: 0; }
+
+.title.section {
+  border-bottom: none;
+  margin-bottom: 0; }
+
+h2[title='Terms and Conditions'] {
+  border-bottom: 1px solid #aaa; }
+
+.checkbox.section {
+  padding-left: 0;
+  padding-top: 15px; }
+
+input#acceptTermsAndConditions1 {
+  margin-left: 0; }
+
+#pcrMemberRegistration #content {
+  margin-left: 0;
+  padding-left: 3px; }
+
+/*# sourceMappingURL=tao-3column.css.map */

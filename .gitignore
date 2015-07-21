@@ -265,3 +265,8 @@ node_modules/*
 CP/tests/pullDownPOC/index_files/*
 CP/tests/pullDownPOC/node_modules/*
 CP/tests/pullDownPOC/.sass-cache/*
+EX/tests/trustMessages/node_modules/*
+EX/tests/trustMessages/.sass-cache/*
+IHG/tests/RC Enrollment Form/index-saveas_files/*
+IHG/tests/RC Enrollment Form/node_modules/*
+IHG/tests/RC Enrollment Form/.sass-cache/*

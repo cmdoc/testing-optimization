@@ -1,0 +1,13 @@
+.taoTrustMsg {
+  padding: 10px 0;
+  float: left;
+  font-weight: bold;
+  height: 20px;
+  margin-bottom: -30px; }
+  .taoTrustMsg img {
+    vertical-align: middle;
+    margin-left: 25px; }
+  .taoTrustMsg .taoSmaller {
+    font-size: 11px; }
+
+/*# sourceMappingURL=taoTrustMessage.css.map */
