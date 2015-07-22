@@ -9,6 +9,7 @@
   white-space: nowrap;
   text-align: left;
   float: left;
+  padding-left: 14px;
 }
 
 .form_rightcol img {
@@ -24,12 +25,12 @@ input, select {
 
 .formField {
   float: left;
-  margin-right: 10px;
+  margin-right: -15px;
 }
 
 .dropdown.section {
   float: left;
-  margin-right: 10px;
+  margin-right: 0;
 }
 
 .parsys > .indicatesRequiredFields {
@@ -95,3 +96,26 @@ input#acceptTermsAndConditions1 {
   margin-left: 0;
   padding-left: 3px;
 }
+
+/* Styles for changing form inputs */
+
+select#PCREnroll_personTitle {
+  width: 70px;
+  height: 39px;
+}
+
+#firstName {
+  width: 220px;
+}
+
+#lastName,
+#confirmEmailAddress,
+#verifyPin {
+  width: 290px;
+}
+
+#emailAddress,
+#pin {
+  width: 299px;
+}
+

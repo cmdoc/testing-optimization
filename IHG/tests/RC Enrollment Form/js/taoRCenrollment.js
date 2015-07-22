@@ -39,5 +39,24 @@
     var taoNewIHGImg = "<img src='" + taoNewIHGLogos + "' />";
     jQuery(taoNewIHGImg).insertAfter("#securityLogos");
 
+    // Insert clear: left on formField divs to get the form to line up correctly
+    jQuery("#emailAddress").parents(".formField").css("clear", "left").css("margin-left", "-9px");
+    jQuery("#pin").parents(".formField").css("clear", "left").css("margin-left", "-9px");
+
+    // Find the phrase 'Make note of your PIN for future use' and remove it
+    jQuery("#verifyPin").parents(".formField").next().remove();
+
+    // Remove the '4-digit number' text and change the label for PIN
+    document.getElementById("pin").nextSibling.nodeValue = "";
+    jQuery("#pin").parents(".form_row").find("label").text("Create PIN (4 digits)");
+
+    // Move the email help icon to within the A tag, reposition it, and remove the text
+    var taoEmailHelpImg = jQuery("#emailHelp").find("img");
+    jQuery("#emailHelp a").html(taoEmailHelpImg);
+    var taoEmailHelpA = jQuery("#emailHelp a");
+    jQuery("#emailHelp").css("display", "none");
+    jQuery(taoEmailHelpA).insertBefore(".checkbox.section");
+    jQuery("#emailPopupLink").css("position", "relative").css("top", "72px").css("right", "339px");
+
 
 });
