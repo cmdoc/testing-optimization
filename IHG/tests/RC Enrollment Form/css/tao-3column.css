@@ -53,7 +53,8 @@ table#formHeaderWrapper {
   margin-bottom: 0; }
 
 #formHeaderWrapper h2.section,
-.title.section > h2 {
+.title.section > h2,
+#taoMailingAddr h2 {
   font: inherit;
   font-size: 1.2em;
   font-weight: bold;
@@ -94,5 +95,39 @@ select#PCREnroll_personTitle {
 #emailAddress,
 #pin {
   width: 299px; }
+
+#addressField1 {
+  width: 302px; }
+
+#stateBox,
+#city,
+#postalCode {
+  width: 135px; }
+
+#countrySelect {
+  width: 159px;
+  height: 39px; }
+
+.taoMailingLabel {
+  position: relative;
+  top: -26px;
+  left: 5px; }
+
+.taoMailingBlock {
+  float: left;
+  margin-bottom: -7px;
+  margin-left: 8px; }
+
+.taoClear {
+  clear: left; }
+
+#taoMailingAddr {
+  float: left; }
+  #taoMailingAddr .title.section {
+    margin-bottom: 7px; }
+
+#taoMailingAddr h2 {
+  margin-bottom: 7px;
+  margin-left: 8px; }
 
 /*# sourceMappingURL=tao-3column.css.map */
