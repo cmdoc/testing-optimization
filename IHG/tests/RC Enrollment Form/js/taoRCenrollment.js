@@ -83,7 +83,6 @@
 
     var taoDefaultMailingBracket = "<div class='taoMailingBlock'>" +
                                         "<div class='taoMailingLabel'>" +
-                                            "<label></label>" +
                                             "<img src='./index-saveas_files/0001.gif' alt='Indicates required field' title='Indicates required field'>" +
                                         "</div>" +
                                    "</div>";
