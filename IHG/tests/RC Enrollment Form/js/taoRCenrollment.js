@@ -39,6 +39,7 @@
     var taoNewIHGImg = "<img src='" + taoNewIHGLogos + "' />";
     jQuery(taoNewIHGImg).insertAfter("#securityLogos");
 
+    /******* Account Information Fields *******/
     // Insert clear: left on formField divs to get the form to line up correctly
     jQuery("#emailAddress").parents(".formField").css("clear", "left").css("margin-left", "-9px");
     jQuery("#pin").parents(".formField").css("clear", "left").css("margin-left", "-9px");
@@ -78,58 +79,51 @@
     jQuery("#taoAccountInfo").append(taoPin1);
     jQuery("#taoAccountInfo").append(taoPin2);
 
+    /******* Mailing Address Fields *******/
     // Create a DIV for the Mailing Address fields and move title there
     jQuery("<div id='taoMailingAddr'><h2>Mailing Address</h2></div>").insertAfter("#taoAccountInfo");
 
-    var taoDefaultMailingBracket = "<div class='taoMailingBlock'>" +
-                                        "<div class='taoMailingLabel'>" +
-                                            "<img src='./index-saveas_files/0001.gif' alt='Indicates required field' title='Indicates required field'>" +
-                                        "</div>" +
-                                   "</div>";
+    var taoDefaultMailingBracket = "<div class='taoMailingBlock'></div>";
 
     // Create Street input
     var taoNewStreet = taoDefaultMailingBracket;
-    var taoExistingStreetLabel = jQuery("#address1Label label");
+    var taoExistingStreetLabel = jQuery("#address1Label label").text();
     var taoExistingStreetInput = jQuery("#addressField1");
     jQuery("#taoMailingAddr").append(taoNewStreet);
-    jQuery("#taoMailingAddr .taoMailingBlock .taoMailingLabel").last().prepend(taoExistingStreetLabel);
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingStreetInput);
+    jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingStreetLabel);
     
     // Create County Dropdown
     var taoNewCountry = taoDefaultMailingBracket;
-    var taoExistingCountryLabel = jQuery("#countryLabel label");
     var taoExistingCountrySelect = jQuery("#countrySelect");
     jQuery("#taoMailingAddr").append(taoNewCountry);
-    jQuery("#taoMailingAddr .taoMailingBlock .taoMailingLabel").last().prepend(taoExistingCountryLabel);
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingCountrySelect);
     jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoClear");
-    // Remove the text of the first select option so it doesn't conflict with label
-    jQuery("#taoMailingAddr .taoMailingBlock").last().find("option").first().text("");
 
     // Create State/Province/County input
     var taoNewState = taoDefaultMailingBracket;
-    var taoExistingStateLabel = jQuery("#stateLabel label");
+    var taoExistingStateLabel = jQuery("#stateLabel label").text();
     var taoExistingStateInput = jQuery("#stateBox");
     jQuery("#taoMailingAddr").append(taoNewState);
-    jQuery("#taoMailingAddr .taoMailingBlock .taoMailingLabel").last().prepend(taoExistingStateLabel);
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingStateInput);
+    jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingStateLabel);
 
     // Create City input
     var taoNewCity = taoDefaultMailingBracket;
-    var taoExistingCityLabel = jQuery("#cityLabel label");
+    var taoExistingCityLabel = jQuery("#cityLabel label").text();
     var taoExistingCityInput = jQuery("#city");
     jQuery("#taoMailingAddr").append(taoNewCity);
-    jQuery("#taoMailingAddr .taoMailingBlock .taoMailingLabel").last().prepend(taoExistingCityLabel);
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingCityInput);
+    jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingCityLabel);
     jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoClear");
 
     // Create Postal Code input
     var taoNewZip = taoDefaultMailingBracket;
-    var taoExistingZipLabel = jQuery("#postalCodeLabel label");
+    var taoExistingZipLabel = jQuery("#postalCodeLabel label").text();
     var taoExistingZipInput = jQuery("#postalCode");
     jQuery("#taoMailingAddr").append(taoNewZip);
-    jQuery("#taoMailingAddr .taoMailingBlock .taoMailingLabel").last().prepend(taoExistingZipLabel);
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingZipInput);
+    jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingZipLabel);
 
     // Create Address Type input
     var taoNewAddrType = taoDefaultMailingBracket;
@@ -143,7 +137,7 @@
     // If user clicks on .taoMailingLabel, then hide the label and put cursor in 
     // related input field
     jQuery(".taoMailingLabel").on("focus, click", function () {
-        jQuery(this).hide();
+    //    jQuery(this).hide();
         jQuery(this).parents(".taoMailingBlock").find("input").focus();
         jQuery(this).parents(".taoMailingBlock").find("select").focus();
     });

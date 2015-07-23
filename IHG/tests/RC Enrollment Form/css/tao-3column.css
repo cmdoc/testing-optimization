@@ -110,12 +110,13 @@ select#PCREnroll_personTitle {
 
 .taoMailingLabel {
   position: relative;
-  top: -26px;
-  left: 5px; }
+  top: 4px;
+  right: 16px;
+  float: right; }
 
 .taoMailingBlock {
   float: left;
-  margin-bottom: -7px;
+  margin-bottom: 7px;
   margin-left: 8px; }
 
 .taoClear {
@@ -129,5 +130,53 @@ select#PCREnroll_personTitle {
 #taoMailingAddr h2 {
   margin-bottom: 7px;
   margin-left: 8px; }
+
+#taoAccountInfo input,
+#taoAccountInfo select,
+.taoMailingBlock input,
+.taoMailingBlock select {
+  background-color: #efefef;
+  border: 2px solid #efefef;
+  color: #707373; }
+
+::-webkit-input-placeholder {
+  color: #707373;
+  font-size: 11px; }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #707373;
+  font-size: 11px; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #707373;
+  font-size: 11px; }
+
+:-ms-input-placeholder {
+  color: #707373;
+  font-size: 11px; }
+
+::-webkit-input-placeholder:after {
+  content: ' *';
+  color: red;
+  font-weight: bold; }
+
+:-moz-placeholder:after {
+  /* Firefox 18- */
+  content: ' *';
+  color: red;
+  font-weight: bold; }
+
+::-moz-placeholder:after {
+  /* Firefox 19+ */
+  content: ' *';
+  color: red;
+  font-weight: bold; }
+
+:-ms-input-placeholder:after {
+  content: ' *';
+  color: red;
+  font-weight: bold; }
 
 /*# sourceMappingURL=tao-3column.css.map */
