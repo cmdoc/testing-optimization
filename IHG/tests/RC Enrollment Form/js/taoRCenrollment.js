@@ -40,16 +40,72 @@
     jQuery(taoNewIHGImg).insertAfter("#securityLogos");
 
     /******* Account Information Fields *******/
-    // Insert clear: left on formField divs to get the form to line up correctly
-    jQuery("#emailAddress").parents(".formField").css("clear", "left").css("margin-left", "-9px");
-    jQuery("#pin").parents(".formField").css("clear", "left").css("margin-left", "-9px");
+    // Create a DIV for the Account Information fields
+    jQuery("<div id='taoAccountInfo'><h2>Account Information</h2></div>").insertAfter(".indicatesRequiredFields");
+
+    // Create a default DIV for the Account Info fields
+    var taoDefaultAcctInfo = "<div class='taoAccountBlock'></div>";
+
+    // Create Title block
+    var taoNewTitle = taoDefaultAcctInfo;
+    var taoExistingTitle = jQuery("#PCREnroll_personTitle");
+    jQuery("#taoAccountInfo").append(taoNewTitle);
+    jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingTitle);
+    jQuery("#taoAccountInfo .taoAccountBlock").last().find("option").first().text("Title");
+
+    // Create FirstName Block
+    var taoNewFirstName = taoDefaultAcctInfo;
+    var taoExistingFirstName = jQuery("#firstName");
+    var taoExistingFirstNameLabel = jQuery("div.formField").eq(0).find("label").text().trim();
+    jQuery("#taoAccountInfo").append(taoNewFirstName);
+    jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingFirstName);
+    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingFirstNameLabel);
+debugger;
+    // Create LastName Block
+    var taoNewLastName = taoDefaultAcctInfo;
+    var taoExistingLastName = jQuery("#lastName");
+    var taoExistingLastNameLabel = jQuery("div.formField").eq(1).find("label").text().trim();
+    jQuery("#taoAccountInfo").append(taoNewLastName);
+    jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingLastName);
+    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingLastNameLabel);
+
+    // Create EmailAddress Block
+    var taoNewEmail = taoDefaultAcctInfo;
+    var taoExistingEmail = jQuery("#emailAddress");
+    var taoExistingEmailLabel = jQuery("div.formField").eq(2).find("label").text().trim();
+    jQuery("#taoAccountInfo").append(taoNewEmail);
+    jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingEmail);
+    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingEmailLabel);
+    jQuery("#taoAccountInfo .taoAccountBlock").last().addClass("taoClear");
+
+
+    // Create ConfirmEmailAddress Block
+    var taoNewEmail2 = taoDefaultAcctInfo;
+    var taoExistingEmail2 = jQuery("#confirmEmailAddress");
+    var taoExistingEmail2Label = jQuery("div.formField").eq(3).find("label").text().trim();
+    jQuery("#taoAccountInfo").append(taoNewEmail2);
+    jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingEmail2);
+    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingEmail2Label);
+
+    // Create CreatePin Block
+    var taoNewPin = taoDefaultAcctInfo;
+    var taoExistingPin = jQuery("#pin");
+    jQuery("#taoAccountInfo").append(taoNewPin);
+    jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingPin);
+    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", "Create PIN (4 digits)");
+    jQuery("#taoAccountInfo .taoAccountBlock").last().addClass("taoClear");
+
+    // Create VerifyPin Block
+    var taoNewPin2 = taoDefaultAcctInfo;
+    var taoExistingPin2 = jQuery("#verifyPin");
+    var taoExistingPin2Label = jQuery("div.formField").eq(5).find("label").text().trim();
+    jQuery("#taoAccountInfo").append(taoNewPin2);
+    jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingPin2);
+    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingPin2Label);
+
 
     // Find the phrase 'Make note of your PIN for future use' and remove it
     jQuery("#verifyPin").parents(".formField").next().remove();
-
-    // Remove the '4-digit number' text and change the label for PIN
-    document.getElementById("pin").nextSibling.nodeValue = "";
-    jQuery("#pin").parents(".form_row").find("label").text("Create PIN (4 digits)");
 
     // Move the email help icon to within the A tag, reposition it, and remove the text
     var taoEmailHelpImg = jQuery("#emailHelp").find("img");
@@ -58,26 +114,6 @@
     jQuery("#emailHelp").css("display", "none");
     jQuery(taoEmailHelpA).insertBefore(".checkbox.section");
     jQuery("#emailPopupLink").css("position", "relative").css("top", "72px").css("right", "339px");
-
-    // Create a DIV for the Account Information fields and move them all there
-    jQuery("<div id='taoAccountInfo'></div>").insertAfter(".indicatesRequiredFields");
-    var taoAcctInfoTitle = jQuery("#formHeaderWrapper");
-    var taoTitleDropdown = jQuery(".dropdown.section");
-    var taoFirstName = jQuery("div.formField").eq(0);
-    var taoLastName = jQuery("div.formField").eq(1);
-    var taoEmail1 = jQuery("div.formField").eq(2);
-    var taoEmail2 = jQuery("div.formField").eq(3);
-    var taoPin1 = jQuery("div.formField").eq(4);
-    var taoPin2 = jQuery("div.formField").eq(5);
-
-    jQuery("#taoAccountInfo").append(taoAcctInfoTitle);
-    jQuery("#taoAccountInfo").append(taoTitleDropdown);
-    jQuery("#taoAccountInfo").append(taoFirstName);
-    jQuery("#taoAccountInfo").append(taoLastName);
-    jQuery("#taoAccountInfo").append(taoEmail1);
-    jQuery("#taoAccountInfo").append(taoEmail2);
-    jQuery("#taoAccountInfo").append(taoPin1);
-    jQuery("#taoAccountInfo").append(taoPin2);
 
     /******* Mailing Address Fields *******/
     // Create a DIV for the Mailing Address fields and move title there

@@ -65,16 +65,6 @@ table#formHeaderWrapper {
   margin-bottom: 0;
 }
 
-#formHeaderWrapper h2.section,
-.title.section > h2,
-#taoMailingAddr h2 {
-  font: inherit;
-  font-size: 1.2em;
-  font-weight: bold;
-  -webkit-margin-after: 0;
-  margin-bottom: 0;
-}
-
 .title.section {
   border-bottom: none;
   margin-bottom: 0;
@@ -142,6 +132,7 @@ select#PCREnroll_personTitle {
   float: right;
 }
 
+.taoAccountBlock,
 .taoMailingBlock {
   float: left;
   margin-bottom: 7px;
@@ -160,7 +151,13 @@ select#PCREnroll_personTitle {
   }
 }
 
+#taoAccountInfo h2,
 #taoMailingAddr h2 {
+  font: inherit;
+  font-size: 1.2em;
+  font-weight: bold;
+  -webkit-margin-after: 0;
+  margin-bottom: 0;
   margin-bottom: 7px;
   margin-left: 8px;
 }
