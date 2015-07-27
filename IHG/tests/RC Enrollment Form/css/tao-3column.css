@@ -109,7 +109,7 @@ select#PCREnroll_personTitle {
 .taoMailingBlock {
   float: left;
   margin-bottom: 7px;
-  margin-left: 8px; }
+  margin-right: 8px; }
 
 .taoClear {
   clear: left; }
@@ -126,8 +126,7 @@ select#PCREnroll_personTitle {
   font-weight: bold;
   -webkit-margin-after: 0;
   margin-bottom: 0;
-  margin-bottom: 7px;
-  margin-left: 8px; }
+  margin-bottom: 7px; }
 
 #taoAccountInfo input,
 #taoAccountInfo select,
@@ -136,6 +135,13 @@ select#PCREnroll_personTitle {
   background-color: #efefef;
   border: 2px solid #efefef;
   color: #707373; }
+
+#taoAccountInfo .taoFlushRight,
+#taoMailingAddr .taoFlushRight {
+  margin-right: 0; }
+
+#taoMailingAddr label {
+  margin-right: 25px; }
 
 ::-webkit-input-placeholder {
   color: #707373;

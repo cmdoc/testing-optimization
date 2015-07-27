@@ -60,7 +60,7 @@
     jQuery("#taoAccountInfo").append(taoNewFirstName);
     jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingFirstName);
     jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingFirstNameLabel);
-debugger;
+
     // Create LastName Block
     var taoNewLastName = taoDefaultAcctInfo;
     var taoExistingLastName = jQuery("#lastName");
@@ -128,7 +128,8 @@ debugger;
     jQuery("#taoMailingAddr").append(taoNewStreet);
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingStreetInput);
     jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingStreetLabel);
-    
+    jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoFlushRight");
+
     // Create County Dropdown
     var taoNewCountry = taoDefaultMailingBracket;
     var taoExistingCountrySelect = jQuery("#countrySelect");
@@ -143,6 +144,7 @@ debugger;
     jQuery("#taoMailingAddr").append(taoNewState);
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingStateInput);
     jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingStateLabel);
+    jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoFlushRight");
 
     // Create City input
     var taoNewCity = taoDefaultMailingBracket;
@@ -160,6 +162,7 @@ debugger;
     jQuery("#taoMailingAddr").append(taoNewZip);
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingZipInput);
     jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingZipLabel);
+    jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoFlushRight");
 
     // Create Address Type input
     var taoNewAddrType = taoDefaultMailingBracket;
@@ -169,14 +172,7 @@ debugger;
     jQuery("#taoMailingAddr .taoMailingBlock .taoMailingLabel").last().remove();
     jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoClear");
 
-    /******* User interactions with form *******/
-    // If user clicks on .taoMailingLabel, then hide the label and put cursor in 
-    // related input field
-    jQuery(".taoMailingLabel").on("focus, click", function () {
-    //    jQuery(this).hide();
-        jQuery(this).parents(".taoMailingBlock").find("input").focus();
-        jQuery(this).parents(".taoMailingBlock").find("select").focus();
-    });
-
+    // Replace label for Residence/Business radio buttons to Residence/Office
+    jQuery("label[for='businessRadio']").text("Office");
 
 });
