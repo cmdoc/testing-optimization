@@ -57,7 +57,8 @@ table#formHeaderWrapper {
   margin-bottom: 0; }
 
 h2[title='Terms and Conditions'] {
-  border-bottom: 1px solid #aaa; }
+  border-bottom: 1px solid #aaa;
+  width: 982px; }
 
 .checkbox.section {
   padding-left: 0;
@@ -95,7 +96,8 @@ select#PCREnroll_personTitle {
 #postalCode {
   width: 135px; }
 
-#countrySelect {
+#countrySelect,
+#stateSelect {
   width: 159px;
   height: 39px; }
 
@@ -182,5 +184,25 @@ select#PCREnroll_personTitle {
   content: ' *';
   color: red;
   font-weight: bold; }
+
+.submit.section {
+  padding-left: 0; }
+
+div#joinNowPanel {
+  margin-top: 0; }
+
+#taoMailErrorMsgs {
+  border-spacing: 0; }
+  #taoMailErrorMsgs tr {
+    display: block;
+    margin-top: 1px; }
+    #taoMailErrorMsgs tr td {
+      width: 400px; }
+
+div.violationClass {
+  width: 400px; }
+
+td.validationCell {
+  background: url("https://ihg.scene7.com/is/image/ihg/pc_masterSprite2?fmt=gif-alpha&wid=28&hei=4799") no-repeat scroll 7px -2692px #FBE5E5; }
 
 /*# sourceMappingURL=tao-3column.css.map */

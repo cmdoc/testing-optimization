@@ -6,7 +6,7 @@
     // Replace the text beside the T&C checkbox
     var taoPopoutIcon = '<img src="https://www.ihg.com/content/dam/etc/media_library/branded/6c/cn/icons/0001.gif" alt="Link will open in new browser window." title="Link will open in new browser window.">';
     var taoNewTCUrl = "https://www.ihg.com/hotels/us/en/global/customer_care/member-tc";
-    var taoNewTC = "I have reviewed and accept the <a href='" + taoNewTCUrl + "'>" +
+    var taoNewTC = "I have reviewed and accept the <a href='" + taoNewTCUrl + "' target='_blank'>" +
                    "Terms and Conditions</a> " + taoPopoutIcon +". I also certify I " +
                    "am at least 18 years old and of lawful age."
     jQuery(".text.parbase.text_3.LinkMorpher").html(taoNewTC);
@@ -113,7 +113,7 @@
     var taoEmailHelpA = jQuery("#emailHelp a");
     jQuery("#emailHelp").css("display", "none");
     jQuery(taoEmailHelpA).insertBefore(".checkbox.section");
-    jQuery("#emailPopupLink").css("position", "relative").css("top", "72px").css("right", "339px");
+    jQuery("#emailPopupLink").css("position", "relative").css("top", "-106px").css("right", "155px");
 
     /******* Mailing Address Fields *******/
     // Create a DIV for the Mailing Address fields and move title there
@@ -130,7 +130,7 @@
     jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingStreetLabel);
     jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoFlushRight");
 
-    // Create County Dropdown
+    // Create Country Dropdown
     var taoNewCountry = taoDefaultMailingBracket;
     var taoExistingCountrySelect = jQuery("#countrySelect");
     jQuery("#taoMailingAddr").append(taoNewCountry);
@@ -142,6 +142,7 @@
     var taoExistingStateLabel = jQuery("#stateLabel label").text();
     var taoExistingStateInput = jQuery("#stateBox");
     jQuery("#taoMailingAddr").append(taoNewState);
+    jQuery("#taoMailingAddr .taoMailingBlock").last().attr("id", "stateContainer");
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingStateInput);
     jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingStateLabel);
     jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoFlushRight");
@@ -151,6 +152,7 @@
     var taoExistingCityLabel = jQuery("#cityLabel label").text();
     var taoExistingCityInput = jQuery("#city");
     jQuery("#taoMailingAddr").append(taoNewCity);
+    jQuery("#taoMailingAddr .taoMailingBlock").last().attr("id", "taoCity");
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingCityInput);
     jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingCityLabel);
     jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoClear");
@@ -160,6 +162,7 @@
     var taoExistingZipLabel = jQuery("#postalCodeLabel label").text();
     var taoExistingZipInput = jQuery("#postalCode");
     jQuery("#taoMailingAddr").append(taoNewZip);
+    jQuery("#taoMailingAddr .taoMailingBlock").last().attr("id", "taoPostalCode");
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingZipInput);
     jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingZipLabel);
     jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoFlushRight");
@@ -174,5 +177,55 @@
 
     // Replace label for Residence/Business radio buttons to Residence/Office
     jQuery("label[for='businessRadio']").text("Office");
+
+    // Insert a DIV for Account Info error messages just above the form, then
+    // grab all of the existing error fields and move them there.
+    jQuery("<div id='taoErrorMsgs' class='taoClear'></div>").insertAfter("div.indicatesRequiredFields");
+    var taoAccountInfoErrors = jQuery(".violationClass")
+    jQuery("#taoErrorMsgs").append(taoAccountInfoErrors);
+    var taoTCErrorMsg = jQuery("#acceptTermsAndConditionsError");
+    jQuery(taoTCErrorMsg).insertBefore(".checkbox.section");
+
+    // Now insert a TABLE for Mailing Address error messages, then move all of
+    // the existing error fields there.
+    jQuery("<table id='taoMailErrorMsgs'><tbody></tbody></table>").insertAfter("#taoErrorMsgs");
+    var taoAddress1Error = jQuery("#address1ErrorTableRow");
+    var taoCountryError = jQuery("#countryErrorTableRow");
+    var taoCityError = jQuery("#cityErrorTableRow");
+    var taoPostalCodeError = jQuery("#postalCodeErrorTableRow");
+    var taoStateError = jQuery("#stateErrorTableRow");
+
+    jQuery("#taoMailErrorMsgs").append(taoAddress1Error,
+                                       taoCountryError,
+                                       taoStateError,
+                                       taoCityError,
+                                       taoPostalCodeError);
+
+    // Remove the remaining elements of the old form
+    jQuery("#formHeaderWrapper").remove();
+    jQuery(".formField").remove();
+    jQuery(".dropdown").remove();
+    jQuery("h2[title='Mailing Address']").remove();
+
+    // Hide the #pcrAddressTable so we can observe changes to the field labels
+    // and update placeholder values in the new Mailing Address form
+    jQuery(".pcrAddressTable").hide();
+    jQuery("#countrySelect").on("change", function () {
+        setTimeout(function () {
+            var taoNewCityLabel = jQuery("#cityLabel").text();
+            jQuery("#city").attr("placeholder", taoNewCityLabel);
+            var taoNewPostalCodeLabel = jQuery("#postalCodeLabel").text();
+            jQuery("#postalCode").attr("placeholder", taoNewPostalCodeLabel);
+
+            // If #stateContainer doesn't contain a SELECT node, then change 
+            // the placeholder attribute for #stateBox
+            if (jQuery("#stateContainer").children("select").length == 0) {
+                var taoNewStateLabel = jQuery("#stateLabel").text();
+                jQuery("#stateBox").attr("placeholder", taoNewStateLabel);
+            }
+
+        }, 50);
+
+    });
 
 });
