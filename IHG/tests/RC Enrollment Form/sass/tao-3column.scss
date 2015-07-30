@@ -241,15 +241,20 @@ div#joinNowPanel {
         margin-top: 1px;
 
         td {
-            width: 400px;
+            width: 555px;
         }
     }
 }
 
 div.violationClass {
-  width: 400px;
+  width: 555px;
 }
 
 td.validationCell {
   background: url("https://ihg.scene7.com/is/image/ihg/pc_masterSprite2?fmt=gif-alpha&wid=28&hei=4799") no-repeat scroll 7px -2692px #FBE5E5;
+}
+
+.taoInputError {
+  background-color: #FBE5E5 !important;
+  border: 2px solid #EAB7B7 !important;
 }

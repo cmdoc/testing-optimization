@@ -1,4 +1,8 @@
 ﻿jQuery(document).ready(function () {
+    
+    // Hide the old form before doing any of the changes.
+    // Bootstrapper.MVT.injectCSS("#content, #contentSlot{ display:none; }");
+    jQuery("#content, #contentSlot").hide();
 
     // Remove the H2 text that says 'Terms and Conditions'
     jQuery("h2[title='Terms and Conditions']").text("");
@@ -34,7 +38,9 @@
                               "Website will open in a new window.' target='_blank'><img src='" + taoNewCyberTrustLogo + "'></a>";
     jQuery("#securityLogos").prepend(taoNewCyberTrustImg).prepend(taoNewTrusteImg);
 
-    // Add in new set of horizontal IHG logs
+    // Remove the vertical set of IHG logos and add in new set of horizontal
+    // logos
+    jQuery("#contentSlot").remove();
     var taoNewIHGLogos = "./index-saveas_files/horizontalIHGLogos.png";
     var taoNewIHGImg = "<img src='" + taoNewIHGLogos + "' />";
     jQuery(taoNewIHGImg).insertAfter("#securityLogos");
@@ -201,15 +207,27 @@
                                        taoCityError,
                                        taoPostalCodeError);
 
+    // Grab the emailPopup and move it to a new location
+    var taoEmailPopup = jQuery("#emailPopup");
+    jQuery(taoEmailPopup).insertAfter(".pcrAddressPanel");
+
     // Remove the remaining elements of the old form
     jQuery("#formHeaderWrapper").remove();
     jQuery(".formField").remove();
     jQuery(".dropdown").remove();
     jQuery("h2[title='Mailing Address']").remove();
 
-    // Hide the #pcrAddressTable so we can observe changes to the field labels
-    // and update placeholder values in the new Mailing Address form
+    // Now that all the work is done, show the new form BUT hide the 
+    // pcrAddressTable.  We still need this part of the table around
+    // so we can observe changes to the field lables and update the 
+    // placeholder values in the new Mailin Address form
+    jQuery("#content, #contentSlot").show();
     jQuery(".pcrAddressTable").hide();
+
+    /*****  WATCHING EVENTS *****/
+
+    // observe changes to the field labels and update placeholder values in 
+    // the new Mailing Address form
     jQuery("#countrySelect").on("change", function () {
         setTimeout(function () {
             var taoNewCityLabel = jQuery("#cityLabel").text();
@@ -223,9 +241,103 @@
                 var taoNewStateLabel = jQuery("#stateLabel").text();
                 jQuery("#stateBox").attr("placeholder", taoNewStateLabel);
             }
-
         }, 50);
-
     });
+
+    // Observe changes to the errorFields and highlight the corresponding text
+    // fields when errors occur
+    document.body.addEventListener("DOMSubtreeModified", function () {
+        if (jQuery("#firstNameError").text().length > 0) {
+            jQuery("#firstName").addClass("taoInputError");
+        } else {
+            jQuery("#firstName").removeClass("taoInputError");
+        }
+
+        if (jQuery("#lastNameError").text().length > 0) {
+            jQuery("#lastName").addClass("taoInputError");
+        } else {
+            jQuery("#lastName").removeClass("taoInputError");
+        }
+
+        if (jQuery("#emailAddressError").text().length > 0) {
+            jQuery("#emailAddress").addClass("taoInputError");
+        } else {
+            jQuery("#emailAddress").removeClass("taoInputError");
+        }
+
+        if (jQuery("#errorBlock").text().length > 50) {
+            jQuery("#emailAddress").addClass("taoInputError");
+        } else {
+            jQuery("#emailAddress").removeClass("taoInputError");
+        }
+
+        if (jQuery("#verifyEmailAddressError").text().length > 0) {
+            jQuery("#confirmEmailAddress").addClass("taoInputError");
+        } else {
+            jQuery("#confirmEmailAddress").removeClass("taoInputError");
+        }
+
+        if (jQuery("#pinError").text().length > 0) {
+            jQuery("#pin").addClass("taoInputError");
+        } else {
+            jQuery("#pin").removeClass("taoInputError");
+        }
+
+        if (jQuery("#verifyPinError").text().length > 0) {
+            jQuery("#verifyPin").addClass("taoInputError");
+        } else {
+            jQuery("#verifyPin").removeClass("taoInputError");
+        }
+
+        if (jQuery("#address1ErrorTableRow").text().length > 10) {
+            jQuery("#addressField1").addClass("taoInputError");
+        } else {
+            jQuery("#addressField1").removeClass("taoInputError");
+        }
+
+        if (jQuery("#countryErrorTableRow").text().length > 10) {
+            jQuery("#countrySelect").addClass("taoInputError");
+        } else {
+            jQuery("#countrySelect").removeClass("taoInputError");
+        }
+
+        if (jQuery("#stateErrorTableRow").text().length > 10) {
+            jQuery("#stateBox").addClass("taoInputError");
+        } else {
+            jQuery("#stateBox").removeClass("taoInputError");
+        }
+
+        if (jQuery("#cityErrorTableRow").text().length > 10) {
+            jQuery("#city").addClass("taoInputError");
+        } else {
+            jQuery("#city").removeClass("taoInputError");
+        }
+
+        if (jQuery("#postalCodeErrorTableRow").text().length > 10) {
+            jQuery("#postalCode").addClass("taoInputError");
+        } else {
+            jQuery("#postalCode").removeClass("taoInputError");
+        }
+
+    }, false);
+
+
+
+    // Observe changes to the errorFields and highlight the corresponding text
+    // fields when errors occur
+    //var taoFieldErrors = ["#firstNameError","#lastNameError","#emailAddressError","#verifyEmailAddressError","#pinError","#verifyPinError"];
+    //var taoInputFields = ["#firstName",     "#lastName",     "#emailAddress",     "#confirmEmailAddress",    "#pin",     "#verifyPin"];
+    //var taoIndex;
+    //document.body.addEventListener("DOMSubtreeModified", function () {
+    //    //    jQuery(document).on("DOMSubtreeModified", "#emailAddressError", function () {
+    //    for (taoIndex = 0; taoIndex < taoFieldErrors; taoIndex++) {
+    //        if (jQuery(taoFieldErrors[taoIndex]).text().length > 0) {
+    //            jQuery(taoInputFields[taoIndex]).addClass("taoInputError");
+    //        } else {
+    //            jQuery(taoInputFields[taoIndex]).removeClass("taoInputError");
+    //        }
+    //    }
+    //}, false);
+//    });
 
 });
