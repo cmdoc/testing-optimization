@@ -28,9 +28,9 @@
 
     // Remove old security images so we can replace them with new ones
     jQuery("div#securityLogos img").remove();
-    var taoNewTrusteLogo = "./index-saveas_files/trusteLogo.png";
+    var taoNewTrusteLogo = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/cn/secure/0005.png";
     var taoNewTrusteUrl = "https://www.ihg.com/hotels/us/en/global/customer_care/privacy_statement";
-    var taoNewCyberTrustLogo = "./index-saveas_files/cybertrustLogo.png";
+    var taoNewCyberTrustLogo = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/cn/secure/0004.png";
     var taoNewCyberTrustUrl = "http://secure.omniroot.com/en/find/sealct.cfm?cn=www.ichotelsgroup.com";
     var taoNewTrusteImg = "<a href='" + taoNewTrusteUrl + "' alt='Select to learn more about TRUSTe.' target='_blank'>" +
                           "<img src='" + taoNewTrusteLogo + "'></a>";
@@ -41,7 +41,7 @@
     // Remove the vertical set of IHG logos and add in new set of horizontal
     // logos
     jQuery("#contentSlot").remove();
-    var taoNewIHGLogos = "./index-saveas_files/horizontalIHGLogos.png";
+    var taoNewIHGLogos = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/cn/logos/multibrand/ihg-logos-horizontal.png";
     var taoNewIHGImg = "<img src='" + taoNewIHGLogos + "' />";
     jQuery(taoNewIHGImg).insertAfter("#securityLogos");
 
@@ -266,6 +266,12 @@
         }
 
         if (jQuery("#errorBlock").text().length > 50) {
+            jQuery("#emailAddress").addClass("taoInputError");
+        } else {
+            jQuery("#emailAddress").removeClass("taoInputError");
+        }
+
+        if (jQuery("#emailAddressError").text().length > 0) {
             jQuery("#emailAddress").addClass("taoInputError");
         } else {
             jQuery("#emailAddress").removeClass("taoInputError");
