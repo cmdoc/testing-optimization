@@ -10,7 +10,9 @@ if (taoLocation.indexOf("qRRSrt=rc") == -1 && (localStorage.getItem("taoSortBy")
     Bootstrapper.MVT.injectCSS("body { display:none; }");
 
     var taoNewLocation = taoLocation.replace("qRRSrt=rt", "qRRSrt=rc");
-    window.location.replace(taoNewLocation);
+    setTimeout( function () {
+        window.location.replace(taoNewLocation);
+    }, 40);
 
 }
 
