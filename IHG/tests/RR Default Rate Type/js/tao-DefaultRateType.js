@@ -2,9 +2,11 @@
 jQuery(document).ready(function () {
 
     // Let's figure out if the user has tried to change the sort order to 
-    // 'room'.  If they have either 'taoS' in the URL is set to 'rc' or
-    // localStorage.getItem("taoSortBy") will be set to 'Room'. If either
-    // are true, then set taoUserSort to true.
+    // 'room'.  If 'qRef' in the URL is set to 'rr' && 'qRRSrt' to 'rt' or
+    // localStorage.getItem("taoSortBy") is set to 'Room', then set 
+    // taoUserSort to true.  If the referring page was RR, then we know we 
+    // can trust the sorting option set in the URL.  If the localStorage 
+    // is set to Room, then we also know the user has changed the sorting.
     var taoUserSort = false;
     var taoSortBy = getURLParameter(location.search, "qRRSrt");
     var taoReferrer = getURLParameter(location.search, "qRef");
