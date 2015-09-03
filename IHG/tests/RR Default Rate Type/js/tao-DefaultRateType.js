@@ -1,117 +1,42 @@
 ﻿
 jQuery(document).ready(function () {
 
-    // When the user clicks on a 'Check Rates' button, check to see if  
-    // qRRSrt=rt (room type sorting) and if the hotel code is for a US-based
-    // hotel. If both match, then change qRRSrt=rc (room type sorting) before
-    // sending the user on to the RR page.
+    // Let's figure out if the user has tried to change the sort order to 
+    // 'room'.  If they have either 'taoS' in the URL is set to 'rc' or
+    // localStorage.getItem("taoSortBy") will be set to 'Room'. If either
+    // are true, then set taoUserSort to true.
+    var taoUserSort = false;
+    var taoSortBy = getURLParameter(location.search, "qRRSrt");
+    var taoReferrer = getURLParameter(location.search, "qRef");
+    if ((taoSortBy == "rt" && taoReferrer == "rr") || localStorage.getItem("taoSortBy") == "Room") {
+        taoUserSort = true;
+    }
+
+    // When the user clicks on a 'Check Rates' button, first check to see if
+    // the user has already overridden the rate-type default sorting.  If they
+    // have not, then check to see if qRRSrt=rt (room type sorting) and if the
+    // hotel code is for a US-based hotel. If both match, then change qRRSrt=rt
+    // to qRRSrt=rc (rate type sorting) before sending the user to the RR page.
     jQuery(".bookAnchor").on("click", function () {
-        var taoHref = jQuery(this).attr("href");
-        if (taoHref.indexOf("qRRSrt=rt") != -1) {
-            var taoHotelCode = getURLParameter(taoHref, "qSlH");
-            if (taoAllUsHotelCodes.indexOf(taoHotelCode) != -1) {
-                var taoNewHref = taoHref.replace("qRRSrt=rt", "qRRSrt=rc");
-                jQuery(this).attr("href", taoNewHref);
+        if (!taoUserSort) {
+            var taoHref = jQuery(this).attr("href");
+            if (taoHref.indexOf("qRRSrt=rt") != -1) {
+                var taoHotelCode = getURLParameter(taoHref, "qSlH");
+                if (taoAllUsHotelCodes.indexOf(taoHotelCode) != -1) {
+                    var taoNewHref = taoHref.replace("qRRSrt=rt", "qRRSrt=rc");
+                    jQuery(this).attr("href", taoNewHref);
+                }
             }
         }
     });
 
 });
 
-// Function for grabbing hotel code out of URL
+// Function for grabbing a param out of URL by passing a key. We use this to
+// get the hotel code
 function getURLParameter(url, name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(url) || [, ""])[1].replace(/\+/g, '%20')) || null
 }
-
-
-// The standard click-tracking code:
-Adbett = window.Adbett || {};
-!function (A) {
-
-    var DEFAULT_MBOX_NAME = 'mboxClickTrack',
-        DEFAULT_ACTION_EVENT = 'click',
-        DEFAULT_TRACKING_TYPE = 'delay';
-
-    var _track = function (paramVal, mboxName) {
-        (function (mbox) {
-            var d = new Date(); if (window.mboxFactoryDefault) { var ub = mboxFactoryDefault.getUrlBuilder().clone(); ub.addParameter("mbox", mbox); ub.addParameter('mboxTime', d.getTime() - (d.getTimezoneOffset() * 60000)); ub.addParameters(Array.prototype.slice.call(arguments).slice(1)); var img = new Image(); img.src = ub.buildUrl().replace("/mbox/undefined", "/mbox/ajax"); img.style.display = "none"; if (document.body) document.body.insertBefore(img, document.body.firstChild); }
-        })((typeof mboxName === 'string') ? mboxName : "mboxClickTrack", "clicked=" + paramVal);
-    };
-
-    A.track = A.track || function (obj) {
-        var selector = (typeof obj.selector !== 'undefined') ? obj.selector : '',
-            paramVal = (typeof obj.value !== 'undefined') ? obj.value : '',
-            mboxName = (typeof obj.mboxName !== 'undefined') ? obj.mboxName : DEFAULT_MBOX_NAME,
-            type = (typeof obj.type !== 'undefined') ? obj.type : DEFAULT_TRACKING_TYPE,
-            actionEvent = (typeof obj.event !== 'undefined') ? obj.event : DEFAULT_ACTION_EVENT;
-
-        switch (type) {
-            case 'delay':
-                jQuery(selector).on(actionEvent, function () {
-                    _track(paramVal, mboxName);
-                    if (typeof this.href === 'string')
-                        setTimeout("location='" + this.href + "'", 750);
-                    return false;
-                });
-                break;
-            case 'signaler':
-                jQuery(selector).on(actionEvent, function () {
-                    mboxFactoryDefault.getSignaler().signal(mboxName, mboxName, "clicked=" + paramVal);
-                });
-                break;
-            default:
-                if (selector.length > 0)
-                    jQuery(selector).on(actionEvent, function () { _track(paramVal, mboxName); });
-                else
-                    _track(paramVal, mboxName);
-        }
-    };
-
-    Adbett.setCookie = function (name, val, days, domain, path) {
-        var dt = new Date();
-        dt.setTime(dt.getTime() + (days * 24 * 60 * 60 * 1000));
-        var _cookie = {
-            name: name,
-            value: val,
-            days: days,
-            domain: (domain) ? domain : "",
-            path: (path) ? path : "/",
-            exp: dt.toGMTString()
-        };
-        _saveCookie(_cookie);
-    };
-    var _saveCookie = function (cookie) {
-        document.cookie = cookie.name + "=" + cookie.value +
-                "; expires=" + cookie.exp +
-                "; path=" + cookie.path + "" +
-                ((cookie.domain != "") ? "; domain=" + cookie.domain : "");
-    };
-    Adbett.getCookie = function (name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    };
-
-    mboxFactoryDefault.addOnLoad(function () {
-
-        // When the user clicks on the "sortBy" DIV, see which input type
-        // they clicked on and record it as click-tracking in Target.
-        jQuery("input[value='rt']").on("click", function () {
-            mboxFactoryDefault.getSignaler().signal("mboxClickTrack", "mboxClickTrack", "clicked=sortBy-room"); //track sort by room clicks (RT)
-        });
-
-        jQuery("input[value='rc']").on("click", function () {
-            mboxFactoryDefault.getSignaler().signal("mboxClickTrack", "mboxClickTrack", "clicked=sortBy-rate"); //track sort by rate clicks (RC)
-        });
-
-    });
-
-}(Adbett);
 
 var taoAllUsHotelCodes = [
 	"NYCHC",
