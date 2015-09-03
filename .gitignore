@@ -259,14 +259,22 @@ Temporary Items
 node_modules/*
 
 ######################################
+# Non-project files
+*.pdf
+
+######################################
 # Projects
 
-# CP
+##### CP
 CP/tests/pullDownPOC/index_files/*
 CP/tests/pullDownPOC/node_modules/*
 CP/tests/pullDownPOC/.sass-cache/*
+
+##### EX
 EX/tests/trustMessages/node_modules/*
 EX/tests/trustMessages/.sass-cache/*
+
+##### IHG
 IHG/tests/RC Enrollment Form/index-saveas_files/*
 IHG/tests/RC Enrollment Form/node_modules/*
 IHG/tests/RC Enrollment Form/.sass-cache/*
