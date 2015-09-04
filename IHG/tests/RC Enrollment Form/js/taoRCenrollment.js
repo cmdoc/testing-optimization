@@ -65,7 +65,7 @@
     var taoExistingFirstNameLabel = jQuery("div.formField").eq(0).find("label").text().trim();
     jQuery("#taoAccountInfo").append(taoNewFirstName);
     jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingFirstName);
-    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingFirstNameLabel);
+    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingFirstNameLabel + "*");
 
     // Create LastName Block
     var taoNewLastName = taoDefaultAcctInfo;
@@ -73,7 +73,7 @@
     var taoExistingLastNameLabel = jQuery("div.formField").eq(1).find("label").text().trim();
     jQuery("#taoAccountInfo").append(taoNewLastName);
     jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingLastName);
-    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingLastNameLabel);
+    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingLastNameLabel + "*");
 
     // Create EmailAddress Block
     var taoNewEmail = taoDefaultAcctInfo;
@@ -81,7 +81,7 @@
     var taoExistingEmailLabel = jQuery("div.formField").eq(2).find("label").text().trim();
     jQuery("#taoAccountInfo").append(taoNewEmail);
     jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingEmail);
-    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingEmailLabel);
+    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingEmailLabel + "*");
     jQuery("#taoAccountInfo .taoAccountBlock").last().addClass("taoClear");
 
 
@@ -91,14 +91,14 @@
     var taoExistingEmail2Label = jQuery("div.formField").eq(3).find("label").text().trim();
     jQuery("#taoAccountInfo").append(taoNewEmail2);
     jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingEmail2);
-    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingEmail2Label);
+    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingEmail2Label + "*");
 
     // Create CreatePin Block
     var taoNewPin = taoDefaultAcctInfo;
     var taoExistingPin = jQuery("#pin");
     jQuery("#taoAccountInfo").append(taoNewPin);
     jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingPin);
-    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", "Create PIN (4 digits)");
+    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", "Create PIN (4 digits)*");
     jQuery("#taoAccountInfo .taoAccountBlock").last().addClass("taoClear");
 
     // Create VerifyPin Block
@@ -107,7 +107,7 @@
     var taoExistingPin2Label = jQuery("div.formField").eq(5).find("label").text().trim();
     jQuery("#taoAccountInfo").append(taoNewPin2);
     jQuery("#taoAccountInfo .taoAccountBlock").last().append(taoExistingPin2);
-    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingPin2Label);
+    jQuery("#taoAccountInfo .taoAccountBlock input").last().attr("placeholder", taoExistingPin2Label + "*");
 
 
     // Find the phrase 'Make note of your PIN for future use' and remove it
@@ -133,7 +133,7 @@
     var taoExistingStreetInput = jQuery("#addressField1");
     jQuery("#taoMailingAddr").append(taoNewStreet);
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingStreetInput);
-    jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingStreetLabel);
+    jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingStreetLabel + "*");
     jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoFlushRight");
 
     // Create Country Dropdown
@@ -160,7 +160,7 @@
     jQuery("#taoMailingAddr").append(taoNewCity);
     jQuery("#taoMailingAddr .taoMailingBlock").last().attr("id", "taoCity");
     jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingCityInput);
-    jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingCityLabel);
+    jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingCityLabel + "*");
     jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoClear");
 
     // Create Postal Code input
@@ -224,22 +224,44 @@
     jQuery("#content, #contentSlot").show();
     jQuery(".pcrAddressTable").hide();
 
+    // Finally, let's change the 'Country' label
+    jQuery("#countrySelect").find("option").eq(0).text("Choose a country*");
+
     /*****  WATCHING EVENTS *****/
 
     // observe changes to the field labels and update placeholder values in 
     // the new Mailing Address form
     jQuery("#countrySelect").on("change", function () {
         setTimeout(function () {
+            // Check to see if we need to add/remove the required asterisk
+            var taoRequireStateCity = false;
+            if (jQuery("#countrySelect").find(":selected").text() == 'United States' || jQuery("#countrySelect").find(":selected").text() == 'Canada') {
+                taoRequireStateCity = true;
+            }
+
+            // Adjust the City label
             var taoNewCityLabel = jQuery("#cityLabel").text();
             jQuery("#city").attr("placeholder", taoNewCityLabel);
+
+            // Adjust the Postal label
             var taoNewPostalCodeLabel = jQuery("#postalCodeLabel").text();
+            if (taoRequireStateCity) {
+                taoNewPostalCodeLabel = taoNewPostalCodeLabel + "*";
+            }
             jQuery("#postalCode").attr("placeholder", taoNewPostalCodeLabel);
 
             // If #stateContainer doesn't contain a SELECT node, then change 
-            // the placeholder attribute for #stateBox
+            // the placeholder attribute for #stateBox. If it does, then
+            // replace the "..." with a "*" in the first <option>
             if (jQuery("#stateContainer").children("select").length == 0) {
                 var taoNewStateLabel = jQuery("#stateLabel").text();
+                if (taoRequireStateCity) {
+                    taoNewStateLabel = taoNewStateLabel + "*";
+                }
                 jQuery("#stateBox").attr("placeholder", taoNewStateLabel);
+            } else {
+                var taoFirstState = jQuery("#stateSelect").find("option").eq(0).text();
+                jQuery("#stateSelect").find("option").eq(0).text(taoFirstState.replace("...", "*"));
             }
         }, 50);
     });
@@ -326,24 +348,5 @@
         }
 
     }, false);
-
-
-
-    // Observe changes to the errorFields and highlight the corresponding text
-    // fields when errors occur
-    //var taoFieldErrors = ["#firstNameError","#lastNameError","#emailAddressError","#verifyEmailAddressError","#pinError","#verifyPinError"];
-    //var taoInputFields = ["#firstName",     "#lastName",     "#emailAddress",     "#confirmEmailAddress",    "#pin",     "#verifyPin"];
-    //var taoIndex;
-    //document.body.addEventListener("DOMSubtreeModified", function () {
-    //    //    jQuery(document).on("DOMSubtreeModified", "#emailAddressError", function () {
-    //    for (taoIndex = 0; taoIndex < taoFieldErrors; taoIndex++) {
-    //        if (jQuery(taoFieldErrors[taoIndex]).text().length > 0) {
-    //            jQuery(taoInputFields[taoIndex]).addClass("taoInputError");
-    //        } else {
-    //            jQuery(taoInputFields[taoIndex]).removeClass("taoInputError");
-    //        }
-    //    }
-    //}, false);
-//    });
 
 });

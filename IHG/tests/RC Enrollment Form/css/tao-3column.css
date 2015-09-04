@@ -163,28 +163,6 @@ select#PCREnroll_personTitle {
   color: #707373;
   font-size: 11px; }
 
-::-webkit-input-placeholder:after {
-  content: ' *';
-  color: red;
-  font-weight: bold; }
-
-:-moz-placeholder:after {
-  /* Firefox 18- */
-  content: ' *';
-  color: red;
-  font-weight: bold; }
-
-::-moz-placeholder:after {
-  /* Firefox 19+ */
-  content: ' *';
-  color: red;
-  font-weight: bold; }
-
-:-ms-input-placeholder:after {
-  content: ' *';
-  color: red;
-  font-weight: bold; }
-
 .submit.section {
   padding-left: 0; }
 
@@ -208,5 +186,13 @@ td.validationCell {
 .taoInputError {
   background-color: #FBE5E5 !important;
   border: 2px solid #EAB7B7 !important; }
+
+.indicatesRequiredFields > img {
+  display: none; }
+
+#indicatesRequired:before {
+  content: "* ";
+  font-weight: bold;
+  font-size: x-large; }
 
 /*# sourceMappingURL=tao-3column.css.map */
