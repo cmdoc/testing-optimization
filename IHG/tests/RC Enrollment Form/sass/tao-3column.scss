@@ -222,6 +222,10 @@ div#joinNowPanel {
     }
 }
 
+#taoErrorMsgs {
+    margin-top: 20px;
+}
+
 div.violationClass {
   width: 555px;
 }
@@ -243,4 +247,11 @@ td.validationCell {
     content: "* ";
     font-weight: bold;
     font-size: x-large;
+}
+
+#emailPopupLink {
+    position: relative;
+    top: 82px;
+    right: 15px;
+    float: right;
 }

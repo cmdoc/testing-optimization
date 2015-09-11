@@ -1,8 +1,7 @@
-﻿jQuery(document).ready(function () {
-    
-    // Hide the old form before doing any of the changes.
-    // Bootstrapper.MVT.injectCSS("#content, #contentSlot{ display:none; }");
-    jQuery("#content, #contentSlot").hide();
+﻿// Hide the old form before doing any of the changes.
+Bootstrapper.MVT.injectCSS("#content, #contentSlot{ display:none; }");
+
+jQuery(document).ready(function () {
 
     // Remove the H2 text that says 'Terms and Conditions'
     jQuery("h2[title='Terms and Conditions']").text("");
@@ -46,8 +45,14 @@
     jQuery(taoNewIHGImg).insertAfter("#securityLogos");
 
     /******* Account Information Fields *******/
-    // Create a DIV for the Account Information fields
+    // Create a DIV for the Account Information fields, then move the email
+    // help icon to the be placed within the H2 title tag 
     jQuery("<div id='taoAccountInfo'><h2>Account Information</h2></div>").insertAfter(".indicatesRequiredFields");
+    var taoEmailHelpImg = jQuery("#emailHelp").find("img");
+    jQuery("#emailHelp a").html(taoEmailHelpImg);
+    var taoEmailHelpA = jQuery("#emailHelp a");
+    jQuery("#emailHelp").css("display", "none");
+    jQuery("#taoAccountInfo h2").append(taoEmailHelpA);
 
     // Create a default DIV for the Account Info fields
     var taoDefaultAcctInfo = "<div class='taoAccountBlock'></div>";
@@ -112,14 +117,6 @@
 
     // Find the phrase 'Make note of your PIN for future use' and remove it
     jQuery("#verifyPin").parents(".formField").next().remove();
-
-    // Move the email help icon to within the A tag, reposition it, and remove the text
-    var taoEmailHelpImg = jQuery("#emailHelp").find("img");
-    jQuery("#emailHelp a").html(taoEmailHelpImg);
-    var taoEmailHelpA = jQuery("#emailHelp a");
-    jQuery("#emailHelp").css("display", "none");
-    jQuery(taoEmailHelpA).insertBefore(".checkbox.section");
-    jQuery("#emailPopupLink").css("position", "relative").css("top", "-106px").css("right", "155px");
 
     /******* Mailing Address Fields *******/
     // Create a DIV for the Mailing Address fields and move title there
