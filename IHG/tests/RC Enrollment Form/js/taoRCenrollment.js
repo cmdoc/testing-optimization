@@ -224,6 +224,100 @@ jQuery(document).ready(function () {
     // Finally, let's change the 'Country' label
     jQuery("#countrySelect").find("option").eq(0).text("Choose a country*");
 
+
+    /*****  IE9 PLACEHOLDER HACK *****/
+    // Set these up only if the client is MS IE 9.  IE9 doesn't support
+    // the placeholder attribute, so we have to mimic it
+    if (navigator.appVersion.match(/MSIE 9/)) {
+
+        // Create vars for PIN labels
+        var taoPinLabel = "Create PIN (4 digits)*";
+        var taoVerifyPinLabel = "Verify PIN*";
+
+        // Add in 2 divs with the labels for the PIN fields
+        var taoCreatePINLabel = taoDefaultAcctInfo;
+        jQuery("#taoAccountInfo").append(taoCreatePINLabel);
+        jQuery("#taoAccountInfo .taoAccountBlock").last().append("<label id='taoCreatePin' class='taoPinLabel'>" + taoPinLabel + "</label>");
+        jQuery("#taoAccountInfo .taoAccountBlock").last().addClass("taoClear");
+        jQuery("#taoAccountInfo").append(taoCreatePINLabel);
+        jQuery("#taoAccountInfo .taoAccountBlock").last().append("<label id='taoVerifyPin' class='taoPinLabel'>" + taoVerifyPinLabel + "</label>");
+
+        // Check to see if there is a value already in the PIN fields. This
+        // happen if the form has been submitted but had validation issues.
+        // If so, then hide the label text.
+        if (jQuery("#pin").val() != "") {
+            jQuery("#taoCreatePin").text(taoPinLabel);
+        }
+        if (jQuery("#verifyPin").val() != "") {
+            jQuery("#taoVerifyPin").text(taoVerifyPinLabel);
+        }
+
+        // Loop through all of the inputs, grab their placeholder values, and
+        // put it in the val() for the field.
+        var taoPlaceholder = "";
+        jQuery("input[type='text']").each(function() {
+            taoPlaceholder = jQuery(this).attr("placeholder");
+            jQuery(this).val(taoPlaceholder);
+        });
+
+        // Set up an action that when the field gets focus, then check to see
+        // if the val() is the same as the placeholder attribute.  If so, then
+        // clear out the val() so the user can type something in.
+        jQuery("input[type='text']").focus(function () {
+            taoPlaceholder = jQuery(this).attr("placeholder");
+            if (jQuery(this).val() == taoPlaceholder) {
+                jQuery(this).val('');
+            }
+        });
+
+        // Set up an action that when the field loses focus, then check to see
+        // if the val() is blank. If so, then replace it with the placeholder
+        // attribute.
+        jQuery("input[type='text']").blur(function () {
+            taoPlaceholder = jQuery(this).attr("placeholder");
+            if (jQuery(this).val() == '') {
+                jQuery(this).val(taoPlaceholder);
+            }
+        });
+
+        // Set up 2 special actions like the ones above, but just for the PIN
+        // fields since these have labels underneath that match what the 
+        // placeholder attributes do. The focus() function will hide the label,
+        // while the blur() function will check to see if there is any val()
+        // for the two fields and if not, then show the labels.
+        jQuery("#pin").focus(function () {
+            jQuery("#taoCreatePin").text("");
+        });
+        jQuery("#verifyPin").focus(function () {
+            jQuery("#taoVerifyPin").text("");
+        });
+        jQuery("#pin").blur(function() {
+            if (jQuery(this).val() == '') {
+                jQuery("#taoCreatePin").text(taoPinLabel);
+            }
+        });
+        jQuery("#verifyPin").blur(function () {
+            if (jQuery(this).val() == '') {
+                jQuery("#taoVerifyPin").text(taoVerifyPinLabel);
+            }
+        });
+
+        // When the user clicks on submit, loop through all of the inputs and
+        // check to see if their val() is the same as the placeholder text. 
+        // If so, then clear it out first before submitting the form.
+        jQuery("#joinSubmitButton").on("click", function () {
+            jQuery("input[type='text']").each(function () {
+                taoPlaceholder = jQuery(this).attr("placeholder");
+                if (jQuery(this).val() == taoPlaceholder) {
+                    jQuery(this).val('');
+                }
+            });
+        });
+
+        // Finally, take the focus off of the firstName field
+        jQuery("#taoAccountInfo").focus();
+    }
+
     /*****  WATCHING EVENTS *****/
 
     // observe changes to the field labels and update placeholder values in 

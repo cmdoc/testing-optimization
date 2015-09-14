@@ -255,3 +255,20 @@ td.validationCell {
     right: 15px;
     float: right;
 }
+
+.taoPinLabel {
+    position: relative;
+    top: -35px;
+    left: 12px;
+    font-size: 11px;
+    display: block;
+}
+
+#taoCreatePin {
+    width: 319px;
+}
+
+#taoVerifyPin {
+    width: 290px;
+    padding-left: 4px;
+}
