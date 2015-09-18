@@ -378,12 +378,6 @@ jQuery(document).ready(function () {
             jQuery("#emailAddress").removeClass("taoInputError");
         }
 
-        if (jQuery("#errorBlock").text().length > 50) {
-            jQuery("#emailAddress").addClass("taoInputError");
-        } else {
-            jQuery("#emailAddress").removeClass("taoInputError");
-        }
-
         if (jQuery("#emailAddressError").text().length > 0) {
             jQuery("#emailAddress").addClass("taoInputError");
         } else {
