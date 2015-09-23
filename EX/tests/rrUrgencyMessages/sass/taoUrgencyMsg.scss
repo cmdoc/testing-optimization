@@ -1,0 +1,56 @@
+﻿.taoUrgencyClockBlue {
+    background: url("../images/taoBlueClock.png") no-repeat transparent;
+    height: 25px;
+    margin-bottom: 0;
+    width: 25px;
+    float: left;
+    position: absolute;
+    z-index: 100;
+}
+
+.taoUrgencyClockGreen {
+    background: url("../images/taoGreenClock.png") no-repeat transparent;
+    height: 25px;
+    margin-bottom: 0;
+    width: 25px;
+    float: left;
+    position: absolute;
+    z-index: 100;
+}
+
+.taoUrgencyMsg {
+    display: inline-block;
+    border: 1px solid;
+    border-left: none;
+    padding: 2px 10px 0px 19px;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.taoBlue {
+    border-color: #1c60ad; 
+    margin-top: 1px;
+    margin-left: 12px;
+    height: 19px;
+}
+
+.taoGreen {
+    border-color: #59b04a;
+    background-color: #59b04a;
+    margin-left: 10px;
+    height: 19px;
+}
+
+.taoUrgencyTextBlue {
+    color: #1c60ad;
+    font-weight: bold;
+}
+
+.taoUrgencyTextGreen {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+span.roomTypeDesc > div.urgentMsgCss { 
+    position: relative; 
+}

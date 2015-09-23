@@ -273,6 +273,10 @@ CP/tests/pullDownPOC/.sass-cache/*
 ##### EX
 EX/tests/trustMessages/node_modules/*
 EX/tests/trustMessages/.sass-cache/*
+EX/tests/rrUrgencyMessages/node_modules/*
+EX/tests/rrUrgencyMessages/.sass-cache/*
+EX/tests/rrUrgencyMessages/index_files/*
+
 
 ##### HI
 HI/tests/Hotel Details Price Removal/node_modules/*
