@@ -148,6 +148,9 @@ jQuery(document).ready(function () {
     jQuery("#taoMailingAddr").append(taoNewState);
     jQuery("#taoMailingAddr .taoMailingBlock").last().attr("id", "stateContainer");
 
+    // The existing JavaScript already on the page may be changing the state
+    // input to a select by the time we get here.  Check to see which one
+    // exists and go with that.  This is mainly a IE9 bug fix.
     if (taoExistingStateInput.length > 0) {
         jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingStateInput);
         jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingStateLabel);
