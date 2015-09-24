@@ -235,7 +235,7 @@ jQuery(document).ready(function () {
         var taoVerifyPinLabel = "Verify PIN*";
 
         // Add in 2 divs with the labels for the PIN fields
-        var taoCreatePINLabel = taoDefaultAcctInfo;
+        var taoCreatePINLabel = "<div class='taoAccountBlock'></div>";
         jQuery("#taoAccountInfo").append(taoCreatePINLabel);
         jQuery("#taoAccountInfo .taoAccountBlock").last().append("<label id='taoCreatePin' class='taoPinLabel'>" + taoPinLabel + "</label>");
         jQuery("#taoAccountInfo .taoAccountBlock").last().addClass("taoClear");
@@ -243,21 +243,23 @@ jQuery(document).ready(function () {
         jQuery("#taoAccountInfo .taoAccountBlock").last().append("<label id='taoVerifyPin' class='taoPinLabel'>" + taoVerifyPinLabel + "</label>");
 
         // Check to see if there is a value already in the PIN fields. This
-        // happen if the form has been submitted but had validation issues.
+        // happens if the form has been submitted but had validation issues.
         // If so, then hide the label text.
         if (jQuery("#pin").val() != "") {
-            jQuery("#taoCreatePin").text(taoPinLabel);
+            jQuery("#taoCreatePin").text("");
         }
         if (jQuery("#verifyPin").val() != "") {
-            jQuery("#taoVerifyPin").text(taoVerifyPinLabel);
+            jQuery("#taoVerifyPin").text("");
         }
 
-        // Loop through all of the inputs, grab their placeholder values, and
-        // put it in the val() for the field.
+        // Loop through all of the inputs. If their val() is empty, then grab
+        // their placeholder values, and put it in the val() for the field.
         var taoPlaceholder = "";
-        jQuery("input[type='text']").each(function() {
-            taoPlaceholder = jQuery(this).attr("placeholder");
-            jQuery(this).val(taoPlaceholder);
+        jQuery("input[type='text']").each(function () {
+            if (jQuery(this).val() == "") {
+                taoPlaceholder = jQuery(this).attr("placeholder");
+                jQuery(this).val(taoPlaceholder);
+            }
         });
 
         // Set up an action that when the field gets focus, then check to see
@@ -265,7 +267,7 @@ jQuery(document).ready(function () {
         // clear out the val() so the user can type something in.
         jQuery("input[type='text']").focus(function () {
             taoPlaceholder = jQuery(this).attr("placeholder");
-            if (jQuery(this).val() == taoPlaceholder) {
+            if (jQuery(this).val() == taoPlaceholder ) {
                 jQuery(this).val('');
             }
         });
@@ -302,6 +304,24 @@ jQuery(document).ready(function () {
             }
         });
 
+        // Create a pair of actions to handle someone clicking on the labels
+        // for either PIN field.  If click, then put focus() on corresponding
+        // field.
+        jQuery("#taoCreatePin").on("click", function () {
+            jQuery("#pin").focus();
+        });
+        jQuery("#taoVerifyPin").on("click", function () {
+            jQuery("#verifyPin").focus();
+        });
+
+        // Special click tracking for #stateBox
+        jQuery("#taoMailingAddr").on("focus", "#stateBox", function () {
+            taoPlaceholder = jQuery(this).attr("placeholder");
+            if (jQuery(this).val() == jQuery(this).attr("placeholder")) {
+                jQuery(this).val("");
+            }
+        });
+
         // When the user clicks on submit, loop through all of the inputs and
         // check to see if their val() is the same as the placeholder text. 
         // If so, then clear it out first before submitting the form.
@@ -315,7 +335,10 @@ jQuery(document).ready(function () {
         });
 
         // Finally, take the focus off of the firstName field
-        jQuery("#taoAccountInfo").focus();
+        setTimeout(function () {
+            jQuery("#taoAccountInfo").focus();
+        }, 100);
+        
     }
 
     /*****  WATCHING EVENTS *****/
@@ -345,14 +368,32 @@ jQuery(document).ready(function () {
             // the placeholder attribute for #stateBox. If it does, then
             // replace the "..." with a "*" in the first <option>
             if (jQuery("#stateContainer").children("select").length == 0) {
+
                 var taoNewStateLabel = jQuery("#stateLabel").text();
                 if (taoRequireStateCity) {
                     taoNewStateLabel = taoNewStateLabel + "*";
                 }
+
                 jQuery("#stateBox").attr("placeholder", taoNewStateLabel);
+
+                // If IE9, make sure the statebox gets a "label"
+                if (navigator.appVersion.match(/MSIE 9/)) {
+                    jQuery("#stateBox").val(taoNewStateLabel);
+                }
+
             } else {
                 var taoFirstState = jQuery("#stateSelect").find("option").eq(0).text();
                 jQuery("#stateSelect").find("option").eq(0).text(taoFirstState.replace("...", "*"));
+            }
+            
+            // If IE9, make sure the City and Zip fields match the placeholder value
+            if (navigator.appVersion.match(/MSIE 9/)) {
+                if (jQuery("#city").val() != jQuery("#city").attr("placeholder")) {
+                    jQuery("#city").val(jQuery("#city").attr("placeholder"));
+                }
+                if (jQuery("#postalCode").val() != jQuery("#postalCode").attr("placeholder")) {
+                    jQuery("#postalCode").val(jQuery("#postalCode").attr("placeholder"));
+                }
             }
         }, 50);
     });
