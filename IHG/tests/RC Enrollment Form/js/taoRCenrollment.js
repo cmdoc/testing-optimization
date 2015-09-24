@@ -144,10 +144,16 @@ jQuery(document).ready(function () {
     var taoNewState = taoDefaultMailingBracket;
     var taoExistingStateLabel = jQuery("#stateLabel label").text();
     var taoExistingStateInput = jQuery("#stateBox");
+    var taoExistingStateSelect = jQuery("#stateSelect");
     jQuery("#taoMailingAddr").append(taoNewState);
     jQuery("#taoMailingAddr .taoMailingBlock").last().attr("id", "stateContainer");
-    jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingStateInput);
-    jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingStateLabel);
+
+    if (taoExistingStateInput.length > 0) {
+        jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingStateInput);
+        jQuery("#taoMailingAddr .taoMailingBlock input").last().attr("placeholder", taoExistingStateLabel);
+    } else if (taoExistingStateSelect.length > 0) {
+        jQuery("#taoMailingAddr .taoMailingBlock").last().prepend(taoExistingStateSelect);
+    }
     jQuery("#taoMailingAddr .taoMailingBlock").last().addClass("taoFlushRight");
 
     // Create City input
