@@ -1,5 +1,5 @@
 .taoUrgencyClockBlue {
-  background: url("../images/taoBlueClock.png") no-repeat transparent;
+  background: url("https://iadd1.content.ihgext.global/content/dam/etc/media_library/branded/ex/cn/icons/taoBlueClock.png") no-repeat transparent;
   height: 25px;
   margin-bottom: 0;
   width: 25px;
@@ -8,7 +8,7 @@
   z-index: 100; }
 
 .taoUrgencyClockGreen {
-  background: url("../images/taoGreenClock.png") no-repeat transparent;
+  background: url("https://iadd1.content.ihgext.global/content/dam/etc/media_library/branded/ex/cn/icons/taoGreenClock.png") no-repeat transparent;
   height: 25px;
   margin-bottom: 0;
   width: 25px;
