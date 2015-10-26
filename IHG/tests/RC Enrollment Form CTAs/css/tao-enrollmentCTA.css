@@ -1,0 +1,90 @@
+﻿.wallet {
+    height: 1745px; }
+
+#mainContentContainer {
+    float: left; }
+
+#mainContentContainer .pcmrRegistration h1 {
+      font-size: 2.25em; }
+
+#mainContentContainer .text.parbase.LinkMorpher.text_1 {
+    display: none;
+      /*Hide intro text*/ }
+
+#mainContentContainer .logoReqParent {
+    overflow: auto;
+    width: 330px;
+    float: right; }
+
+#mainContentContainer .logoReqParent .secLogoParent {
+    float: left;
+    width: 49%;
+    overflow: hidden; }
+
+#mainContentContainer .logoReqParent .secLogoParent #securityLogos {
+          text-align: left; }
+
+#mainContentContainer .logoReqParent .secLogoParent #securityLogos .cq-dd-image {
+            margin-left: -333px; }
+
+#mainContentContainer .indicatesRequiredFields {
+    margin: 0;
+    padding: 5px 0 0;
+      font-size: 12px;
+      font-style: normal; }
+
+#mainContentContainer #content, #mainContentContainer .title.section {
+    width: 730px;
+      /* Fix for overflow */ }
+
+#contentSlot {
+    width: 180px; }
+
+#contentSlot #taoSignIn, #contentSlot #taoCreatePIN {
+    margin: 0 0 10px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #707372; }
+
+#contentSlot h3 {
+    margin: 0 0 3px;
+    padding: 0;
+    font: bold italic 1.25em Georgia;
+    color: #000; }
+
+#contentSlot p {
+      margin-top: 0;
+      font-size: 11.45px;
+      line-height: 15px; }
+
+#contentSlot .button, #contentSlot .btn {
+    background: #D96932 !important;
+    border: 1px solid #D96932 !important;
+    color: #fff !important;
+      font-family: Arial;
+      font-weight: bold !important;
+      text-transform: uppercase;
+      font-size: 1.0em;
+      height: auto;
+      padding: 7px 14px;
+      text-decoration: none;
+      white-space: nowrap;
+      border-radius: 3px !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+      -webkit-appearance: none; }
+
+#contentSlot button {
+    width: 111px; }
+
+#contentSlot #taoLearnMore a button {
+    color: #fff; }
+
+#contentSlot #taoLearnMore a:hover button {
+    text-decoration: none; }
+
+.uhf_headerFooter .walletTransition {
+    margin-right: -480px; }
+
+.uhf_headerFooter .wallet .slideClosedBtn {
+    font-style: normal !important; }
+

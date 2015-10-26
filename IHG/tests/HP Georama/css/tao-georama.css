@@ -1,0 +1,38 @@
+#taoGeoramaCallout {
+  border: 1px solid #9fc1e3;
+  margin: 15px auto 50px auto;
+  height: 188px;
+  width: 885px; }
+
+#taoGeoramaMap {
+  float: left;
+  width: 360px;
+  cursor: pointer; }
+
+#taoGeoramaCTA {
+  padding: 20px;
+  width: 477px;
+  float: right; }
+  #taoGeoramaCTA h3 {
+    color: black;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px; }
+  #taoGeoramaCTA button {
+    background-color: #d96932;
+    border: 1px solid #d96932;
+    border-radius: 3px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    float: left;
+    margin: 20px 20px 0 0;
+    padding: 7px;
+    width: 170px;
+    white-space: nowrap;
+    font-size: 1em;
+    cursor: pointer; }
+
+/*# sourceMappingURL=tao-georama.css.map */
