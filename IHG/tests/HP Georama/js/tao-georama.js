@@ -18,11 +18,11 @@
 
     // Click actions for buttons
     jQuery("#taoSearchByMap").on("click", function() {
-        window.location.href = "http://www.ihg.com/hotels/us/en/global/reservations/maps";
+        window.location.href = "http://www.ihg.com/hotels/us/en/global/reservations/maps?mode=search";
     });
 
     jQuery("#taoSearchByInterest").on("click", function() {
-        window.location.href = "http://www.ihg.com/hotels/us/en/global/reservations/maps";
+        window.location.href = "http://www.ihg.com/hotels/us/en/global/reservations/maps?mode=explore";
     });
 
 });
