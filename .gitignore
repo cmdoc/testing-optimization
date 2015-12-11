@@ -269,6 +269,10 @@ node_modules/*
 CP/tests/pullDownPOC/index_files/*
 CP/tests/pullDownPOC/node_modules/*
 CP/tests/pullDownPOC/.sass-cache/*
+CP/tests/quickBenefits/index_files/*
+CP/tests/quickBenefits/node_modules/*
+CP/tests/quickBenefits/.sass-cache/*
+CP/tests/quickBenefits/.idea/*
 
 ##### EX
 EX/tests/trustMessages/node_modules/*
@@ -276,6 +280,11 @@ EX/tests/trustMessages/.sass-cache/*
 EX/tests/rrUrgencyMessages/node_modules/*
 EX/tests/rrUrgencyMessages/.sass-cache/*
 EX/tests/rrUrgencyMessages/index_files/*
+EX/tests/rrUrgencyMessages/.idea/*
+EX/tests/refineSearch/node_modules/*
+EX/tests/refineSearch/.sass-cache/*
+EX/tests/refineSearch/index_files/*
+EX/tests/refineSearch/.idea/*
 
 
 ##### HI
