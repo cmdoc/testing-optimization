@@ -2,7 +2,7 @@
 
     // Create the HTML nodes
     var taoContainer = jQuery('<div id="taoGeoramaCallout"></div>');
-    var taoMap = jQuery('<div id="taoGeoramaMap"><a href="http://www.ihg.com/hotels/us/en/global/reservations/maps"><img src="images/Geo-world-mini.jpg" /></a></div>');
+    var taoMap = jQuery('<div id="taoGeoramaMap"><a href="http://www.ihg.com/hotels/us/en/global/reservations/maps"><img src="https://prodcache.internal.ihg.com/content/dam/etc/media_library/cn/0/cn/georama/Geo-world-mini.jpg" /></a></div>');
     var taoCTA = jQuery('<div id="taoGeoramaCTA"></div>');
     var taoHeader = jQuery('<h3>Explore Hotels by Map or Interest</h3>');
     var taoText = jQuery("<p>IHG's interactive map makes it easy to find the perfect accommodations the world over. Whether you dream of strolling on the white sand beaches of a tropical isle or want to hike through an exotic rain forest, IHG has a property nearby.</p>");
