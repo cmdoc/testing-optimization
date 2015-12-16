@@ -6,10 +6,6 @@
     border: 1px solid #808080;
 }
 
-#taoDistance span {
-
-}
-
 #taoRatingsAmenties {
     border: 1px solid yellow;
     position: absolute;
@@ -21,4 +17,50 @@
     position: absolute;
     padding: 10px;
     left: 215px;    
+}
+
+#taoNewFilters {
+    border-bottom: 1px solid #AAAAAA;
+    border-left: 1px solid #AAAAAA;
+    border-right: 1px solid #AAAAAA;
+    background-color: #EEEEEE;
+    padding: 10px;
+    min-height: 100px;
+}
+
+/* Make the background for the tab gray*/
+.nav-tabs>li.active>a {
+    background-color: #EEE !important;
+}
+
+/***** TAO DISTANCE stylings *****/
+#taoDistance {
+    border: 1px solid #AAA;
+    width: 150px;
+    padding: 5px;
+}
+
+#taoDistance span {
+    margin-left: 0px;
+    margin-bottom: 4px;
+    padding-top: 0px;
+}
+
+div#taoBlueButton {
+    padding-top: 17px;
+}
+
+/* putting spacing between the dropdown and the radio buttons and adjusting the height of the radio buttons*/
+#taoDistance div { 
+    margin-right: 10px;
+}
+#taoDistance label.radio-inline input[type=radio] {
+    margin-top: 2px;
+}
+
+/***** TAO BLOCK DIV stylings ******/
+.taoBlock {
+    float: left;
+    margin-right: 10px;
+    min-width: 150px;
 }
