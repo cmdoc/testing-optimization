@@ -18,9 +18,12 @@ jQuery("#taoDistance").append($taoDistanceKilos);
 
 // Insert the DIVs that I will need to move around the dropdowns in the filter
 jQuery("<div id='taoFilterBy'></div>").insertAfter("#filterSortForm fieldset div.col-md-12");
-jQuery("<div id='taoAmenities'></div>").insertAfter("#filterSortForm fieldset div.col-md-12");
 jQuery("<div id='taoIHGBrands'></div>").insertAfter("#filterSortForm fieldset div.col-md-12");
+jQuery("<div id='taoAmenities'></div>").insertAfter("#filterSortForm fieldset div.col-md-12");
 jQuery("<div id='taoGuestRatings'></div>").insertAfter("#filterSortForm fieldset div.col-md-12");
+jQuery("<div id='taoRatingsAmenties'></div>").insertAfter("#filterSortForm fieldset div.col-md-12");
+jQuery("<div id='taoBrandsFilterBy'></div>").insertAfter("#filterSortForm fieldset div.col-md-12");
+
 
 // Grab the SELECT and button-grp DIV for each dropdown
 var $taoGuestsRatingsSelect = jQuery("#ratingsFilter");
@@ -41,5 +44,16 @@ jQuery("#taoIHGBrands").append($taoIHGBrandsSelect);
 jQuery("#taoIHGBrands").append($taoIHGBrandsDiv);
 jQuery("#taoFilterBy").append($taoFilterBySelect);
 jQuery("#taoFilterBy").append($taoFilterByDiv);
+
+// Move Guest Ratings and Amenties into a new DIV
+var $taoGuestRatings = jQuery("#taoGuestRatings");
+var $taoAmenities = jQuery("#taoAmenities");
+var $taoIHGBrands = jQuery("#taoIHGBrands");
+var $taoFilterBy = jQuery("#taoFilterBy");
+jQuery("#taoRatingsAmenties").append($taoGuestRatings);
+jQuery("#taoRatingsAmenties").append($taoAmenities);
+jQuery("#taoBrandsFilterBy").append($taoIHGBrands);
+jQuery("#taoBrandsFilterBy").append($taoFilterBy);
+
 
 // Organize the new DIVs so they stack correctly
