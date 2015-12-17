@@ -30,7 +30,7 @@
 
 /***** TAO DISTANCE stylings *****/
 #taoDistance {
-    border: 1px solid #AAA;
+    border: 1px solid #CCC;
     width: 150px;
     padding: 5px;
 }
@@ -61,7 +61,7 @@ div#taoBlueButton {
 }
 
 #filterSortForm .taoBlock button {
-    margin-bottom: 10px;
+    margin-bottom: 7px;
 }
 
 #taoGuestRatings button {

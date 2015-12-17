@@ -1,21 +1,22 @@
 ﻿// Create a new DIV to put everything in
-jQuery("<div id='taoNewFilters'></div>").insertAfter(jQuery("#modifySearch").next());
+jQuery("#filterSortForm").append("<div id='taoNewFilters'></div>");
 
 // Move the <form> to the new #taoNewFilters DIV
 var $taoFilterSortForm = jQuery("#filterSortForm");
-jQuery("#taoNewFilters").append($taoFilterSortForm);
+//jQuery("#taoNewFilters").append($taoFilterSortForm);
+jQuery($taoFilterSortForm).insertAfter(jQuery("#modifySearch").next());
 
 // Remove the existing 'Refine Your Results' 
 jQuery("#sortOptions").remove();
 
 // Move the "Apply" button to the form in the new DIV  
 var $taoApplyButton = jQuery("#btnApplyFilter");
-jQuery("#filterSortForm").prepend("<div id='taoBlueButton' class='taoBlock'></div>");
+jQuery("#taoNewFilters").prepend("<div id='taoBlueButton' class='taoBlock'></div>");
 jQuery("#taoBlueButton").append($taoApplyButton);
 jQuery("#btnApplyFilter").attr("value", "apply filters");
 
 // Insert a DIV for the Distance from Destination block
-jQuery("#filterSortForm").prepend("<div id='taoDistance' class='taoBlock'></div>");
+jQuery("#taoNewFilters").prepend("<div id='taoDistance' class='taoBlock'></div>");
 
 // Grab the distance dropdown, radio buttons, and title.  Then move it to 
 // the form in the new DIV
@@ -33,8 +34,8 @@ jQuery("#taoDistance").append($taoDistanceMiles);
 jQuery("#taoDistance").append($taoDistanceKilos);
 
 // Insert the DIVs that I will need to move around the dropdowns in the filter
-jQuery("#filterSortForm").prepend("<div id='taoBrandsFilterBy' class='taoBlock'></div>");
-jQuery("#filterSortForm").prepend("<div id='taoRatingsAmenties' class='taoBlock'></div>");
+jQuery("#taoNewFilters").prepend("<div id='taoBrandsFilterBy' class='taoBlock'></div>");
+jQuery("#taoNewFilters").prepend("<div id='taoRatingsAmenties' class='taoBlock'></div>");
 jQuery("#taoBrandsFilterBy").prepend("<div id='taoFilterBy'></div>");
 jQuery("#taoBrandsFilterBy").prepend("<div id='taoIHGBrands'></div>");
 jQuery("#taoRatingsAmenties").prepend("<div id='taoAmenities'></div>");
@@ -60,11 +61,14 @@ jQuery("#taoIHGBrands").append($taoIHGBrandsDiv);
 jQuery("#taoFilterBy").append($taoFilterBySelect);
 jQuery("#taoFilterBy").append($taoFilterByDiv);
 
-
-
-
 // Finally, put the new 'Refine Your Results' title in place
 jQuery("#taoNewFilters").prepend("<p><b>Refine Your Search</b></p>");
+
+
+// Now, go to work on moving the sorting options and currency bar to the
+// right spot, just below the new DIV.
+var $taoSortingOpts = jQuery("#sortOptionsRow");
+jQuery($taoSortingOpts).insertAfter("#taoNewFilters");
 
 
 /*
