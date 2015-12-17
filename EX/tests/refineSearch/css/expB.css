@@ -59,3 +59,19 @@ div#taoBlueButton {
     margin-right: 10px;
     min-width: 150px;
 }
+
+#filterSortForm .taoBlock button {
+    margin-bottom: 10px;
+}
+
+#taoGuestRatings button {
+    width: 190px !important;
+}
+
+#taoDistance button {
+    margin-bottom: 0 !important;
+}
+
+#taoRatingsAmenties, #taoGuestRatings {
+    margin-right: 20px;
+}
