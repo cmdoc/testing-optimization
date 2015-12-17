@@ -8,15 +8,10 @@
 
 #taoRatingsAmenties {
     border: 1px solid yellow;
-    position: absolute;
-    padding: 10px;
 }
 
 #taoBrandsFilterBy {
     border: 1px solid yellow;
-    position: absolute;
-    padding: 10px;
-    left: 215px;    
 }
 
 #taoNewFilters {
