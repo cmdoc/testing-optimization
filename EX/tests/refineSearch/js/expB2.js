@@ -63,7 +63,7 @@ jQuery("#taoFilterBy").append($taoFilterBySelect);
 jQuery("#taoFilterBy").append($taoFilterByDiv);
 
 // Finally, put the new 'Refine Your Results' title in place
-jQuery("#taoNewFilters").prepend("<p><b>Refine Your Search</b></p>");
+jQuery("#taoNewFilters").prepend("<p><b>Refine Your Results</b></p>");
 
 
 // Now, go to work on moving the sorting options and currency bar to the
