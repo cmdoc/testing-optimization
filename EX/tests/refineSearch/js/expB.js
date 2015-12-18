@@ -1,3 +1,12 @@
+/*
+
+--- W A R N I N G ---
+This version doesn't work. Went down the wrong path and ended up
+somewhere that I didn't want to be ....
+
+*/
+
+
 // Insert a DIV for the Distance from Destination block
 jQuery("<div id='taoDistance'></div>").insertAfter("#filterSortForm fieldset div.col-md-12");
 
