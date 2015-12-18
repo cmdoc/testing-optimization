@@ -2,18 +2,11 @@
     font-weight: bold;
 }
 
-#taoDistance {
-    border: 1px solid #808080;
+#filterSortForm fieldset {
+    margin-top: -22px;
 }
 
-#taoRatingsAmenties {
-    border: 1px solid yellow;
-}
-
-#taoBrandsFilterBy {
-    border: 1px solid yellow;
-}
-
+/***** Styling for new DIVs that hold everything *****/
 #taoNewFilters {
     border-bottom: 1px solid #AAAAAA;
     border-left: 1px solid #AAAAAA;
@@ -21,6 +14,17 @@
     background-color: #EEEEEE;
     padding: 10px;
     min-height: 100px;
+}
+ 
+#taoNewSortOptions {
+    border-left: 1px solid #AAAAAA;
+    border-right: 1px solid #AAAAAA;
+    padding: 10px;
+}
+
+/* Makes the sort options bar the right width */
+#sortOptionsRow .col-md-12.sortBox {
+    width: 929px;
 }
 
 /* Make the background for the tab gray*/
@@ -64,14 +68,20 @@ div#taoBlueButton {
     margin-bottom: 7px;
 }
 
-#taoGuestRatings button {
-    width: 190px !important;
-}
-
 #taoDistance button {
     margin-bottom: 0 !important;
 }
 
-#taoRatingsAmenties, #taoGuestRatings {
+#taoRatingsAmenties, #taoBrandsFilterBy {
     margin-right: 20px;
+    width: 247px;
+}
+
+/***** BUTTON stylings *****/
+#taoRatingsAmenties button.multiselect.dropdown-toggle.btn.btn-sm.spanB1 {
+    width: 247px;
+}
+
+#taoBrandsFilterBy button.multiselect.dropdown-toggle.btn.btn-sm.spanB1 {
+    width: 247px;
 }

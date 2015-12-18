@@ -1,5 +1,6 @@
-﻿// Create a new DIV to put everything in
+﻿// Create two new DIVs to put everything in
 jQuery("#filterSortForm").append("<div id='taoNewFilters'></div>");
+jQuery("#filterSortForm").append("<div id='taoNewSortOptions'></div>")
 
 // Move the <form> to the new #taoNewFilters DIV
 var $taoFilterSortForm = jQuery("#filterSortForm");
@@ -68,7 +69,7 @@ jQuery("#taoNewFilters").prepend("<p><b>Refine Your Search</b></p>");
 // Now, go to work on moving the sorting options and currency bar to the
 // right spot, just below the new DIV.
 var $taoSortingOpts = jQuery("#sortOptionsRow");
-jQuery($taoSortingOpts).insertAfter("#taoNewFilters");
+jQuery("#taoNewSortOptions").prepend($taoSortingOpts);
 
 
 /*
