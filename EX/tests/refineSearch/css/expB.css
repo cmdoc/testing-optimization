@@ -2,10 +2,6 @@
     font-weight: bold;
 }
 
-#filterSortForm fieldset {
-    margin-top: -22px;
-}
-
 /***** Styling for new DIVs that hold everything *****/
 #taoNewFilters {
     border-bottom: 1px solid #AAAAAA;
@@ -15,6 +11,13 @@
     padding: 10px;
     min-height: 100px;
 }
+
+/* hide a couple of empty DIVs that screw up alignment */
+#filterSortForm > fieldset > div:nth-of-type(1),
+#filterSortForm > fieldset > div:nth-of-type(2) {
+    display: none;
+}
+
  
 #taoNewSortOptions {
     border-left: 1px solid #AAAAAA;
