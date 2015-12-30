@@ -86,14 +86,17 @@
         });
 
         jQuery("#amenitiesFilter").next().find("label").on("click", function () {
+            alert("clicked amenities!");
             taoAmenitiesFilter = true;
         });
 
         jQuery("#brandsFilter").next().find("label").on("click", function () {
+            alert("clicked brands!");
             taoBrandsFilter = true;
         });
 
         jQuery("#miscFilter").next().find("label").on("click", function () {
+            alert("clicked misc!");
             taoMiscFilter = true;
         });
 
@@ -104,16 +107,20 @@
         // When the Apply Filter button is clicked, go through the list of
         // variables and see what filters have been altered
         jQuery("#btnApplyFilter").on('click', function () {
+            alert("clicked Apply Filters!");
             if (taoRatingsFilter) {
                 mboxFactoryDefault.getSignaler().signal("mboxClickTrack", "mboxClickTrack", "clicked=ratings-filter"); //track clicks on Ratings Filter
             }
             if (taoAmenitiesFilter) {
-                mboxFactoryDefault.getSignaler().signal("mboxClickTrack", "mboxClickTrack", "clicked=amenties-filter"); //track clicks on Amenities Filter
+                alert("tracking amenities click!");
+                mboxFactoryDefault.getSignaler().signal("mboxClickTrack", "mboxClickTrack", "clicked=amenities-filter"); //track clicks on Amenities Filter
             }
             if (taoBrandsFilter) {
+                alert("tracking brands click!");
                 mboxFactoryDefault.getSignaler().signal("mboxClickTrack", "mboxClickTrack", "clicked=brands-filter"); //track clicks on Brands Filter
             }
             if (taoMiscFilter) {
+                alert("tracking misc click!");
                 mboxFactoryDefault.getSignaler().signal("mboxClickTrack", "mboxClickTrack", "clicked=misc-filter"); //track clicks on Misc Filter
             }
             if (taoDistanceFilter) {
