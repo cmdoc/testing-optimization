@@ -1,0 +1,8 @@
+#resultsListContainer #reserveNowMsg {
+    background: #e4e1e0;
+    border: 1px solid #c8c3c1;
+}
+
+.reserveNowMsgInnerDiv .reserveNowMsgTextDiv {
+    color: #766a65;
+}
