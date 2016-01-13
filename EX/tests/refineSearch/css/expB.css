@@ -1,4 +1,27 @@
-﻿#sortOptions label.col-md-12.spanOffset {
+﻿
+/***** Styling for dynamic dropdowns -- Amenities, Brands, and Filter By *****/
+.btn-group ul.multiselect-container.dropdown-menu.dimSelected {
+    margin-top: -10px;
+}
+
+#taoIHGBrands .btn-group ul.multiselect-container.dropdown-menu.dimSelected, 
+#taoFilterBy .btn-group ul.multiselect-container.dropdown-menu.dimSelected,
+#taoAmenities ul.multiselect-container.dropdown-menu.dimSelected {
+    width: 254px;
+}
+
+/***** Styling for dynamic dropdown -- Distance *****/
+#taoDistance #distanceFilter + .spanB1 > .dropdown-menu {
+    width: 57px;
+}
+
+/***** Styling for dynamic dropdown -- Ratings *****/
+#taoGuestRatings .btn-group ul.multiselect-container.dropdown-menu {
+    width: 254px;
+    margin-top: -10px;
+}
+
+#sortOptions label.col-md-12.spanOffset {
     font-weight: bold;
 }
 

@@ -1,0 +1,8 @@
+div#resultsListContainer #reserveNowMsg {
+    height: 20px;
+    padding-top: 4px;
+}
+
+.reserveNowMsgInnerDiv .reserveNowMsgTextDiv {
+    font-size: 15px;
+}
