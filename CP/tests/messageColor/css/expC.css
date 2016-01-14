@@ -1,6 +1,6 @@
-#resultsListContainer #reserveNowMsg {
-    background: #f2f2f2;
-    border: 1px solid #cccccc;
+﻿#resultsListContainer #reserveNowMsg {
+    background: rgba(131, 0, 81, 0.15);
+    border: 1px solid #c8c3c1;
 }
 
 .reserveNowMsgInnerDiv .reserveNowMsgTextDiv {
