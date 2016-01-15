@@ -1,0 +1,15 @@
+#resultsListContainer #reserveNowMsg {
+    background: #f2f2f2;
+    border: 1px solid #cccccc;
+}
+
+.reserveNowMsgInnerDiv .reserveNowMsgTextDiv {
+    color: #444444;
+}
+
+.taoCheckBoxSpriteGreen {
+  object-fit: none;
+  width: 25px;
+  height: 25px;
+  object-position: 0 -58px;
+}
