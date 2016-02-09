@@ -1,0 +1,10 @@
+﻿div.taoTemp {
+    padding: 1px 0 10px 10px;
+    background-color: #f5f3f4;
+    margin-right: 60px;
+    border: 1px solid #ccc;
+}
+
+div.taoTemp a.cssButton {
+    margin-top: 10px;
+}
