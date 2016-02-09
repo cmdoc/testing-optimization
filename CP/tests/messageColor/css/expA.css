@@ -1,6 +1,6 @@
 ﻿.taoCheckBoxSpriteWhite {
-  object-fit: none;
-  width: 25px;
+  background-image: url("http://prodcache.internal.ihg.com/content/dam/etc/media_library/cn/0/cn/misc/sprite/taoUrgChecks.png");
+  background-repeat: no-repeat;
   height: 25px;
-  object-position: 0 0;
+  background-position: 0 0;
 }

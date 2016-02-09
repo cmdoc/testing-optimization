@@ -3,10 +3,10 @@ Bootstrapper.MVT.injectCSS("#reserveNowMsg { display:none; }");
 
 jQuery(document).ready(function () {
 
-    // Change out the source for the checkbox icon and add the CSS class 
-    // that will display it correctly
-    jQuery("img.reserveNowCheckBox").attr("src", "http://prodcache.internal.ihg.com/content/dam/etc/media_library/cn/0/cn/misc/sprite/taoUrgChecks.png");
-    jQuery("img.reserveNowCheckBox").addClass("taoCheckBoxSpriteWhite");
+    // Remove the IMG tag and replace it with a div that uses the background
+    // image for the new icon.
+    jQuery(".reserveNowMsgImgDiv img").remove();
+    jQuery(".reserveNowMsgImgDiv").html("<div class='reserveNowCheckBox taoCheckBoxSpriteWhite'></div>");
 
     // Show the row now that everything is done
     jQuery("#reserveNowMsg").show();
