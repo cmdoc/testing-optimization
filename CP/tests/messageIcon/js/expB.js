@@ -3,13 +3,8 @@ Bootstrapper.MVT.injectCSS("#reserveNowMsg { display:none; }");
 
 jQuery(document).ready(function () {
 
-    // Change out the source for the checkbox icon and add the CSS class 
-    // that will display it correctly
-    jQuery("img.reserveNowCheckBox").attr("src", "http://prodcache.internal.ihg.com/content/dam/etc/media_library/cn/0/cn/misc/sprite/taoUrgIcons.png");
-    jQuery("img.reserveNowCheckBox").addClass("taoIconArrow");
-
-    // Show the row now that everything is done
-    jQuery("#reserveNowMsg").show();
+    // Find the #reserveNowMsg DIV and insert the image for this
+    // experience after it
+    jQuery('#reserveNowMsg').after('<img id="taoReserveNowImg" src="https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/cp/en/us/roomsrates/taoUrgMsgIconLockCPExpB.png" alt="Reserve now to ensure you get this low price. Rooms are limited." border="0" />')
 
 });
-
