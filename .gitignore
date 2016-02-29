@@ -273,6 +273,11 @@ CP/tests/quickBenefits/index_files/*
 CP/tests/quickBenefits/node_modules/*
 CP/tests/quickBenefits/.sass-cache/*
 CP/tests/quickBenefits/.idea/*
+CP/tests/messageColor/index_files/*
+CP/tests/messageColor/node_modules/*
+CP/tests/messageIcon/index_files/*
+CP/tests/messageIcon/node_modules/*
+
 
 ##### EX
 EX/tests/trustMessages/node_modules/*
@@ -285,6 +290,8 @@ EX/tests/refineSearch/node_modules/*
 EX/tests/refineSearch/.sass-cache/*
 EX/tests/refineSearch/index_files/*
 EX/tests/refineSearch/.idea/*
+EX/tests/QuickEnrollNoMsg/index_files/*
+EX/tests/QuickEnrollNoMsg/node_modules/*
 
 
 ##### HI
@@ -308,3 +315,6 @@ IHG/tests/SR Even Hotel Filtering/index_files/*
 IHG/tests/SR Even Hotel Filtering/node_modules/*
 IHG/tests/SR Even Hotel Filtering/sass-caches/*
 IHG/tests/Reservation Stay Preferences/indexPopup_files/*
+
+##### POCs (proof of concepts)
+POCs/tests/Upsell/index_files/*
