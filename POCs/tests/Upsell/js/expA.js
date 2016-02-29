@@ -52,21 +52,15 @@
                 // Get the name that we should use for the radio group
                 var taoRadioGroupName = "taoRadioGroupName_" + taoNameCounter;
 
-                //debugger;
+                //debugger; // This is broken
                 //$taoFirstTab.find("input[type='radio']").each(function () {
                 //    debugger;
                 //    var $taoThisName = jQuery(this).attr("name");
                 //    if ($taoThisName != "checkbox") {
-
-
-                //        // THIS IS BROKEN!
-
-
                 //        taoRadioGroupName = taoName;
                 //        return false; // break out of the loop
                 //    }
                 //})
-                // = $taoFirstTab.find("input[type='radio']").first().attr("name");
 
                 // Remove the existing breakfast-type nodes so we can put in the
                 // ones in the taoAllOffers array
@@ -91,7 +85,7 @@
                     // to a radio button.
                     var $taoThisUpsellPlus = $taoCurrentOpt.find(".upSellPlus");
                     if ($taoThisUpsellPlus.length > 0) {
-                        var taoRateCode = $taoThisUpsellPlus.attr("id");
+                        var taoRateCode = $taoThisUpsellPlus.prev().attr("value");
                         jQuery("<input type='radio' id='rateInfo_" + taoRateCode + "' class='breakfastChk'>").insertBefore($taoThisUpsellPlus);
 
                         // Now that we have created a radio button input for
@@ -117,6 +111,37 @@
             }
 
         });
+
+    });
+
+    // Add in a onClick action that will change the name value of the submit
+    // button so the right rate code is used when the user clicks on 
+    // 'BOOK THIS ROOM'.
+    jQuery(".breakfastOpt input[type='radio']").on("click", function () {
+
+        // Get the ID of the radio button clicked on, split it on "_", and 
+        // save the rate offer in the second half.
+        var taoRadioId = jQuery(this).attr("id");
+        var taoRadioIdSplit = taoRadioId.split("_");
+        var taoOfferRateCode = taoRadioIdSplit[1];
+
+        // Find the submit button that relates to this radio button, get its
+        // current name value, and then plug in the new rate code. The current
+        // name value should be something like this:
+        //      "selectedRoom_KNGNIGCOR_1BD_0000_0_0_"
+        // We need to replace the KNGNIGCOR portion with the new code.
+        var $taoSubmitButton = jQuery(this).closest(".rateTypeLineItemRight").find("input[type='submit']");
+
+        var taoSubmitButtonCurName = $taoSubmitButton.attr("name");
+        var taoSubmitNameSplit = taoSubmitButtonCurName.split("_");
+        var taoSubmitButtonNewName = taoSubmitNameSplit[0] + "_" +
+                                     taoOfferRateCode + "_" +
+                                     taoSubmitNameSplit[2] + "_" +
+                                     taoSubmitNameSplit[3] + "_" +
+                                     taoSubmitNameSplit[4] + "_" +
+                                     taoSubmitNameSplit[5] + "_";
+
+        $taoSubmitButton.attr("name", taoSubmitButtonNewName);
 
     });
 
