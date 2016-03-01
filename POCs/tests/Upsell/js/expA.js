@@ -16,11 +16,11 @@
     jQuery(".rateTypeLineItems").each(function () {
         var $taoThisHotelRoom = jQuery(this);
 
-        // Find the all of the rateTypeLineItem DIVs. If it doesn't contain 
-        // a tabVisibleArea DIV, then skip it
+        // Find the all of the rateTypeLineItem DIVs. 
         $taoThisHotelRoom.find(".rateTypeLineItem").each(function () {
             var $taoThisRateTypeLineItem = jQuery(this);
 
+            // If it doesn't contain a tabVisibleArea DIV, then skip it
             if ($taoThisRateTypeLineItem.find(".tabVisibleArea").length == 1) {
 
                 // Find the line item for this room that has upSellContainers.
@@ -95,12 +95,22 @@
 
                 }
 
+                // Add in one more option that serves as the default, as in "no
+                // upgrades." Get the rate code from the submit button for this
+                // upsellContainer, and plug that rate code into the radio
+                // button's ID.
+                var taoDefaultSubmitSplit = $taoFirstTab.find("input[type='submit']").attr("name").split("_");
+                var taoDefaultRateCode = taoDefaultSubmitSplit[1];
+                var taoNoUpgrades = "<div class='breakfastOpt'><input type='hidden' name='upsellRateCode' value='" + taoDefaultRateCode + "'><input type='radio' id='rateInfo_" + taoDefaultRateCode + "' value='value' class='breakfastChk' checked='checked'> <span>No upgrade, please.</span></div>";
+                jQuery(taoNoUpgrades).insertBefore($taoFirstTab.find("hr"));
+                $taoFirstTab.find("input[id='rateInfo_" + taoDefaultRateCode + "']").click();
+
                 // Finally, there are two more things to do. First, make sure
                 // all of the inputs on this tab have the same radio group name.
                 // Second, hide the tabs so the user can't activate them and 
                 // make a different choice.
                 $taoFirstTab.find("input[type=radio]").attr("name", taoRadioGroupName);
-                $taoFirstTab.find(".tabVisibleArea").attr("style", "display: none;");
+                $taoThisRateTypeLineItem.find(".tabVisibleArea").attr("style", "display: none;");
 
                 // Now we are all done with this room!  Only some housekeeping
                 // left, so let's clear out the allOffers array, increment 
