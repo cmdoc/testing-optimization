@@ -5,10 +5,17 @@
     // the offers on each, and put them on the first upSellContainer as a radio
     // button list.  
 
-    // Create a string to help build each offer and an array to put all of the 
-    // offers in
+    // Create the following:
+    //     a string to help build each offer we find
+    //     an array to put all of the offers in
+    //     a string to put in the rate code for the offer/description
+    //     an array to put the descriptions in for each offer (using rate code
+    //         as a key)
+    //     a counter for creating unique radio group name later on
     var taoNewOffer = "";
     var taoAllOffers = new Array();
+    var taoDescriptionCode = "";
+    taoAllDescriptions = new Array(); // this needs to be global
     var taoNameCounter = 0;
 
     // Find all of the rooms and place the current one into taoThisHotelRoom to
@@ -20,16 +27,18 @@
         $taoThisHotelRoom.find(".rateTypeLineItem").each(function () {
             var $taoThisRateTypeLineItem = jQuery(this);
 
-            // If it doesn't contain a tabVisibleArea DIV, then skip it
+            // If it doesn't contain a tabVisibleArea DIV, then skip it. If 
+            // it does, then we have to do 2 things: grab all of the offers
+            // and grab all of the descriptions/details for those offers.
             if ($taoThisRateTypeLineItem.find(".tabVisibleArea").length == 1) {
 
-                // Find the line item for this room that has upSellContainers.
                 $taoThisRateTypeLineItem.find(".upSellContainer").each(function () {
                     var $taoThisUpsellContainer = jQuery(this);
 
-                    // Go through each upSellContainer and pull out the offers.
-                    // Put each offer into an array so we can rebuild the offers
-                    // into one comprehensive list
+                    // Let's get the offers first, so go through each 
+                    // upSellContainer and pull them out. Put each offer into
+                    // an array so we can rebuild the offers into one 
+                    // comprehensive list
                     $taoThisUpsellContainer.find(".breakfastOpt").each(function () {
                         var $taoThisOffer = jQuery(this);
 
@@ -42,25 +51,44 @@
 
                     });
 
+                    // Now we can grab the descriptions/details that go with
+                    // the offers. For some reason, these are also in DIVs that
+                    // have the rateTypeLineItem class, just like it's parent.
+                    var taoOriginalRateCode = $taoThisUpsellContainer.children("input[type='hidden']").val();
+
+                    $taoThisUpsellContainer.find(".rateInfoArea").each(function () {
+
+                        var $taoRateDescription = jQuery(this);
+                        var taoDescriptionId = $taoRateDescription.attr("id");
+
+                        // See if this DIV.rateInfoArea has an ID. If it
+                        // doesn't, then we need to use the orginial rate code.
+                        // If it does, then we need to split it on the _ and 
+                        // keep the second half (which is the rate code).
+                        if (taoDescriptionId == undefined) {
+                            taoDescriptionCode = taoOriginalRateCode;
+                        } else {
+                            var taoDescriptionIdSplit = taoDescriptionId.split("_");
+                            taoDescriptionCode = taoDescriptionIdSplit[1];
+                        }
+
+                        // Now put the rate code and the description into the
+                        // array, using the rate code as the key so we can 
+                        // easily retrieve it later.
+                        taoAllDescriptions[taoDescriptionCode] = "<div class='rateInfoArea'>" + $taoRateDescription.html() + "</div>"
+
+                    })
+
                 });
 
-                // Now that we have all the offers, format them into something
-                // nice and place them over the offer(s) on the first 
-                // tab (upSellContainer)
+
+                // Now that we have all the offers and descriptions, we need to
+                // format them into something nice and place them over the 
+                // offer(s) on the first tab (upSellContainer)
                 var $taoFirstTab = $taoThisRateTypeLineItem.find(".upSellContainer").eq(0);
 
                 // Get the name that we should use for the radio group
                 var taoRadioGroupName = "taoRadioGroupName_" + taoNameCounter;
-
-                //debugger; // This is broken
-                //$taoFirstTab.find("input[type='radio']").each(function () {
-                //    debugger;
-                //    var $taoThisName = jQuery(this).attr("name");
-                //    if ($taoThisName != "checkbox") {
-                //        taoRadioGroupName = taoName;
-                //        return false; // break out of the loop
-                //    }
-                //})
 
                 // Remove the existing breakfast-type nodes so we can put in the
                 // ones in the taoAllOffers array
@@ -101,7 +129,7 @@
                 // button's ID.
                 var taoDefaultSubmitSplit = $taoFirstTab.find("input[type='submit']").attr("name").split("_");
                 var taoDefaultRateCode = taoDefaultSubmitSplit[1];
-                var taoNoUpgrades = "<div class='breakfastOpt'><input type='hidden' name='upsellRateCode' value='" + taoDefaultRateCode + "'><input type='radio' id='rateInfo_" + taoDefaultRateCode + "' value='value' class='breakfastChk' checked='checked'> <span>No upgrade, please.</span></div>";
+                var taoNoUpgrades = "<div class='breakfastOpt'><input type='hidden' name='upsellRateCode' value='" + taoDefaultRateCode + "'><input type='radio' id='rateInfo_" + taoDefaultRateCode + "' value='value' class='breakfastChk' checked='checked'> <span>No upgrade, please.</span></div><div class='clearingDiv'></div>";
                 jQuery(taoNoUpgrades).insertBefore($taoFirstTab.find("hr"));
                 $taoFirstTab.find("input[id='rateInfo_" + taoDefaultRateCode + "']").click();
 
@@ -152,6 +180,11 @@
                                      taoSubmitNameSplit[5] + "_";
 
         $taoSubmitButton.attr("name", taoSubmitButtonNewName);
+
+        // Find the corresponding DIV.rateInfoArea and replace what is shown
+        // with the corresponding description/details for this offer, as 
+        // stored in the taoAllDescriptions array.
+        jQuery(this).closest(".upSellContainer").find(".rateInfoArea").eq(0).replaceWith(taoAllDescriptions[taoOfferRateCode]);
 
     });
 
