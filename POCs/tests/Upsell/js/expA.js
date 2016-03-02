@@ -75,7 +75,12 @@
                         // Now put the rate code and the description into the
                         // array, using the rate code as the key so we can 
                         // easily retrieve it later.
-                        taoAllDescriptions[taoDescriptionCode] = "<div class='rateInfoArea'>" + $taoRateDescription.html() + "</div>"
+                        taoAllDescriptions[taoDescriptionCode] = $taoRateDescription.detach();
+
+                        // Do I need this code block?  DEBUGGER
+                        if ($taoRateDescription.attr("id") == undefined) {
+                            $taoRateDescription.html("<div class='taoPlaceholder'></div>");
+                        }
 
                     })
 
@@ -133,12 +138,16 @@
                 jQuery(taoNoUpgrades).insertBefore($taoFirstTab.find("hr"));
                 $taoFirstTab.find("input[id='rateInfo_" + taoDefaultRateCode + "']").click();
 
-                // Finally, there are two more things to do. First, make sure
+                // Finally, there are three more things to do. First, make sure
                 // all of the inputs on this tab have the same radio group name.
                 // Second, hide the tabs so the user can't activate them and 
-                // make a different choice.
+                // make a different choice. Third, put all of the descriptions
+                // in the right place on the first tab.
                 $taoFirstTab.find("input[type=radio]").attr("name", taoRadioGroupName);
                 $taoThisRateTypeLineItem.find(".tabVisibleArea").attr("style", "display: none;");
+                for (var taoKey in taoAllDescriptions) {
+                    $taoFirstTab.find(".rateTypeLineItem").append(taoAllDescriptions[taoKey]);
+                }
 
                 // Now we are all done with this room!  Only some housekeeping
                 // left, so let's clear out the allOffers array, increment 
@@ -184,7 +193,7 @@
         // Find the corresponding DIV.rateInfoArea and replace what is shown
         // with the corresponding description/details for this offer, as 
         // stored in the taoAllDescriptions array.
-        jQuery(this).closest(".upSellContainer").find(".rateInfoArea").eq(0).replaceWith(taoAllDescriptions[taoOfferRateCode]);
+        jQuery(this).closest(".upSellContainer").find(".rateTypeLineItem").html(taoAllDescriptions[taoOfferRateCode]);
 
     });
 
