@@ -74,13 +74,13 @@
 
                         // Now put the rate code and the description into the
                         // array, using the rate code as the key so we can 
-                        // easily retrieve it later.
-                        taoAllDescriptions[taoDescriptionCode] = $taoRateDescription.detach();
-
-                        // Do I need this code block?  DEBUGGER
+                        // easily retrieve it later. If the description doesn't
+                        // have an ID, then create one for it before putting it
+                        // into the array.
                         if ($taoRateDescription.attr("id") == undefined) {
-                            $taoRateDescription.html("<div class='taoPlaceholder'></div>");
+                            $taoRateDescription.attr("id", "rateInfo_" + taoDescriptionCode);
                         }
+                        taoAllDescriptions[taoDescriptionCode] = $taoRateDescription.detach();
 
                     })
 
@@ -107,7 +107,7 @@
 
                     // Grab the offer we just plugged in so we can work on it
                     var $taoCurrentOpt = $taoFirstTab.find(".breakfastOpt").last();
-                    
+
                     // Check if the current offer needs to be modified from a
                     // checkbox to a radio button.
                     if ($taoCurrentOpt.find("input[type='checkbox']").length > 0) {
@@ -150,9 +150,11 @@
                 }
 
                 // Now we are all done with this room!  Only some housekeeping
-                // left, so let's clear out the allOffers array, increment 
-                // taoNameCounter, and continue on to the next hotel room.
+                // left, so let's clear out the allOffers and allDescriptions
+                // arrays, increment taoNameCounter, and continue on to the 
+                // next hotel room.
                 taoAllOffers = [];
+                taoAllDescriptions = [];
                 taoNameCounter++;
 
             }
@@ -189,11 +191,6 @@
                                      taoSubmitNameSplit[5] + "_";
 
         $taoSubmitButton.attr("name", taoSubmitButtonNewName);
-
-        // Find the corresponding DIV.rateInfoArea and replace what is shown
-        // with the corresponding description/details for this offer, as 
-        // stored in the taoAllDescriptions array.
-        jQuery(this).closest(".upSellContainer").find(".rateTypeLineItem").html(taoAllDescriptions[taoOfferRateCode]);
 
     });
 
