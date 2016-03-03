@@ -103,7 +103,7 @@
 
                 // Loop through taoAllOffers and plug in the each item (offer).
                 for (var i = 0; i < taoAllOffers.length; i++) {
-                    jQuery(taoAllOffers[i]).insertBefore($taoFirstTab.find("hr"));
+                    jQuery(taoAllOffers[i]).insertAfter($taoFirstTab.find("br").eq(1));
 
                     // Grab the offer we just plugged in so we can work on it
                     var $taoCurrentOpt = $taoFirstTab.find(".breakfastOpt").last();
@@ -135,7 +135,7 @@
                 var taoDefaultSubmitSplit = $taoFirstTab.find("input[type='submit']").attr("name").split("_");
                 var taoDefaultRateCode = taoDefaultSubmitSplit[1];
                 var taoNoUpgrades = "<div class='breakfastOpt'><input type='hidden' name='upsellRateCode' value='" + taoDefaultRateCode + "'><input type='radio' id='rateInfo_" + taoDefaultRateCode + "' value='value' class='breakfastChk' checked='checked'> <span>No upgrade, please.</span></div><div class='clearingDiv'></div>";
-                jQuery(taoNoUpgrades).insertBefore($taoFirstTab.find("hr"));
+                jQuery(taoNoUpgrades).insertAfter($taoFirstTab.find(".clearingDiv").last());
                 $taoFirstTab.find("input[id='rateInfo_" + taoDefaultRateCode + "']").click();
 
                 // Finally, there are three more things to do. First, make sure
