@@ -320,3 +320,7 @@ IHG/tests/Reservation Stay Preferences/indexPopup_files/*
 
 ##### POCs (proof of concepts)
 POCs/tests/Upsell/index_files/*
+
+##### SB
+SB/tests/Hover BPG/index_files/*
+SB/tests/Hover BPG/node_modules/*
