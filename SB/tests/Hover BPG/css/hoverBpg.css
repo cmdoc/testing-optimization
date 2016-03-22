@@ -1,0 +1,20 @@
+.taoCheckBoxSpriteGreen {
+  object-fit: none;
+  width: 25px;
+  height: 25px;
+  object-position: 0 -58px; }
+
+.taoHoverBPG {
+  display: none;
+  width: 205px;
+  text-align: center;
+  position: relative;
+  top: 15px;
+  font-weight: bold;
+  background: transparent url(../images/icon_checkmarks.png) no-repeat 0 -27px;
+  height: 15px; }
+
+.taoHoverBPG img {
+  padding-right: 10px; }
+
+/*# sourceMappingURL=hoverBpg.css.map */
