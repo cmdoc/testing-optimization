@@ -1,0 +1,25 @@
+﻿#taoIconList {
+    display: none;
+} 
+
+#taoIconList p {
+    padding: 0 0 0 30px;
+    height: 20px;
+    line-height: 21px;
+    width: 186px;
+    top: 75px;
+    left: 20px;
+    margin: 0 0 10px 40px;
+}
+
+.taoBkfst {
+    background: transparent url("../images/taoIcons.png") no-repeat 0 0px;
+}
+
+.taoWiFi {
+    background: transparent url("../images/taoIcons.png") no-repeat 0 -21px;
+}
+
+.taoPrice {
+    background: transparent url("../images/taoIcons.png") no-repeat 0 -42px;
+} 
