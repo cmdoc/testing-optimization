@@ -277,6 +277,8 @@ CP/tests/messageColor/index_files/*
 CP/tests/messageColor/node_modules/*
 CP/tests/messageIcon/index_files/*
 CP/tests/messageIcon/node_modules/*
+CP/tests/Are You Sure/index_files/*
+CP/tests/Are You Sure/node_modules/*
 
 
 ##### EX
