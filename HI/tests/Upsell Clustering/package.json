@@ -1,0 +1,22 @@
+{
+  "name": "Template",
+  "version": "1.0.0",
+  "description": "HI: Upsell Clustering",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:brionkeith/Testing-Optimization.git"
+  },
+  "author": "Chris d'Aquin",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-express": "^1.4.1",
+    "grunt-sass": "^1.0.0"
+  }
+}
