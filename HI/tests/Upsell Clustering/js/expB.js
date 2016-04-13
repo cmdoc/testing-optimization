@@ -165,13 +165,15 @@
 
     // Add in a onClick action that will change the name value of the submit
     // button so the right rate code is used when the user clicks on 
-    // 'BOOK THIS ROOM'.
+    // 'BOOK THIS ROOM'. Also figure out the new nightly rate to display by
+    // adding the cost of the upgrade to the base rate. Make sure the new 
+    // nightly rate is dipslayed with a .show() function.
     jQuery(".breakfastOpt input[type='radio']").on("click", function () {
 
         // Get the ID of the radio button clicked on, split it on "_", and 
         // save the rate offer in the second half.
-        var taoRadioId = jQuery(this).attr("id");
-        var taoRadioIdSplit = taoRadioId.split("_");
+        var $taoRadioId = jQuery(this).attr("id");
+        var taoRadioIdSplit = $taoRadioId.split("_");
         var taoOfferRateCode = taoRadioIdSplit[1];
 
         // Find the submit button that relates to this radio button, get its
@@ -192,6 +194,18 @@
 
         $taoSubmitButton.attr("name", taoSubmitButtonNewName);
 
+        // Figure out the cost of this upgrade, get the base nightly rate, and
+        // then figure out what the new nightly rate should be. Make sure it is
+        // displayed with a .show() function.
+        var taoUpgradeCost = jQuery(this).closest(".breakfastOpt").find(".price span.amt").text();
+        var taoBaseRate = jQuery(this).closest("#priceInfoArea").find(".mainRateDisplay span.amt").text();
+        var taoNewNightlyRate = +taoBaseRate + +taoUpgradeCost;
+        jQuery(this).closest(".rateTypeLineItemRight").find("#upsellTotal span.amt").text(taoNewNightlyRate);
+        var taoThat = jQuery(this);
+        setTimeout(function () {
+            jQuery(taoThat).closest(".rateTypeLineItemRight").find("#upsellTotal").removeClass("hide");
+            jQuery(taoThat).closest(".rateTypeLineItemRight").find("#upsellTotal").siblings("hr").removeClass("hide");
+        }, 500);
     });
 
 });
