@@ -42,8 +42,15 @@
                     $taoThisUpsellContainer.find(".breakfastOpt").each(function () {
                         var $taoThisOffer = jQuery(this);
 
-                        // go through each offer (there may be only one or as 
-                        // many as four or five) and put them into the array
+                        // Go through each offer (there may be only one or as 
+                        // many as four or five) and put them into the array.
+                        // As you do so, check to see if the <input> tags have
+                        // 'checked' attribute. If so, clear it.
+                        $taoThisOffer.find('input').each(function () {
+                            if (jQuery(this).attr('type') != 'hidden') {
+                                jQuery(this).removeAttr('checked');
+                            }
+                        });
                         taoNewOffer = "<div class='breakfastOpt'>" + $taoThisOffer.html() + "</div>";
                         taoNewOffer += "<div class='breakfastLabel'>" + $taoThisOffer.next().html() + "</div>"; // grabs the label
                         taoNewOffer += "<div class='clearingDiv'>" + $taoThisOffer.next().next().html() + "</div>"; // grabs the clearing div
@@ -101,6 +108,15 @@
                 $taoFirstTab.find(".breakfastLabel").remove();
                 $taoFirstTab.find(".clearingDiv").remove();
 
+                // Add in one more option that serves as the default, as in "no
+                // selection." Get the rate code from the submit button for this
+                // upsellContainer, and plug that rate code into the radio
+                // button's ID. Place this option at the top of taoAllOffers.
+                var taoDefaultSubmitSplit = $taoFirstTab.find("input[type='submit']").attr("name").split("_");
+                var taoDefaultRateCode = taoDefaultSubmitSplit[1];
+                var taoNoUpgrades = "<div class='breakfastOpt'><input type='hidden' name='upsellRateCode' value='" + taoDefaultRateCode + "'><input type='radio' id='rateInfo_" + taoDefaultRateCode + "' value='value' class='breakfastChk' checked='checked' data-default='true'> <span>&nbsp;No selection.</span></div><div class='clearingDiv'></div>";
+                taoAllOffers.push(taoNoUpgrades);
+
                 // Loop through taoAllOffers and plug in the each item (offer).
                 for (var i = 0; i < taoAllOffers.length; i++) {
                     jQuery(taoAllOffers[i]).insertAfter($taoFirstTab.find("br").eq(1));
@@ -128,14 +144,7 @@
 
                 }
 
-                // Add in one more option that serves as the default, as in "no
-                // selection." Get the rate code from the submit button for this
-                // upsellContainer, and plug that rate code into the radio
-                // button's ID.
-                var taoDefaultSubmitSplit = $taoFirstTab.find("input[type='submit']").attr("name").split("_");
-                var taoDefaultRateCode = taoDefaultSubmitSplit[1]; 
-                var taoNoUpgrades = "<div class='breakfastOpt'><input type='hidden' name='upsellRateCode' value='" + taoDefaultRateCode + "'><input type='radio' id='rateInfo_" + taoDefaultRateCode + "' value='value' class='breakfastChk' checked='checked' data-default='true'> <span>No selection.</span></div><div class='clearingDiv'></div>";
-                jQuery(taoNoUpgrades).insertAfter($taoFirstTab.find(".clearingDiv").first());
+                // Make the 'No Selection' option the default.
                 $taoFirstTab.find("input[id='rateInfo_" + taoDefaultRateCode + "']").click();
 
                 // Finally, there are three more things to do. First, make sure
@@ -204,7 +213,6 @@
         // If the user clicked on a radio button other than the 'no selection'
         // option, then update the nightly rate. Make sure it is displayed 
         // with a .show() function.
-        debugger;
         if (jQuery(this).data("default") != true) {
             var taoThat = jQuery(this);
             setTimeout(function () {
