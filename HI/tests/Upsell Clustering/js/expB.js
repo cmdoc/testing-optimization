@@ -129,13 +129,13 @@
                 }
 
                 // Add in one more option that serves as the default, as in "no
-                // upgrades." Get the rate code from the submit button for this
+                // selection." Get the rate code from the submit button for this
                 // upsellContainer, and plug that rate code into the radio
                 // button's ID.
                 var taoDefaultSubmitSplit = $taoFirstTab.find("input[type='submit']").attr("name").split("_");
-                var taoDefaultRateCode = taoDefaultSubmitSplit[1];
-                var taoNoUpgrades = "<div class='breakfastOpt'><input type='hidden' name='upsellRateCode' value='" + taoDefaultRateCode + "'><input type='radio' id='rateInfo_" + taoDefaultRateCode + "' value='value' class='breakfastChk' checked='checked'> <span>No upgrade, please.</span></div><div class='clearingDiv'></div>";
-                jQuery(taoNoUpgrades).insertAfter($taoFirstTab.find(".clearingDiv").last());
+                var taoDefaultRateCode = taoDefaultSubmitSplit[1]; 
+                var taoNoUpgrades = "<div class='breakfastOpt'><input type='hidden' name='upsellRateCode' value='" + taoDefaultRateCode + "'><input type='radio' id='rateInfo_" + taoDefaultRateCode + "' value='value' class='breakfastChk' checked='checked' data-default='true'> <span>No selection.</span></div><div class='clearingDiv'></div>";
+                jQuery(taoNoUpgrades).insertAfter($taoFirstTab.find(".clearingDiv").first());
                 $taoFirstTab.find("input[id='rateInfo_" + taoDefaultRateCode + "']").click();
 
                 // Finally, there are three more things to do. First, make sure
@@ -195,17 +195,23 @@
         $taoSubmitButton.attr("name", taoSubmitButtonNewName);
 
         // Figure out the cost of this upgrade, get the base nightly rate, and
-        // then figure out what the new nightly rate should be. Make sure it is
-        // displayed with a .show() function.
+        // then figure out what the new nightly rate should be. 
         var taoUpgradeCost = jQuery(this).closest(".breakfastOpt").find(".price span.amt").text();
         var taoBaseRate = jQuery(this).closest("#priceInfoArea").find(".mainRateDisplay span.amt").text();
         var taoNewNightlyRate = +taoBaseRate + +taoUpgradeCost;
         jQuery(this).closest(".rateTypeLineItemRight").find("#upsellTotal span.amt").text(taoNewNightlyRate);
-        var taoThat = jQuery(this);
-        setTimeout(function () {
-            jQuery(taoThat).closest(".rateTypeLineItemRight").find("#upsellTotal").removeClass("hide");
-            jQuery(taoThat).closest(".rateTypeLineItemRight").find("#upsellTotal").siblings("hr").removeClass("hide");
-        }, 500);
+        
+        // If the user clicked on a radio button other than the 'no selection'
+        // option, then update the nightly rate. Make sure it is displayed 
+        // with a .show() function.
+        debugger;
+        if (jQuery(this).data("default") != true) {
+            var taoThat = jQuery(this);
+            setTimeout(function () {
+                jQuery(taoThat).closest(".rateTypeLineItemRight").find("#upsellTotal").removeClass("hide");
+                jQuery(taoThat).closest(".rateTypeLineItemRight").find("#upsellTotal").siblings("hr").removeClass("hide");
+            }, 25);
+        } 
     });
 
 });
