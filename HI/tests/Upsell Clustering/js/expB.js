@@ -122,7 +122,7 @@
                     jQuery(taoAllOffers[i]).insertAfter($taoFirstTab.find("br").eq(1));
 
                     // Grab the offer we just plugged in so we can work on it
-                    var $taoCurrentOpt = $taoFirstTab.find(".breakfastOpt").last();
+                    var $taoCurrentOpt = $taoFirstTab.find(".breakfastOpt").first();
 
                     // Check if the current offer needs to be modified from a
                     // checkbox to a radio button.
@@ -208,7 +208,7 @@
         var taoUpgradeCost = jQuery(this).closest(".breakfastOpt").find(".price span.amt").text();
         var taoBaseRate = jQuery(this).closest("#priceInfoArea").find(".mainRateDisplay span.amt").text();
         var taoNewNightlyRate = +taoBaseRate + +taoUpgradeCost;
-        jQuery(this).closest(".rateTypeLineItemRight").find("#upsellTotal span.amt").text(taoNewNightlyRate);
+        jQuery(this).closest(".rateTypeLineItemRight").find("#upsellTotal span.amt").text(taoNewNightlyRate.toFixed(2));
         
         // If the user clicked on a radio button other than the 'no selection'
         // option, then update the nightly rate. Make sure it is displayed 
