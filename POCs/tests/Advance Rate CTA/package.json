@@ -1,0 +1,22 @@
+{
+  "name": "Template",
+  "version": "1.0.0",
+  "description": "CP: Advance Rate CTA",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:chrisdaquin/Testing-Optimization.git"
+  },
+  "author": "Chris d'Aquin",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-express": "^1.4.1",
+    "grunt-sass": "^1.0.0"
+  }
+}

@@ -89,7 +89,7 @@
                         }
                         taoAllDescriptions[taoDescriptionCode] = $taoRateDescription.detach();
 
-                    })
+                    });
 
                 });
 

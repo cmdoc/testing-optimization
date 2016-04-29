@@ -1,0 +1,50 @@
+﻿#taoCTA {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 300px;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+#taoCTA h1 {
+    font-size: 40px;
+    text-transform: uppercase;
+    line-height: 35px;
+    margin-bottom: 10px;
+    font-family: "Agenda-Light",Arial;
+    font-weight: bold;
+}
+
+#taoCTA h2 {
+    font-size: 20px;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#taoCTA h3 {
+    font-size: 18px;
+    font-family: Georgia, serif;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+#taoCTA p {
+    font-family: "Agenda-Light",Arial;
+}
+
+#taoCTA .taoOrangeBtn {
+    border-radius: 4px;
+    background: #d96932;
+    display: inline-block;
+    text-align: center;
+    padding: 14px 26px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+}
