@@ -93,7 +93,7 @@ Adbett = window.Adbett || {};
     mboxFactoryDefault.addOnLoad(function () {
 
         jQuery("#taoYourRateClick").on('click', function () {
-            mboxFactoryDefault.getSignaler().signal("mboxClickTrack", "mboxClickTrack", "clicked=YourRate");
+            mboxFactoryDefault.getSignaler().signal("mboxClickTrack", "mboxClickTrack", "clicked=YourRateCP");
         });
 
     });
