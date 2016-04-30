@@ -6,9 +6,11 @@ jQuery(document).ready(function () {
 
     // Grab the hero image and change the image for desktop and tablet.
     var $taoHero = jQuery(".hero-section img.lazyload");
-    $taoHero.attr("src", "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=aOFSrnDTQn0x0Bhz4u%2fN6V2E%2fn5vUoT%2fbwpKSHCWYdQ%3d&docid=073f3d36897054dc095c8fd304289d4d1");
-    $taoHero.attr("data-desktop", "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=aOFSrnDTQn0x0Bhz4u%2fN6V2E%2fn5vUoT%2fbwpKSHCWYdQ%3d&docid=073f3d36897054dc095c8fd304289d4d1");
-    $taoHero.attr("data-tablet", "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=aOFSrnDTQn0x0Bhz4u%2fN6V2E%2fn5vUoT%2fbwpKSHCWYdQ%3d&docid=073f3d36897054dc095c8fd304289d4d1");
+    var taoNewHeroImg = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=aOFSrnDTQn0x0Bhz4u%2fN6V2E%2fn5vUoT%2fbwpKSHCWYdQ%3d&docid=073f3d36897054dc095c8fd304289d4d1";
+    $taoHero.attr("src", taoNewHeroImg);
+    $taoHero.attr("data-desktop", taoNewHeroImg);
+    $taoHero.attr("data-tablet", taoNewHeroImg);
+    $taoHero.attr("data-mobile", taoNewHeroImg);
 
     // Now wrap the image with a <a> tag
     $taoHero.wrap("<a href='/hotels/us/en/global/offers/member/yourrate' id='taoYourRateClick'></a>");
