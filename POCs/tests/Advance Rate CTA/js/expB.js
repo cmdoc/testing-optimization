@@ -11,6 +11,7 @@ jQuery(document).ready(function () {
     $taoHero.attr("data-desktop", taoNewHeroImg);
     $taoHero.attr("data-tablet", taoNewHeroImg);
     $taoHero.attr("data-mobile", taoNewHeroImg);
+    $taoHero.attr("data-src", taoNewHeroImg);
 
     // Now wrap the image with a <a> tag
     $taoHero.wrap("<a href='/hotels/us/en/global/offers/member/yourrate' id='taoYourRateClick'></a>");
