@@ -6,6 +6,7 @@ jQuery(document).ready(function () {
 
     var taoNewHeroImg = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=YsVwA9BCua5uM%2bz7xcdaOUqsb5fxKHfEUZRVFZc45Io%3d&docid=0afe6ff70291940fa8f3e3dd58d5d85ba";
     var $taoHero = jQuery("ul.slides .sl-init img").eq(0);
+    var taoRatePage = "/hotels/us/en/global/offers/member/yourrate";
 
     // replace the image src for the first image in the carousel
     $taoHero.attr("src", taoNewHeroImg);
@@ -17,11 +18,11 @@ jQuery(document).ready(function () {
     // Add .taoPointer to the first image (our Your Rate hero image with CTA).
     // This means it will also be added to the clone at the end of the list 
     // items, which is the item that technically sits on top of the images.
-    $taoHero.parent().addClass("taoPointer");
+    $taoHero.siblings("div.slide-caption").wrap("<a href='" + taoRatePage + "' id='taoClick'></a>");
 
     // Get click on .taoPointer and see if the flex-active-slide is the first
     // image. If so, then send user off to rate page.
-    jQuery(".taoPointer").on("click", function () {
+    jQuery("#taoClick_clone").on("click", function () {
         if (jQuery("ul.slides .sl-init").eq(1).hasClass("flex-active-slide") == true) {
             alert("clicked first active slide!");
         }
@@ -30,7 +31,7 @@ jQuery(document).ready(function () {
     // When the user hovers over the hero image, see if the image is the desired
     // hero image with the Your Rate CTA. If so, make the cursor a pointer.
     // Remove the pointer when hover leaves.
-    jQuery(".taoPointer").hover(
+    jQuery("#taoClick_clone").hover(
         function () {
             if (jQuery("ul.slides .sl-init").eq(1).hasClass("flex-active-slide") == true) {
                 // Change cursor to pointer
