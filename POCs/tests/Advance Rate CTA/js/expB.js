@@ -6,7 +6,7 @@ jQuery(document).ready(function () {
 
     // Grab the hero image and change the image for desktop and tablet.
     var $taoHero = jQuery(".hero-section img.lazyload");
-    var taoNewHeroImg = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=aOFSrnDTQn0x0Bhz4u%2fN6V2E%2fn5vUoT%2fbwpKSHCWYdQ%3d&docid=073f3d36897054dc095c8fd304289d4d1";
+    var taoNewHeroImg = "http://ihg.scene7.com/is/image/ihg/CP_AdvantagePricing_Hero_EN_rev?fmt=jpg";
     $taoHero.attr("src", taoNewHeroImg);
     $taoHero.attr("data-desktop", taoNewHeroImg);
     $taoHero.attr("data-tablet", taoNewHeroImg);

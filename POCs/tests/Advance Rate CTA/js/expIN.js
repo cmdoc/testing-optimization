@@ -13,8 +13,9 @@ jQuery(document).ready(function () {
 
     // Grab the spot for the hero image and put in the image.
     var $taoHero = jQuery(".home-banner .tile-image");
+    var taoNewHeroImage = "http://ihg.scene7.com/is/image/ihg/IN_AdvantagePricing_Hero_EN_rev?fmt=jpg"
     $taoHero.hide();
-    $taoHero.append('<img class="lazyload" src="https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=EGd0jITDgcdFfFp276jlOsuSM9LJAVOnKp%2b9GelUPyw%3d&docid=036fb97a543b946929da79450a3263cab" data-desktop="https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=EGd0jITDgcdFfFp276jlOsuSM9LJAVOnKp%2b9GelUPyw%3d&docid=036fb97a543b946929da79450a3263cab" data-tablet="https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=EGd0jITDgcdFfFp276jlOsuSM9LJAVOnKp%2b9GelUPyw%3d&docid=036fb97a543b946929da79450a3263cab" data-mobile="https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=EGd0jITDgcdFfFp276jlOsuSM9LJAVOnKp%2b9GelUPyw%3d&docid=036fb97a543b946929da79450a3263cab" alt="alt">');
+    $taoHero.append('<img class="lazyload" src="' + taoNewHeroImage + '" data-desktop="' + taoNewHeroImage + '" data-tablet="' + taoNewHeroImage + '" data-mobile="' + taoNewHeroImage + '" alt="alt">');
 
     // Now wrap the image with a <a> tag
     $taoHero.wrap("<a href='/hotels/us/en/global/offers/member/yourrate' id='taoYourRateClick'></a>");

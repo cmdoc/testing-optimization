@@ -1,7 +1,7 @@
 ﻿jQuery(document).ready(function () {
 
     // Set up some variables for later use
-    var taoNewHeroImg = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=YsVwA9BCua5uM%2bz7xcdaOUqsb5fxKHfEUZRVFZc45Io%3d&docid=0afe6ff70291940fa8f3e3dd58d5d85ba";
+    var taoNewHeroImg = "http://ihg.scene7.com/is/image/ihg/CW_AdvantagePricing_Hero_EN_rev?fmt=jpg";
     var $taoHero = jQuery("ul.slides .sl-init img").eq(0);
     var taoRatePage = "/hotels/us/en/global/offers/member/yourrate";
 
