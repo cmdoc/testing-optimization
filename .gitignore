@@ -328,5 +328,7 @@ POCs/tests/Advance Rate CTA/index_files/*
 POCs/tests/Advance Rate CTA/node_modules/*
 
 ##### SB
+SB/tests/Free Breakfast/index_files/*
+SB/tests/Free Breakfast/node_modules/*
 SB/tests/Hover BPG/index_files/*
 SB/tests/Hover BPG/node_modules/*
