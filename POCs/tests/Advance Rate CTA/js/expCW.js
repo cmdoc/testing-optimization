@@ -3,7 +3,8 @@
     // Set up some variables for later use
     var taoNewHeroImg = "http://ihg.scene7.com/is/image/ihg/CW_AdvantagePricing_Hero_EN_rev?fmt=jpg";
     var $taoHero = jQuery("ul.slides .sl-init img").eq(0);
-    var taoRatePage = "/hotels/us/en/global/offers/member/yourrate";
+//    var taoRatePage = "/hotels/us/en/global/offers/member/yourrate";
+    var taoRatePage = "/hotels/us/en/global/offers/member/yourrate?cm_sp=OSMAM-CW-AMER-EN-HPH-AIX-LOY-YourRate16";
 
     // Create the mutationObserver for watching when the class changes for our
     // new Your Rate hero image

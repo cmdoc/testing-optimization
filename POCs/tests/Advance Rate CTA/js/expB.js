@@ -14,7 +14,8 @@ jQuery(document).ready(function () {
     $taoHero.attr("data-src", taoNewHeroImg);
 
     // Now wrap the image with a <a> tag
-    $taoHero.wrap("<a href='/hotels/us/en/global/offers/member/yourrate' id='taoYourRateClick'></a>");
+//    $taoHero.wrap("<a href='/hotels/us/en/global/offers/member/yourrate' id='taoYourRateClick'></a>");
+    $taoHero.wrap("<a href='/hotels/us/en/global/offers/member/yourrate?cm_sp=OSMAM-CP-AMER-EN-HPH-AIX-LOY-YourRate16' id='taoYourRateClick'></a>");
 
     // Finally, show the image
     $taoHero.show();
