@@ -1,0 +1,19 @@
+﻿.taoFreeBrkfst {
+    position: absolute;
+    bottom: 5px;
+    left: 220px;
+    font-weight: bold;
+}
+
+.headerWrapper {
+    position: relative;
+}
+
+.taoCheckStyles {
+    fill: green;
+    height: 20px;
+    width: 20px;
+    vertical-align: bottom;
+    margin-bottom: -3px;
+}
+
