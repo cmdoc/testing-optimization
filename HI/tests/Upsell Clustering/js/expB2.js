@@ -98,85 +98,93 @@
 
                     })
 
+                    // We're all done with this Upsell Container, so we need
+                    // to .remove() it from the DOM.
+                    $taoThisUpsellContainer.remove();
+
                 });
 
 
-    //            // Now that we have all the offers and descriptions, we need to
-    //            // format them into something nice and place under the current
-    //            // row of rates.
-    //            var $taoNewRateRow = jQuery("<div class='regularRates roomsView taoDEBUG'><div class='rateTypeLineItem'><input type='hidden' value='IGCOR' name='upsellParentRateCode'></div>");
-    //            //$taoThisRateTypeLineItem.clone().appendTo($taoNewRateRow);
+                // Now that we have all the offers and descriptions, we need to
+                // format them into something nice and place under the current
+                // row of rates. First, we need to create a new node that will
+                // hold the hidden rates.
+                var $taoNewRateRow = jQuery("<div class='regularRates roomsView taoDEBUG'><div class='rateTypeLineItem'><input type='hidden' value='IGCOR' name='upsellParentRateCode'></div>");
+                //$taoThisRateTypeLineItem.clone().appendTo($taoNewRateRow);
 
-                
+                // Second, we need to clone the first tab and put it into the
+                // new taoNewRateRow.
+                var $taoFirstTab = $taoThisRateTypeLineItem.find(".upSellContainer").eq(0);
+                var $taoNewRateRowLineItem = $taoNewRateRow.find(".rateTypeLineItem");
+                $taoFirstTab.clone().appendTo($taoNewRateRowLineItem);
 
+                // Third, we need to remove the YOUR RATE section from the
+                // cloned section because we don't need it to appear twice.
+                $taoNewRateRowLineItem.find(".memberRateTypeLineItemRight").remove();
 
+                // Fourth, insert the clearing DIV to help give shape to
+                // the row and force the other rows to give it room.
+                jQuery("<div class='clearingDiv'></div>").appendTo($taoNewRateRowLineItem);
 
-    //            var $taoFirstTab = $taoThisRateTypeLineItem.find(".upSellContainer").eq(0);
+                // Get the name that we should use for the radio group
+                var taoRadioGroupName = "taoRadioGroupName_" + taoNameCounter;
 
-    //            var $taoNewRateRowLineItem = $taoNewRateRow.find(".rateTypeLineItem");
-    //            $taoFirstTab.clone().appendTo($taoNewRateRowLineItem);
+                // Remove the existing breakfast-type nodes so we can put in the
+                // ones in the taoAllOffers array
+                $taoNewRateRowLineItem.find(".breakfastOpt").remove();
+                $taoNewRateRowLineItem.find(".breakfastLabel").remove();
 
+                // Add in one more option that serves as the default, as in "no
+                // selection." Get the rate code from the submit button for this
+                // upsellContainer, and plug that rate code into the radio
+                // button's ID. Place this option at the top of taoAllOffers.
+                var taoDefaultSubmitSplit = $taoNewRateRowLineItem.find("input[type='submit']").attr("name").split("_");
+                var taoDefaultRateCode = taoDefaultSubmitSplit[1];
+                var taoNoUpgrades = "<div class='breakfastOpt'><input type='hidden' name='upsellRateCode' value='" + taoDefaultRateCode + "'><input type='radio' id='rateInfo_" + taoDefaultRateCode + "' value='value' class='breakfastChk' checked='checked' data-default='true'> <span>&nbsp;No selection.</span></div><div class='clearingDiv'></div>";
+                taoAllOffers.push(taoNoUpgrades);
 
-    //            // Get the name that we should use for the radio group
-    //            var taoRadioGroupName = "taoRadioGroupName_" + taoNameCounter;
+                // Loop through taoAllOffers and plug in the each item (offer).
+                for (var i = 0; i < taoAllOffers.length; i++) {
+                    jQuery(taoAllOffers[i]).insertAfter($taoNewRateRowLineItem.find("br").eq(1));
 
-    //            // Remove the existing breakfast-type nodes so we can put in the
-    //            // ones in the taoAllOffers array
-    //            $taoNewRateRowLineItem.find(".breakfastOpt").remove();
-    //            $taoNewRateRowLineItem.find(".breakfastLabel").remove();
-    //            $taoNewRateRowLineItem.find(".clearingDiv").remove();
+                    // Grab the offer we just plugged in so we can work on it
+                    var $taoCurrentOpt = $taoNewRateRowLineItem.find(".breakfastOpt").first();
 
-    //            // Add in one more option that serves as the default, as in "no
-    //            // selection." Get the rate code from the submit button for this
-    //            // upsellContainer, and plug that rate code into the radio
-    //            // button's ID. Place this option at the top of taoAllOffers.
-    //            var taoDefaultSubmitSplit = $taoNewRateRowLineItem.find("input[type='submit']").attr("name").split("_");
-    //            var taoDefaultRateCode = taoDefaultSubmitSplit[1];
-    //            var taoNoUpgrades = "<div class='breakfastOpt'><input type='hidden' name='upsellRateCode' value='" + taoDefaultRateCode + "'><input type='radio' id='rateInfo_" + taoDefaultRateCode + "' value='value' class='breakfastChk' checked='checked' data-default='true'> <span>&nbsp;No selection.</span></div><div class='clearingDiv'></div>";
-    //            taoAllOffers.push(taoNoUpgrades);
+                    // Check if the current offer needs to be modified from a
+                    // checkbox to a radio button.
+                    if ($taoCurrentOpt.find("input[type='checkbox']").length > 0) {
+                        $taoCurrentOpt.find("input[type='checkbox']").attr("type", "radio");
+                    }
 
-    //            // Loop through taoAllOffers and plug in the each item (offer).
-    //            for (var i = 0; i < taoAllOffers.length; i++) {
-    //                jQuery(taoAllOffers[i]).insertAfter($taoNewRateRowLineItem.find("br").eq(1));
+                    // Check if the current offer needs to convert a plus sign
+                    // to a radio button.
+                    var $taoThisUpsellPlus = $taoCurrentOpt.find(".upSellPlus");
+                    if ($taoThisUpsellPlus.length > 0) {
+                        var taoRateCode = $taoThisUpsellPlus.prev().attr("value");
+                        jQuery("<input type='radio' id='rateInfo_" + taoRateCode + "' class='breakfastChk'>").insertBefore($taoThisUpsellPlus);
 
-    //                // Grab the offer we just plugged in so we can work on it
-    //                var $taoCurrentOpt = $taoNewRateRowLineItem.find(".breakfastOpt").first();
+                        // Now that we have created a radio button input for
+                        // this offer, remove the original
+                        $taoThisUpsellPlus.remove();
+                    }
 
-    //                // Check if the current offer needs to be modified from a
-    //                // checkbox to a radio button.
-    //                if ($taoCurrentOpt.find("input[type='checkbox']").length > 0) {
-    //                    $taoCurrentOpt.find("input[type='checkbox']").attr("type", "radio");
-    //                }
+                }
 
-    //                // Check if the current offer needs to convert a plus sign
-    //                // to a radio button.
-    //                var $taoThisUpsellPlus = $taoCurrentOpt.find(".upSellPlus");
-    //                if ($taoThisUpsellPlus.length > 0) {
-    //                    var taoRateCode = $taoThisUpsellPlus.prev().attr("value");
-    //                    jQuery("<input type='radio' id='rateInfo_" + taoRateCode + "' class='breakfastChk'>").insertBefore($taoThisUpsellPlus);
+                // Make the 'No Selection' option the default.
+                $taoNewRateRowLineItem.find("input[id='rateInfo_" + taoDefaultRateCode + "']").click();
 
-    //                    // Now that we have created a radio button input for
-    //                    // this offer, remove the original
-    //                    $taoThisUpsellPlus.remove();
-    //                }
-
-    //            }
-
-    //            // Make the 'No Selection' option the default.
-    //            $taoNewRateRowLineItem.find("input[id='rateInfo_" + taoDefaultRateCode + "']").click();
-
-    //            // Finally, there are four more things to do. First, make sure
-    //            // all of the inputs on this tab have the same radio group name.
-    //            // Second, hide the tabs so the user can't activate them and 
-    //            // make a different choice. Third, put all of the descriptions
-    //            // in the right place on the first tab. Fourth, place the new 
-    //            // row in the right spot (after the current row)
-    //            $taoNewRateRowLineItem.find("input[type=radio]").attr("name", taoRadioGroupName);
+                // Finally, there are four more things to do. First, make sure
+                // all of the inputs on this tab have the same radio group name.
+                // Second, hide the tabs so the user can't activate them and 
+                // make a different choice. Third, put all of the descriptions
+                // in the right place on the first tab. Fourth, place the new 
+                // row in the right spot (after the current row)
+                $taoNewRateRowLineItem.find("input[type=radio]").attr("name", taoRadioGroupName);
                 $taoThisRateTypeLineItem.find(".tabVisibleArea").attr("style", "display: none;");
-    //            for (var taoKey in taoAllDescriptions) {
-    //                $taoNewRateRowLineItem.find(".rateTypeLineItem").append(taoAllDescriptions[taoKey]);
-    //            }
-    //            $taoNewRateRow.insertAfter($taoThisRateTypeLineItem.parent());
+                for (var taoKey in taoAllDescriptions) {
+                    $taoNewRateRowLineItem.find(".rateTypeLineItem").append(taoAllDescriptions[taoKey]);
+                }
+                $taoNewRateRow.insertAfter($taoThisRateTypeLineItem.parent());
 
 
                 // Now we are all done with this room!  Only some housekeeping
@@ -193,54 +201,61 @@
 
     });
 
-    //// Add in a onClick action that will change the name value of the submit
-    //// button so the right rate code is used when the user clicks on 
-    //// 'BOOK THIS ROOM'. Also figure out the new nightly rate to display by
-    //// adding the cost of the upgrade to the base rate. Make sure the new 
-    //// nightly rate is dipslayed with a .show() function.
-    //jQuery(".breakfastOpt input[type='radio']").on("click", function () {
+    // Now that all of the new rows have been created, we need to run one line
+    // of code to remove some inline styling that is making the new data appear
+    // in the wrong place.
+    setTimeout(function() {
+        jQuery(".taoDEBUG .memberRateTypeLineItem").removeAttr("style");
+    }, 3000);
+    
+    // Add in a onClick action that will change the name value of the submit
+    // button so the right rate code is used when the user clicks on 
+    // 'BOOK THIS ROOM'. Also figure out the new nightly rate to display by
+    // adding the cost of the upgrade to the base rate. Make sure the new 
+    // nightly rate is dipslayed with a .show() function.
+    jQuery(".breakfastOpt input[type='radio']").on("click", function () {
 
-    //    // Get the ID of the radio button clicked on, split it on "_", and 
-    //    // save the rate offer in the second half.
-    //    var $taoRadioId = jQuery(this).attr("id");
-    //    var taoRadioIdSplit = $taoRadioId.split("_");
-    //    var taoOfferRateCode = taoRadioIdSplit[1];
+        // Get the ID of the radio button clicked on, split it on "_", and 
+        // save the rate offer in the second half.
+        var $taoRadioId = jQuery(this).attr("id");
+        var taoRadioIdSplit = $taoRadioId.split("_");
+        var taoOfferRateCode = taoRadioIdSplit[1];
 
-    //    // Find the submit button that relates to this radio button, get its
-    //    // current name value, and then plug in the new rate code. The current
-    //    // name value should be something like this:
-    //    //      "selectedRoom_KNGNIGCOR_1BD_0000_0_0_"
-    //    // We need to replace the KNGNIGCOR portion with the new code.
-    //    var $taoSubmitButton = jQuery(this).closest(".rateTypeLineItemRight").find("input[type='submit']");
+        // Find the submit button that relates to this radio button, get its
+        // current name value, and then plug in the new rate code. The current
+        // name value should be something like this:
+        //      "selectedRoom_KNGNIGCOR_1BD_0000_0_0_"
+        // We need to replace the KNGNIGCOR portion with the new code.
+        var $taoSubmitButton = jQuery(this).closest(".rateTypeLineItemRight").find("input[type='submit']");
 
-    //    var taoSubmitButtonCurName = $taoSubmitButton.attr("name");
-    //    var taoSubmitNameSplit = taoSubmitButtonCurName.split("_");
-    //    var taoSubmitButtonNewName = taoSubmitNameSplit[0] + "_" +
-    //                                 taoOfferRateCode + "_" +
-    //                                 taoSubmitNameSplit[2] + "_" +
-    //                                 taoSubmitNameSplit[3] + "_" +
-    //                                 taoSubmitNameSplit[4] + "_" +
-    //                                 taoSubmitNameSplit[5] + "_";
+        var taoSubmitButtonCurName = $taoSubmitButton.attr("name");
+        var taoSubmitNameSplit = taoSubmitButtonCurName.split("_");
+        var taoSubmitButtonNewName = taoSubmitNameSplit[0] + "_" +
+                                     taoOfferRateCode + "_" +
+                                     taoSubmitNameSplit[2] + "_" +
+                                     taoSubmitNameSplit[3] + "_" +
+                                     taoSubmitNameSplit[4] + "_" +
+                                     taoSubmitNameSplit[5] + "_";
 
-    //    $taoSubmitButton.attr("name", taoSubmitButtonNewName);
+        $taoSubmitButton.attr("name", taoSubmitButtonNewName);
 
-    //    // Figure out the cost of this upgrade, get the base nightly rate, and
-    //    // then figure out what the new nightly rate should be. 
-    //    var taoUpgradeCost = jQuery(this).closest(".breakfastOpt").find(".price span.amt").text();
-    //    var taoBaseRate = jQuery(this).closest("#priceInfoArea").find(".mainRateDisplay span.amt").text();
-    //    var taoNewNightlyRate = +taoBaseRate + +taoUpgradeCost;
-    //    jQuery(this).closest(".rateTypeLineItemRight").find("#upsellTotal span.amt").text(taoNewNightlyRate.toFixed(2));
+        // Figure out the cost of this upgrade, get the base nightly rate, and
+        // then figure out what the new nightly rate should be. 
+        var taoUpgradeCost = jQuery(this).closest(".breakfastOpt").find(".price span.amt").text();
+        var taoBaseRate = jQuery(this).closest("#priceInfoArea").find(".mainRateDisplay span.amt").text();
+        var taoNewNightlyRate = +taoBaseRate + +taoUpgradeCost;
+        jQuery(this).closest(".rateTypeLineItemRight").find("#upsellTotal span.amt").text(taoNewNightlyRate.toFixed(2));
 
-    //    // If the user clicked on a radio button other than the 'no selection'
-    //    // option, then update the nightly rate. Make sure it is displayed 
-    //    // with a .show() function.
-    //    if (jQuery(this).data("default") != true) {
-    //        var taoThat = jQuery(this);
-    //        setTimeout(function () {
-    //            jQuery(taoThat).closest(".rateTypeLineItemRight").find("#upsellTotal").removeClass("hide");
-    //            jQuery(taoThat).closest(".rateTypeLineItemRight").find("#upsellTotal").siblings("hr").removeClass("hide");
-    //        }, 25);
-    //    }
-    //});
+        // If the user clicked on a radio button other than the 'no selection'
+        // option, then update the nightly rate. Make sure it is displayed 
+        // with a .show() function.
+        if (jQuery(this).data("default") != true) {
+            var taoThat = jQuery(this);
+            setTimeout(function () {
+                jQuery(taoThat).closest(".rateTypeLineItemRight").find("#upsellTotal").removeClass("hide");
+                jQuery(taoThat).closest(".rateTypeLineItemRight").find("#upsellTotal").siblings("hr").removeClass("hide");
+            }, 25);
+        }
+    });
 
 });
