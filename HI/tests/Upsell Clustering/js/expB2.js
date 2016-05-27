@@ -118,9 +118,11 @@
                 var $taoNewRateRowLineItem = $taoNewRateRow.find(".rateTypeLineItem");
                 $taoFirstTab.clone().appendTo($taoNewRateRowLineItem);
 
-                // Third, we need to remove the YOUR RATE section from the
-                // cloned section because we don't need it to appear twice.
+                // Third, we need to remove the YOUR RATE and the default 
+                // rateInfo areas from the cloned section because we don't
+                // need them to appear twice.
                 $taoNewRateRowLineItem.find(".memberRateTypeLineItemRight").remove();
+                $taoNewRateRowLineItem.find(".rateInfoArea").remove();
 
                 // Fourth, insert the clearing DIV to help give shape to
                 // the row and force the other rows to give it room.
@@ -133,15 +135,6 @@
                 // ones in the taoAllOffers array
                 $taoNewRateRowLineItem.find(".breakfastOpt").remove();
                 $taoNewRateRowLineItem.find(".breakfastLabel").remove();
-
-                // Add in one more option that serves as the default, as in "no
-                // selection." Get the rate code from the submit button for this
-                // upsellContainer, and plug that rate code into the radio
-                // button's ID. Place this option at the top of taoAllOffers.
-                var taoDefaultSubmitSplit = $taoNewRateRowLineItem.find("input[type='submit']").attr("name").split("_");
-                var taoDefaultRateCode = taoDefaultSubmitSplit[1];
-                var taoNoUpgrades = "<div class='breakfastOpt'><input type='hidden' name='upsellRateCode' value='" + taoDefaultRateCode + "'><input type='radio' id='rateInfo_" + taoDefaultRateCode + "' value='value' class='breakfastChk' checked='checked' data-default='true'> <span>&nbsp;No selection.</span></div><div class='clearingDiv'></div>";
-                taoAllOffers.push(taoNoUpgrades);
 
                 // Loop through taoAllOffers and plug in the each item (offer).
                 for (var i = 0; i < taoAllOffers.length; i++) {
@@ -170,8 +163,8 @@
 
                 }
 
-                // Make the 'No Selection' option the default.
-                $taoNewRateRowLineItem.find("input[id='rateInfo_" + taoDefaultRateCode + "']").click();
+                // Make the first new radio button the default
+                $taoNewRateRowLineItem.find("input[type='radio']:first").click();
 
                 // Finally, there are four more things to do. First, make sure
                 // all of the inputs on this tab have the same radio group name.
