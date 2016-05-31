@@ -109,7 +109,7 @@
                 // format them into something nice and place under the current
                 // row of rates. First, we need to create a new node that will
                 // hold the hidden rates.
-                var $taoNewRateRow = jQuery("<div class='regularRates roomsView taoDEBUG'><div class='rateTypeLineItem'><input type='hidden' value='IGCOR' name='upsellParentRateCode'></div>");
+                var $taoNewRateRow = jQuery("<div class='regularRates roomsView taoUpsell'><div class='rateTypeLineItem'><input type='hidden' value='IGCOR' name='upsellParentRateCode'></div>");
                 //$taoThisRateTypeLineItem.clone().appendTo($taoNewRateRow);
 
                 // Second, we need to clone the first tab and put it into the
@@ -163,8 +163,14 @@
 
                 }
 
+
+
+
                 // Make the first new radio button the default
-                $taoNewRateRowLineItem.find("input[type='radio']:first").click();
+                // $taoNewRateRowLineItem.find("input[type='radio']:first").click();
+
+
+
 
                 // Finally, there are four more things to do. First, make sure
                 // all of the inputs on this tab have the same radio group name.
@@ -193,14 +199,31 @@
         });
 
     });
-
-    // Now that all of the new rows have been created, we need to run one line
-    // of code to remove some inline styling that is making the new data appear
-    // in the wrong place.
-    setTimeout(function() {
-        jQuery(".taoDEBUG .memberRateTypeLineItem").removeAttr("style");
-    }, 3000);
     
+    // Create a click function where if the user clickson the room rate row
+    // then remove the inline styling for the new upsell section so it 
+    // appears in the right spot when the room rate row expands.
+    jQuery(".roomTypeLineItem").on("click", function () {
+        setTimeout(function () {
+            jQuery(".taoUpsell .memberRateTypeLineItem").removeAttr("style");
+        },5);
+    });
+
+
+
+
+    // Jerry-rigged solution #1
+    // When the user clicks on one of the new rates for the upsell section,
+    // hide the whole section, then after a timeout delay remove the new
+    // inline styling that has been added and show() the section again.
+    jQuery("input.breakfastChk").on("click", function () {
+        jQuery(".taoUpsell .memberRateTypeLineItem").hide();
+        setTimeout(function () {
+            jQuery(".taoUpsell .memberRateTypeLineItem").removeAttr("style");
+            jQuery(".taoUpsell .memberRateTypeLineItem").show();
+        }, 5);
+    });
+
     // Add in a onClick action that will change the name value of the submit
     // button so the right rate code is used when the user clicks on 
     // 'BOOK THIS ROOM'. Also figure out the new nightly rate to display by
@@ -219,7 +242,7 @@
         // name value should be something like this:
         //      "selectedRoom_KNGNIGCOR_1BD_0000_0_0_"
         // We need to replace the KNGNIGCOR portion with the new code.
-        var $taoSubmitButton = jQuery(this).closest(".rateTypeLineItemRight").find("input[type='submit']");
+        var $taoSubmitButton = jQuery(this).closest(".memberRateTypeLineItem").find("input[type='submit']");
 
         var taoSubmitButtonCurName = $taoSubmitButton.attr("name");
         var taoSubmitNameSplit = taoSubmitButtonCurName.split("_");
@@ -237,18 +260,17 @@
         var taoUpgradeCost = jQuery(this).closest(".breakfastOpt").find(".price span.amt").text();
         var taoBaseRate = jQuery(this).closest("#priceInfoArea").find(".mainRateDisplay span.amt").text();
         var taoNewNightlyRate = +taoBaseRate + +taoUpgradeCost;
-        jQuery(this).closest(".rateTypeLineItemRight").find("#upsellTotal span.amt").text(taoNewNightlyRate.toFixed(2));
+        jQuery(this).closest(".memberRateTypeLineItem").find("#upsellTotal span.amt").text(taoNewNightlyRate.toFixed(2));
 
-        // If the user clicked on a radio button other than the 'no selection'
-        // option, then update the nightly rate. Make sure it is displayed 
-        // with a .show() function.
-        if (jQuery(this).data("default") != true) {
-            var taoThat = jQuery(this);
-            setTimeout(function () {
-                jQuery(taoThat).closest(".rateTypeLineItemRight").find("#upsellTotal").removeClass("hide");
-                jQuery(taoThat).closest(".rateTypeLineItemRight").find("#upsellTotal").siblings("hr").removeClass("hide");
-            }, 25);
-        }
+        // Now we need to update the nightly rate and show it. We have it in a
+        // setTimeout() call because there is some native JavaScript code we
+        // need to override, but we have to give it a little time to work first
+        // before we do our stuff.
+        var taoThat = jQuery(this);
+        setTimeout(function () {
+            jQuery(taoThat).closest(".memberRateTypeLineItem").find("#upsellTotal").removeClass("hide");
+            jQuery(taoThat).closest(".memberRateTypeLineItem").find("#upsellTotal").siblings("hr").removeClass("hide");
+        }, 25);
     });
 
 });
