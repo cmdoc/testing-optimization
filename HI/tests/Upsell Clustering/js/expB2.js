@@ -163,8 +163,26 @@
 
                 }
                 
-                // Make the first new radio button the default
-                $taoNewRateRowLineItem.find("input[type='radio']:first").click();
+                // Find the first new radio button.  Make it the default with
+                // the click() action. Then figure out the cost of this upgrade,
+                // get the base nightly rate, and then figure out what the new
+                // nightly rate should be.
+                var $taoFirstItem = $taoNewRateRowLineItem.find("input[type='radio']:first");
+                $taoFirstItem.click();
+                var taoUpgradeCost = $taoFirstItem.closest(".breakfastOpt").find(".price span.amt").text();
+                var taoBaseRate = $taoFirstItem.closest("#priceInfoArea").find(".mainRateDisplay span.amt").text();
+                var taoNewNightlyRate = +taoBaseRate + +taoUpgradeCost;
+                $taoFirstItem.closest(".memberRateTypeLineItem").find("#upsellTotal span.amt").text(taoNewNightlyRate.toFixed(2));
+
+                // Now that the nightly rate is updated, we have to show it.
+                // Wrap it in a setTimeout() call because there is some native
+                // JavaScript code we need to override, but we have to give it
+                // a little time to work first before we do our stuff.
+                setTimeout(function () {
+                    $taoFirstItem.closest(".memberRateTypeLineItem").find("#upsellTotal").removeClass("hide");
+                    $taoFirstItem.closest(".memberRateTypeLineItem").find("#upsellTotal").siblings("hr").removeClass("hide");
+                }, 25);
+
                 
                 // Finally, there are four more things to do. First, make sure
                 // all of the inputs on this tab have the same radio group name.
