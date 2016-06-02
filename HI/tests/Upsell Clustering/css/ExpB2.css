@@ -3,3 +3,6 @@
     float: right;
 }
 
+.taoUpsell div.memberRateTypeLineItem[style] {
+    margin-top: 0px !important;
+}

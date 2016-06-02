@@ -45,7 +45,7 @@
                     // Let's get the offers first, so go through each 
                     // upSellContainer and pull them out. Put each offer into
                     // an array so we can rebuild the offers into one 
-                    // comprehensive list
+                    // comprehensive list.
                     $taoThisUpsellContainer.find(".breakfastOpt").each(function () {
                         var $taoThisOffer = jQuery(this);
 
@@ -162,16 +162,10 @@
                     }
 
                 }
-
-
-
-
+                
                 // Make the first new radio button the default
-                // $taoNewRateRowLineItem.find("input[type='radio']:first").click();
-
-
-
-
+                $taoNewRateRowLineItem.find("input[type='radio']:first").click();
+                
                 // Finally, there are four more things to do. First, make sure
                 // all of the inputs on this tab have the same radio group name.
                 // Second, hide the tabs so the user can't activate them and 
@@ -200,30 +194,6 @@
 
     });
     
-    // Create a click function where if the user clickson the room rate row
-    // then remove the inline styling for the new upsell section so it 
-    // appears in the right spot when the room rate row expands.
-    jQuery(".roomTypeLineItem").on("click", function () {
-        setTimeout(function () {
-            jQuery(".taoUpsell .memberRateTypeLineItem").removeAttr("style");
-        },5);
-    });
-
-
-
-
-    // Jerry-rigged solution #1
-    // When the user clicks on one of the new rates for the upsell section,
-    // hide the whole section, then after a timeout delay remove the new
-    // inline styling that has been added and show() the section again.
-    jQuery("input.breakfastChk").on("click", function () {
-        jQuery(".taoUpsell .memberRateTypeLineItem").hide();
-        setTimeout(function () {
-            jQuery(".taoUpsell .memberRateTypeLineItem").removeAttr("style");
-            jQuery(".taoUpsell .memberRateTypeLineItem").show();
-        }, 5);
-    });
-
     // Add in a onClick action that will change the name value of the submit
     // button so the right rate code is used when the user clicks on 
     // 'BOOK THIS ROOM'. Also figure out the new nightly rate to display by
