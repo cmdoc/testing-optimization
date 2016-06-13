@@ -162,7 +162,7 @@
                     }
 
                 }
-                
+
                 // Find the first new radio button.  Make it the default with
                 // the click() action. Then figure out the cost of this upgrade,
                 // get the base nightly rate, and then figure out what the new
@@ -183,7 +183,7 @@
                     $taoFirstItem.closest(".memberRateTypeLineItem").find("#upsellTotal").siblings("hr").removeClass("hide");
                 }, 25);
 
-                
+
                 // Finally, there are four more things to do. First, make sure
                 // all of the inputs on this tab have the same radio group name.
                 // Second, hide the tabs so the user can't activate them and 
@@ -211,7 +211,7 @@
         });
 
     });
-    
+
     // Add in a onClick action that will change the name value of the submit
     // button so the right rate code is used when the user clicks on 
     // 'BOOK THIS ROOM'. Also figure out the new nightly rate to display by
@@ -245,10 +245,12 @@
 
         // Figure out the cost of this upgrade, get the base nightly rate, and
         // then figure out what the new nightly rate should be. 
-        var taoUpgradeCost = jQuery(this).closest(".breakfastOpt").find(".price span.amt").text();
-        var taoBaseRate = jQuery(this).closest("#priceInfoArea").find(".mainRateDisplay span.amt").text();
+        var taoUpgradeCost = jQuery(this).closest(".breakfastOpt").find(".price span.amt").text().replace(/,/g, '');
+        var taoBaseRate = jQuery(this).closest("#priceInfoArea").find(".mainRateDisplay span.amt").text().replace(/,/g, '');
         var taoNewNightlyRate = +taoBaseRate + +taoUpgradeCost;
-        jQuery(this).closest(".memberRateTypeLineItem").find("#upsellTotal span.amt").text(taoNewNightlyRate.toFixed(2));
+        taoNewNightlyRate = taoNewNightlyRate.toFixed(2);
+        debugger;
+        jQuery(this).closest(".memberRateTypeLineItem").find("#upsellTotal span.amt").text(taoNewNightlyRate.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
 
         // Now we need to update the nightly rate and show it. We have it in a
         // setTimeout() call because there is some native JavaScript code we
