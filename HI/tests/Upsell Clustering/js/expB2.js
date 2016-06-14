@@ -46,6 +46,7 @@
                     // upSellContainer and pull them out. Put each offer into
                     // an array so we can rebuild the offers into one 
                     // comprehensive list.
+
                     $taoThisUpsellContainer.find(".breakfastOpt").each(function () {
                         var $taoThisOffer = jQuery(this);
 
@@ -128,6 +129,18 @@
                 // the row and force the other rows to give it room.
                 jQuery("<div class='clearingDiv'></div>").appendTo($taoNewRateRowLineItem);
 
+                // Fifth, check to see if an upSellTotal span exists. If not,
+                // then make one by simply inserting a HR and then inserting
+                // a #upsellTotal SPAN.  For the contents of the span, just 
+                // copy the first span.price.  Don't worry about it's money
+                // values -- they will be overwritten later.  We just need 
+                // placeholders for right now.
+                if ($taoNewRateRowLineItem.find("#upsellTotal").length < 1) {
+                    $taoNewRateRowLineItem.find("#priceInfoArea").append("<hr />");
+                    $taoNewRateRowLineItem.find("#priceInfoArea").append("<span id='upsellTotal'><span class='price'>" + jQuery(".price").eq(0).html() + "</span>");
+
+                }
+
                 // Get the name that we should use for the radio group
                 var taoRadioGroupName = "taoRadioGroupName_" + taoNameCounter;
 
@@ -169,6 +182,7 @@
                 // nightly rate should be.
                 var $taoFirstItem = $taoNewRateRowLineItem.find("input[type='radio']:first");
                 $taoFirstItem.click();
+debugger;
                 var taoUpgradeCost = $taoFirstItem.closest(".breakfastOpt").find(".price span.amt").text();
                 var taoBaseRate = $taoFirstItem.closest("#priceInfoArea").find(".mainRateDisplay span.amt").text();
                 var taoNewNightlyRate = +taoBaseRate + +taoUpgradeCost;
@@ -249,7 +263,6 @@
         var taoBaseRate = jQuery(this).closest("#priceInfoArea").find(".mainRateDisplay span.amt").text().replace(/,/g, '');
         var taoNewNightlyRate = +taoBaseRate + +taoUpgradeCost;
         taoNewNightlyRate = taoNewNightlyRate.toFixed(2);
-        debugger;
         jQuery(this).closest(".memberRateTypeLineItem").find("#upsellTotal span.amt").text(taoNewNightlyRate.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
 
         // Now we need to update the nightly rate and show it. We have it in a
