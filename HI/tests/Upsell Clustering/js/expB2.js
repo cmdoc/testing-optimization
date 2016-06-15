@@ -181,8 +181,8 @@
                 // get the base nightly rate, and then figure out what the new
                 // nightly rate should be.
                 var $taoFirstItem = $taoNewRateRowLineItem.find("input[type='radio']:first");
-                $taoFirstItem.click();
-debugger;
+                $taoFirstItem.attr("checked", "checked");
+
                 var taoUpgradeCost = $taoFirstItem.closest(".breakfastOpt").find(".price span.amt").text();
                 var taoBaseRate = $taoFirstItem.closest("#priceInfoArea").find(".mainRateDisplay span.amt").text();
                 var taoNewNightlyRate = +taoBaseRate + +taoUpgradeCost;
