@@ -1,0 +1,42 @@
+﻿span.memberTitle {
+    font-size: 13px;
+}
+
+.taoMemberDiscount {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #d96932;
+    display: block;
+    margin-top: 20px;
+}
+
+.memberRateTypeContainer .memberRateTypeLineItemRight {
+    margin-right: 10px;
+    width: 305px;
+    margin-top: 10px;
+}
+
+.memberRateTypeLineItemRight .rateSelectionArea {
+    border: 1px solid #DDD;
+    background-color: #EEE;
+    margin-top: 19px;
+    padding: 10px;
+}
+
+.taoGreyBoxText {
+    margin-right: 4px;
+    float: right;
+    margin-top: -5px;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+.taoGreyBoxTextMango {
+    font-weight: bold;
+    color: #d96932;
+}
+
+.taoGreyBoxTextBold {
+    font-weight: bold;
+}
+
