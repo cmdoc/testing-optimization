@@ -16,27 +16,27 @@ jQuery(document).ready(function () {
 
     // Let's set up all of our image URLs
     // NO PRICE OFFERED
-    var banner = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=WaOkhk%2bFIe0lr3pdVNZXFiI9Iqy2Csbn8ahc%2bs%2fBmz8%3d&docid=094306e15cc3f407da686ee01fc1ec641";
+    var banner = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/en/us/lp/inc3314608_tao_uk_summer_pro/Desktop-IHG-no-price.jpg";
 
-    var belgium = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=D1vwEAenQqEBmSZcsXmaMWHnb2fP8WR12XiDRODBm1w%3d&docid=055c89382733448088274687e7c7268f8";
+    var belgium = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/en/us/lp/inc3314608_tao_uk_summer_pro/Belgium_noOffer_308x308.jpg";
 
-    var france = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=BaI33j9MzRdzsu4YTj8qNx%2faBVxmj9kP77hQiHZuzS8%3d&docid=0f304ee0c637446118db315ebd46e9a23";
+    var france = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/en/us/lp/inc3314608_tao_uk_summer_pro/France_noOffer_308x308.jpg";
 
-    var germany = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=%2fq0a1Gu%2f4I2%2bj21TPJkuJXaBSeUokroW1KPBohjB9tM%3d&docid=08d119af4a3404e50868072d9ea1a5920";
+    var germany = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/en/us/lp/inc3314608_tao_uk_summer_pro/Germany_noOffer_473x473.jpg";
 
-    var italy = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=tmdLCB%2bRAOOFL5mHsEiHse3AAan2cijHtA6wxWnqSCA%3d&docid=0f7609f763f534b65af104bd454d192b3";
+    var italy = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/en/us/lp/inc3314608_tao_uk_summer_pro/Italy_noOffer_308x308.jpg";
 
-    var netherlands = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=wfEi8p8WBYUcCYftDNwzP3hbvhU511mMt9nqQWDDooA%3d&docid=0f7c587069e814259bef3b67a4d5bac3b";
+    var netherlands = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/en/us/lp/inc3314608_tao_uk_summer_pro/Netherlands_noOffer_308x308.jpg";
 
-    var portugal = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=FGvUYIWZbM4PH2zenW7td7BoIMQIc1lGPlnZ14gybuY%3d&docid=0c6cc3e304d2c4cdb971ef27def704cac";
+    var portugal = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/en/us/lp/inc3314608_tao_uk_summer_pro/Portugal_noOffer_308x308.jpg";
 
-    var russia = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=p8ojxRqmHJCtHFk%2f1Ak%2fuemRR%2bfNAAACnw%2b9I1TRa7w%3d&docid=010b8f405756b4d57aef7b01f35e57274";
+    var russia = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/en/us/lp/inc3314608_tao_uk_summer_pro/Russia_noOffer_308x308.jpg";
 
-    var spain = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=EkUbZwCwG%2bPJo7V29t8JzKhMMg3qv%2f8borWFJN02hNE%3d&docid=0f2ee541cf54840d889c4478d0725321a";
+    var spain = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/en/us/lp/inc3314608_tao_uk_summer_pro/Spain_noOffer_308x308.jpg";
 
-    var turkey = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=tmdLCB%2bRAOOFL5mHsEiHse3AAan2cijHtA6wxWnqSCA%3d&docid=0f7609f763f534b65af104bd454d192b3";
+    var turkey = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/en/us/lp/inc3314608_tao_uk_summer_pro/Turkey_noOffer_308x308.jpg";
 
-    var ukireland = "https://ihg-my.sharepoint.com/personal/chris_daquin_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=9ppMZVKOYTgqAG1HlvPDcx50ciiiqK4FFJCts4voFFc%3d&docid=0c4cb4eb88d35403397db6d2adce132e2";
+    var ukireland = "https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/en/us/lp/inc3314608_tao_uk_summer_pro/GB_noOffer_473x473.jpg";
 
     // Put in a .load() call so when the new image finishes loading we 
     // know when to show it.
