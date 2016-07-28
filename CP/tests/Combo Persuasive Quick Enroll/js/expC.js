@@ -4,7 +4,7 @@
     // it in the right position so it can be shown when needed.
     jQuery(".quickEnrollLeft").append("<div id='taoAreYouSure'></div>");
     jQuery("#taoAreYouSure").hide();
-    jQuery("#taoAreYouSure").html("Are you sure you don't want to earn points or take advantge of other IHG&reg; Rewards Club benefits like late checkout?");
+    jQuery("#taoAreYouSure").html("Are you sure you don't want to earn points or take advantage of other IHG&reg; Rewards Club benefits like late check out?");
 
     // When the "No" option is clicked for Quick Enroll, show or hide the 
     // "Are you sure?" messaging.
