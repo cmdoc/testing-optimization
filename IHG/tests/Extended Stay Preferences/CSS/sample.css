@@ -1,0 +1,28 @@
+div.resRow[data-brandcode=cw]:first-of-type, 
+div.resRow[data-brandcode=sb]:first-of-type {
+    border-top: 38px solid #D96932;
+}
+
+div.resRow[data-brandcode=cw], 
+div.resRow[data-brandcode=sb] {
+    border-left: 10px solid #D96932;
+    border-right: 10px solid #D96932;
+}
+
+.taoLast {
+    border-bottom: 10px solid #D96932;
+    margin-bottom: 10px;
+}
+
+.taoPillBox {
+    margin-bottom: 0;
+}
+
+p.taoHeading {
+    color: white;
+    padding: 0 0 0 10px;
+    position: relative;
+    top: 40px;
+    margin-top: -28px;
+    font-weight: bold;
+}
