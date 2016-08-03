@@ -1,0 +1,47 @@
+﻿.price-fighter-widget {
+  padding-top: 0;
+  display: none;
+  position: absolute;
+  top: 0px;
+  right: 233px;
+  background: #fff;
+  z-index: 999;
+  min-height: 235px;
+  width: 256px;
+  border: 2px solid #cacaca !important;
+  border-radius: 4px; }
+
+.price-fighter-widget.show-widget {
+  display: block; }
+
+.price-fighter-widget:after {
+  content: "";
+  position: absolute;
+  top: 115px;
+  right: -14px;
+  background: #fff url("../../img/tao-right-arrow.png") no-repeat 0px 0px;
+  height: 16px;
+  width: 16px; }
+
+.taoPriceNowWrapper {
+  margin: 0;
+  padding: 10px;
+  background: #fff;
+  border: 2px solid #cacaca;
+  border-radius: 4px;
+  overflow: auto; }
+  .taoPriceNowWrapper .taoNightlyRate {
+    margin-left: 1.2345679012345678%; }
+  .taoPriceNowWrapper .priceNow {
+    margin-bottom: 3px; }
+  .taoPriceNowWrapper .taoCompare {
+    padding-left: 20px;
+    display: block;
+    font-weight: bold;
+    position: relative;
+    background: url("https://prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/cn/buttons/btn_expand.gif") no-repeat 0px 0px;
+    overflow: auto;
+    height: 18px; }
+
+.avgrate {
+  display: none; }
