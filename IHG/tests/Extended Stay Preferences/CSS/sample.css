@@ -1,10 +1,8 @@
-div.resRow[data-brandcode=cw]:first-of-type, 
-div.resRow[data-brandcode=sb]:first-of-type {
+.taoExStay:first-of-type {
     border-top: 38px solid #D96932;
 }
 
-div.resRow[data-brandcode=cw], 
-div.resRow[data-brandcode=sb] {
+.taoExStay {
     border-left: 10px solid #D96932;
     border-right: 10px solid #D96932;
 }
