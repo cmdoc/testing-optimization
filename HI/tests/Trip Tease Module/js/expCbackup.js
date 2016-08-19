@@ -1,8 +1,5 @@
 jQuery(document).ready(function (jQuery){
 
-    //PL reload paperboy
-    jQuery.getScript('https://paperboy.triptease.net/IHG.js');
-
     // Replace original TT container with this
     jQuery('.row.trip-tease-container').each(function () {
 
@@ -52,7 +49,7 @@ jQuery(document).ready(function (jQuery){
 
         // PL: Activate the widget using a CSS selector
         // PFConfig.activate('.price-fighter-widget.'+$(this).data('pf-property'));
-        // Paperboy.PriceCheck.activate(document.querySelector('.price-fighter-widget.'+$(this).data('pf-property')));
+        Paperboy.PriceCheck.activate(document.querySelector('.price-fighter-widget.'+$(this).data('pf-property')));
 
     });
 
@@ -60,5 +57,8 @@ jQuery(document).ready(function (jQuery){
     jQuery('.priceInfoArea .bulkAvailLinkBox').parent().next().next().next().remove('.price-fighter-widget');
     jQuery('.priceInfoArea .priceMsgNotAvail').parent().parent().next().next().next().remove('.price-fighter-widget');
     // jQuery('.priceInfoArea .checkRates .selectDatesBtn').parent().parent().parent().next().next().next().remove('.price-fighter-widget');
+
+    //PL reload paperboy
+    jQuery.getScript('https://paperboy.triptease.net/IHG.js');
 
 });
