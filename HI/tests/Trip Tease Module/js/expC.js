@@ -52,7 +52,7 @@ jQuery(document).ready(function (jQuery){
 
         // PL: Activate the widget using a CSS selector
         // PFConfig.activate('.price-fighter-widget.'+$(this).data('pf-property'));
-        // Paperboy.PriceCheck.activate(document.querySelector('.price-fighter-widget.'+$(this).data('pf-property')));
+        //Paperboy.PriceCheck.activate(document.querySelector('.price-fighter-widget.'+$(this).data('pf-property')));
 
     });
 

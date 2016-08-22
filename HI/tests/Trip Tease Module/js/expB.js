@@ -6,9 +6,6 @@
 
 function taoTripTeaseModule() {
 
-    //PL reload paperboy
-    jQuery.getScript('https://paperboy.triptease.net/IHG.js');
-
     // create a boolean to track if a popup is visible or not
     var taoPopupVisible = false;
 
@@ -21,20 +18,6 @@ function taoTripTeaseModule() {
         }
     });
 
-    // Remove original Nightly Rate
-    jQuery('.avgrate, .row .vatText').remove();
-
-    // Place "Nightly Rate" text above price container
-    jQuery('<span class="taoNightlyRate">Nightly Rate</span>').insertBefore('.priceNow');
-
-    jQuery('.taoNightlyRate').each(function () {
-        // Find each nightly rate and wrap it up
-        jQuery(this).next('.priceNow').andSelf().wrapAll('<section class="taoPriceNowWrapper"></section>');
-    });
-
-    // Add anchor tag to each trigger widget pop-up
-    jQuery('<a href="#" class="taoCompare">See how we compare</a>').insertAfter('.priceNow');
-
     // Replace original TT container with this
     jQuery('.row.trip-tease-container').each(function () {
 
@@ -45,9 +28,25 @@ function taoTripTeaseModule() {
         // See if the propertyCode is in the list of Hotel Codes. If not, then
         // return true and skip to the next .row.trip-tease-container.
         if (jQuery.inArray( propertyCode, taoAllHotelCodes ) < 0 ) {
-            alert(propertyCode + ' is not in the 350!');
             return true;
         }
+
+        // Grab the parent .resRow so we can do our work on this row.
+        var taoParentRow = jQuery(this).closest('.resRow');
+
+        // Remove original Nightly Rate
+        taoParentRow.find('.avgrate, .row .vatText').remove();
+
+        // Place "Nightly Rate" text above price container
+        jQuery('<span class="taoNightlyRate">Nightly Rate</span>').insertBefore(taoParentRow.find('.priceNow'));
+
+        taoParentRow.find('.taoNightlyRate').each(function () {
+            // Find each nightly rate and wrap it up
+            jQuery(this).next('.priceNow').andSelf().wrapAll('<section class="taoPriceNowWrapper"></section>');
+        });
+
+        // Add anchor tag to each trigger widget pop-up
+        jQuery('<a href="#" class="taoCompare">See how we compare</a>').insertAfter(taoParentRow.find('.priceNow'));
 
         // PL: use the property code in the show button (so that we know which widget to activate
         result.find('.taoCompare').data('pf-property', propertyCode.toLowerCase());
@@ -60,7 +59,7 @@ function taoTripTeaseModule() {
 
         // PL: get the direct price
         var direct = result.find('.txtFromNow .mainCurrencyUnitValue.cc_number').text().trim();
-        debugger;
+
         // var direct = result.find('.priceNow .notranslate .cc_source').text().trim();
         console.log('Hotel: ', propertyCode, ' checkin: ', checkin, ' checkout: ', checkout, ' adults: ', adults );
         jQuery(this).replaceWith(
@@ -80,7 +79,11 @@ function taoTripTeaseModule() {
             'data-pf-activation="deferred"' +
             'data-pf-custom-css="https://prodcache.internal.ihg.com/content/dam/etc/media_library/cn/0/cn/css/sr/tao-triptease-exp-B.css">' +
             '</div>');
+
     });
+
+    //PL reload paperboy
+    jQuery.getScript('https://paperboy.triptease.net/IHG.js');
 
     jQuery('.taoCompare').click(function (event) {
         if (taoPopupVisible === false) {
