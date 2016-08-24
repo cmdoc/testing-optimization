@@ -23,7 +23,8 @@ function taoTripTeaseModule() {
         var children = 0; //TODO - is this really correct
 
         // PL: get the direct price
-        var direct = result.find('.txtFromNow .mainCurrencyUnitValue.cc_number').text().trim();
+        //var direct = result.find('.txtFromNow .mainCurrencyUnitValue.cc_number').text().trim();
+        var direct = result.find('.priceNow .mainCurrencyUnitValue.cc_number').text().trim();
         console.log('Hotel: ', propertyCode, ' checkin: ', checkin, ' checkout: ', checkout, ' adults: ', adults );
         jQuery(this).replaceWith(
             '<div '+
@@ -38,9 +39,7 @@ function taoTripTeaseModule() {
             'data-pf-adults="' + adults + '"' +
             'data-pf-rooms="1"' +
             'data-pf-children="' + children + '"' +
-            'data-pf-layout="skeleton-1"' +
-            'data-pf-activation="deferred"' +
-            'data-pf-custom-css="https://prodcache.internal.ihg.com/content/dam/etc/media_library/cn/0/cn/css/sr/tao-triptease-exp-C.css">' +
+            'data-pf-layout="skeleton-1"' +            'data-pf-custom-css="https://prodcache.internal.ihg.com/content/dam/etc/media_library/cn/0/cn/css/sr/tao-triptease-exp-C.css">' +
             '</div>');
     });
 
@@ -50,14 +49,12 @@ function taoTripTeaseModule() {
         jQuery(this).find('.price-fighter-widget').appendTo(jQuery(this) );
 
     });
-
-    //PL reload paperboy
-    jQuery.getScript('https://paperboy.triptease.net/IHG.js');
-
     // Remove widget when no dates are available or have not been selected
     jQuery('.priceInfoArea .bulkAvailLinkBox').parent().next().next().next().remove('.price-fighter-widget');
     jQuery('.priceInfoArea .priceMsgNotAvail').parent().parent().next().next().next().remove('.price-fighter-widget');
-    // jQuery('.priceInfoArea .checkRates .selectDatesBtn').parent().parent().parent().next().next().next().remove('.price-fighter-widget');
+
+    //PL reload paperboy
+    jQuery.getScript('https://paperboy.triptease.net/IHG.js');
 
 }
 
@@ -65,26 +62,26 @@ jQuery(document).ready(function (jQuery){
 
     taoTripTeaseModule();
 
-    // jQuery('body').on('click','#showMoreLink, #showAllLink', function(){
-    //
-    //     // Create a boolean that we keep track of just this click event and
-    //     // make sure this code only runs when the user clicks on one of these
-    //     // two buttons, but doesn't interfere with the other Ajax calls.
-    //     var taoShowClick = true;
-    //
-    //     // Execute code if show more or show all buttons are clicked
-    //     jQuery(document).ajaxComplete(function (event, request, settings) {
-    //
-    //         if (taoShowClick) {
-    //             taoTripTeaseModule();
-    //             // Paperboy.PriceCheck.deactivate(document.querySelectorAll('.price-fighter-widget'));
-    //             // Paperboy.PriceCheck.activate(document.querySelectorAll('.price-fighter-widget'));
-    //             taoShowClick = false;
-    //         }
-    //
-    //     }); // End ajaxComplete();
+    jQuery('body').on('click','#showMoreLink, #showAllLink', function(){
 
-   // });
+        // Create a boolean that we keep track of just this click event and
+        // make sure this code only runs when the user clicks on one of these
+        // two buttons, but doesn't interfere with the other Ajax calls.
+        var taoShowClick = true;
+
+        // Execute code if show more or show all buttons are clicked
+        jQuery(document).ajaxComplete(function (event, request, settings) {
+
+            if (taoShowClick) {
+                taoTripTeaseModule();
+                // Paperboy.PriceCheck.deactivate(document.querySelectorAll('.price-fighter-widget'));
+                // Paperboy.PriceCheck.activate(document.querySelectorAll('.price-fighter-widget'));
+                taoShowClick = false;
+            }
+
+        }); // End ajaxComplete();
+
+   });
 
 });
 
