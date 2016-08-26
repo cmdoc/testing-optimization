@@ -72,7 +72,7 @@ function taoReSortResults() {
 
         // Since the user is going to see something re-sorted, trigger a click 
         // track event so we can measure this is the Target Metrics.
-        mboxPixelTrack('mboxClickTrack', 'clicked=shown-sort');
+        mboxPixelTrack('mboxClickTrack', 'clicked=5daySearch');
 
     }
 
