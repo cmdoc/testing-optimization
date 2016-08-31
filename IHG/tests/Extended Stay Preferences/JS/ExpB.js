@@ -19,7 +19,7 @@ function taoDetermineNumOfDays() {
     taoCheckInMonth = taoCheckInMonth.substring(0, 2); // Should now just be 00 through 11
     taoCheckOutMonth = taoCheckOutMonth.substring(0, 2); // Should now just be 00 through 11
 
-    // Now that we have all of the parts, let's piece them together 
+    // Now that we have all of the parts, let's piece them together
     // into a real Date object.
     var taoCheckInDate = new Date(taoCheckInYear, taoCheckInMonth, taoCheckInDay);
     var taoCheckOutDate = new Date(taoCheckOutYear, taoCheckOutMonth, taoCheckOutDay);
@@ -28,6 +28,44 @@ function taoDetermineNumOfDays() {
     // search is for
     return daydiff(taoCheckInDate, taoCheckOutDate);
 }
+
+function daydiff(first, second) {
+    // Takes two Date objects and determines how many days are between them.
+    return Math.round((second - first) / (1000 * 60 * 60 * 24));
+}
+
+var getUrlParameter = function getUrlParameter(sParam) {
+    // make a function to pull out values from the GET url. Call it like this:
+    //      var blog = getUrlParameter('blog');
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+function mboxPixelTrack(mbox) {
+    // Code stolen from Adobe's Proactive Chat. This should track click events.
+    var d = new Date();
+    var ub = mboxFactoryDefault.getUrlBuilder().clone();
+    ub.addParameter("mbox", mbox);
+    ub.addParameter('mboxTime', d.getTime() - (d.getTimezoneOffset() * 60000));
+    ub.addParameters(Array.prototype.slice.call(arguments).slice(1));
+    var img = new Image();
+    img.src = ub.buildUrl().replace("/mbox/undefined", "/mbox/ajax");
+    img.style.display = "none";
+    if (document.body) {
+        document.body.insertBefore(img, document.body.firstChild);
+    }
+}
+
 
 function taoReSortResults() {
     // This will take the results returned to the browser and re-sort them with
@@ -78,43 +116,6 @@ function taoReSortResults() {
 
 }
 
-var getUrlParameter = function getUrlParameter(sParam) {
-    // make a function to pull out values from the GET url. Call it like this:
-    //      var blog = getUrlParameter('blog');
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
-    }
-};
-
-function daydiff(first, second) {
-    // Takes two Date objects and determines how many days are between them.
-    return Math.round((second - first) / (1000 * 60 * 60 * 24));
-}
-
-function mboxPixelTrack(mbox) {
-    // Code stolen from Adobe's Proactive Chat. This should track click events.
-    var d = new Date();
-    var ub = mboxFactoryDefault.getUrlBuilder().clone();
-    ub.addParameter("mbox", mbox);
-    ub.addParameter('mboxTime', d.getTime() - (d.getTimezoneOffset() * 60000));
-    ub.addParameters(Array.prototype.slice.call(arguments).slice(1));
-    var img = new Image();
-    img.src = ub.buildUrl().replace("/mbox/undefined", "/mbox/ajax");
-    img.style.display = "none";
-    if (document.body) {
-        document.body.insertBefore(img, document.body.firstChild);
-    }
-}
-
 ///////////////////////////////////////////////////////////////////////////////
 // M A I N 
 jQuery(document).ready(function () {
@@ -135,18 +136,30 @@ jQuery(document).ready(function () {
     // Track for when the user clicks on the "Show More" or "Show All"
     // buttons. If the number of days is 5 or greater, then when the 
     // re-sort the page when ajaxComplete() finishes.
-    jQuery("#showMoreLink input, #showAllLink input").on("click", function () {
+    jQuery("body").on("click", "#showMoreLink, #showAllLink", function () {
 
         if (taoNumOfDays >= 5) {
+
+            localStorage.setItem("taoShowClick", "true");
 
             // Wait until the ajax call is complete then re-sort the results
             jQuery(document).ajaxComplete(function (event, request, settings) {
 
-                // Send the command to resort the results
-                taoReSortResults();
+                if (localStorage.getItem("taoShowClick") == "true") {
 
-                // Show the results area and scroll to the top
-                $('html, body').animate({ scrollTop: 285 }, 1000);
+                    // Send the command to resort the results
+                    taoReSortResults();
+
+                    // Figure out how many rows there are and set the scroll
+                    // time to 50 milliseconds per
+                    var taoResRows = jQuery(".resRow").length * 50;
+
+                    // Show the results area and scroll to the top
+                    $('html, body').animate({scrollTop: 285}, taoResRows);
+
+                }
+
+                localStorage.setItem("taoShowClick", "false");
 
             });
 

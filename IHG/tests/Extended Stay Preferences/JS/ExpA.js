@@ -1,21 +1,5 @@
 ﻿///////////////////////////////////////////////////////////////////////////////
 // F U N C T I O N S
-
-function mboxPixelTrack(mbox) {
-    // Code stolen from Adobe's Proactive Chat. This should track click events.
-    var d = new Date();
-    var ub = mboxFactoryDefault.getUrlBuilder().clone();
-    ub.addParameter("mbox", mbox);
-    ub.addParameter('mboxTime', d.getTime() - (d.getTimezoneOffset() * 60000));
-    ub.addParameters(Array.prototype.slice.call(arguments).slice(1));
-    var img = new Image();
-    img.src = ub.buildUrl().replace("/mbox/undefined", "/mbox/ajax");
-    img.style.display = "none";
-    if (document.body) {
-        document.body.insertBefore(img, document.body.firstChild);
-    }
-}
-
 function taoDetermineNumOfDays() {
     // Figure out the dates being searched for. These are grabbed from
     // the URL and need to be formatted to a Date object so we
@@ -64,17 +48,34 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
+function mboxPixelTrack(mbox) {
+    // Code stolen from Adobe's Proactive Chat. This should track click events.
+    var d = new Date();
+    var ub = mboxFactoryDefault.getUrlBuilder().clone();
+    ub.addParameter("mbox", mbox);
+    ub.addParameter('mboxTime', d.getTime() - (d.getTimezoneOffset() * 60000));
+    ub.addParameters(Array.prototype.slice.call(arguments).slice(1));
+    var img = new Image();
+    img.src = ub.buildUrl().replace("/mbox/undefined", "/mbox/ajax");
+    img.style.display = "none";
+    if (document.body) {
+        document.body.insertBefore(img, document.body.firstChild);
+    }
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // M A I N
+jQuery(document).ready(function () {
 
-// trigger click tracking action when user searches for 5 or more days
-// Get the number of days for this search just once and then use it
-// multiple times.
-var taoNumOfDays = taoDetermineNumOfDays();
+    // trigger click tracking action when user searches for 5 or more days
+    // Get the number of days for this search just once and then use it
+    // multiple times.
+    var taoNumOfDays = taoDetermineNumOfDays();
 
-// If taoTotalDays is 5 or greater, then re-order the search results
-// and feature the extended stay hotels at the top.
-if (taoNumOfDays >= 5) {
-    mboxPixelTrack('mboxClickTrack', 'clicked=5daySearch');
-}
+    // If taoTotalDays is 5 or greater, then re-order the search results
+    // and feature the extended stay hotels at the top.
+    if (taoNumOfDays >= 5) {
+        mboxPixelTrack('mboxClickTrack', 'clicked=5daySearch');
+    }
+
+});
