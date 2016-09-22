@@ -19,32 +19,12 @@ function taoTripTeaseModule() {
         }
     });
 
-    ////////////////////////////  THE FOLLOWING REMOVES ALL WIDGET INSTANCES GREATER THAN 6  ///////////////////////////
-
-    // Find the first 6 widgets
-    jQuery('.resultRows').each(function() {
-
-        if (jQuery('.trip-tease-container').length > 5) {
-
-            // Remove any widget greater than 6
-            jQuery('.trip-tease-container:gt(5)').remove();
-
-        }
-
-        // Remove all price info styling
-        jQuery('.taoPriceNowWrapper:gt(5)').css({
-            'margin': '0',
-            'padding': '0',
-            'background': 'none',
-            'border': 'none',
-            'border-radius': 'none',
-            'overflow': 'visible'
-        });
-
-
-    });
-
     ///////////////////////////////////////////////////////
+
+    // Create a counter so we grab only the first 6 approved properties.
+    var taoCounter = 0;
+    // Set the maximum number of properties we should put a widget on
+    var taoWidgetMax = 6;
 
     // Replace original TT container with this
     jQuery('.row.trip-tease-container').each(function () {
@@ -61,6 +41,11 @@ function taoTripTeaseModule() {
             jQuery('.price-fighter-widget').remove();
             return true;
         }
+
+        // If we hit this point, that means this is an approved property!
+        // Bump up the counter by 1. We check later to see if this reaches the
+        // taoWidgetMax value and then break out of each loop if it does.
+        taoCounter++;
 
         // Put in the HTML changes so we can style the call to open the widget
             // Remove original Nightly Rate
@@ -109,6 +94,12 @@ function taoTripTeaseModule() {
             'data-pf-layout="skeleton-1"' +
             'data-pf-custom-css="https://prodcache.internal.ihg.com/content/dam/etc/media_library/cn/0/cn/css/sr/tao-triptease-exp-B.css">' +
             '</div>');
+
+        // See if we have hit the maximum of 6 approved properties. If so,
+        // break out of this each loop by returning false.
+        if (taoCounter === taoWidgetMax) {
+            return false;
+        }
     });
 
     //PL reload paperboy
