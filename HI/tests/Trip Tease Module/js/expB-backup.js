@@ -29,14 +29,15 @@ function taoTripTeaseModule() {
     // Replace original TT container with this
     jQuery('.row.trip-tease-container').each(function () {
 
-        // PL: find the closest .resRow and input[type=hidden].selectedHotelCode =>
-        // the value is what we need to put in data-pf-property
+        // PL: find the closest .resRow and input[type=hidden].selectedHotelCode => the value is what we need to put in data-pf-property
         var result = jQuery(this).closest('.resRow');
         var propertyCode = result.find('input[type=hidden].selectedHotelCode').val();
 
         // See if the propertyCode is in the list of Hotel Codes. If not, then
         // return true and skip to the next .row.trip-tease-container.
         if (jQuery.inArray( propertyCode, taoAllHotelCodes ) < 0 ) {
+            debugger;
+            jQuery('.price-fighter-widget').remove();
             return true;
         }
 
@@ -47,6 +48,7 @@ function taoTripTeaseModule() {
 
         // Put in the HTML changes so we can style the call to open the widget
         // Remove original Nightly Rate
+        //jQuery('.avgrate, .row .vatText').remove();
         result.find('.avgrate, .row .vatText').remove();
 
         // Place "Nightly Rate" text above price container
@@ -97,7 +99,7 @@ function taoTripTeaseModule() {
         if (taoCounter === taoWidgetMax) {
             return false;
         }
-    }); // end of .row.trip-tease-container each() loop
+    });
 
     //PL reload paperboy
     jQuery.getScript('https://paperboy.triptease.net/IHG.js',function(){
@@ -153,6 +155,13 @@ function taoTripTeaseModule() {
             // Show/hide widget container
             jQuery(this).closest('.priceInfoArea').find('.price-fighter-widget').toggleClass('show-widget');
 
+            // PL: Deactivate all other widgets
+            // Paperboy.PriceCheck.deactivate(document.querySelectorAll('.price-fighter-widget'));
+
+            // PL: Activate the widget using a CSS selector
+            //Paperboy.PriceCheck.reset(document.querySelector('.price-fighter-widget.'+$(this).data('pf-property')));
+            // Paperboy.PriceCheck.activate(document.querySelector('.price-fighter-widget.'+$(this).data('pf-property')));
+
             // make taoPopupVisible true
             taoPopupVisible = true;
 
@@ -161,6 +170,9 @@ function taoTripTeaseModule() {
             event.stopPropagation();
 
         } else {
+
+            // PL: Deactivate all widgets using a CSS selector
+            // Paperboy.PriceCheck.deactivate(document.querySelectorAll('.price-fighter-widget'));
 
             // check to see if this popup is open. If so, close it.
             if (jQuery(this).closest('.priceInfoArea').find('.price-fighter-widget').hasClass('show-widget')) {
@@ -176,6 +188,10 @@ function taoTripTeaseModule() {
                 // If it is not open, then close the other one and open this one.
                 jQuery('.show-widget').toggleClass('show-widget');
                 jQuery(this).closest('.priceInfoArea').find('.price-fighter-widget').toggleClass('show-widget');
+
+                // PL: Activate
+                //Paperboy.PriceCheck.reset(document.querySelecotr('.price-fighter-widget.'+$(this).data('pf-property')));
+                // Paperboy.PriceCheck.activate(document.querySelector('.price-fighter-widget.'+$(this).data('pf-property')));
 
                 // prevent page from scrolling to top after click event
                 event.preventDefault();
