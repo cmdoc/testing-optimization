@@ -1,0 +1,2 @@
+Bootstrapper.bindImmediate(function(){var Bootstrapper=window["Bootstrapper"];var ensightenOptions=Bootstrapper.ensightenOptions;if(typeof jQuery==="function"&&typeof trackingJson!=="undefined"&&(new String(trackingJson.siteLanguage)).toLowerCase()==="en")jQuery("a.uhfpopup[title*\x3d'Need Help']").click(function(e){if(typeof IHG_CHAT!=="undefined"&&typeof IHG_CHAT.va!=="undefined"&&typeof IHG_CHAT.va.tracker!=="undefined")IHG_CHAT.va.tracker.registerOpenEvent();else if(typeof jQuery.cookie==="function")jQuery.cookie("ihg__va__OPEN",
+"true")})},1529652,413244);

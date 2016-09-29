@@ -1,0 +1,123 @@
+
+/**
+ * Search Result P-Slot
+ */
+var Interact = (function ($) {
+	
+	//This script need following variables to function:
+	//  1) SLOT_NAME - slot name
+	//  2) BRAND_CODE - brand code
+	//  3) LANAGUAGE_CODE - user language code
+	//  4) COUNTRY_CODE - user country code
+	//  5) AKAMAI_COUNTRY_CODE - user akamai country code
+	//  6) IS_SECURE - is secure  
+	//  7) BKG_BRAND_CODE - booking brand code 
+	//  8) CHECK_IN_DATE - booking check-in date
+	//  9) CHECK_OUT_DATE - booking check-out date
+	//  10) RATE_CODE - booking rate code
+	//  11) BKG_ADULT_QTY - booking adult count
+	//  12) BKG_KID_QTY - booking kid count
+	//  13) BKG_CITY_CODE - booking hotel city code
+	//  14) BKG_STATE_CODE - booking  hotel state code
+	//  15) BKG_COUNTRY_CODE - booking hotel country code
+	//  16) BKG_REGION_CODE - booking hotel region code
+	
+	var hasOffer = false;
+	var initialized = false;
+	var wrapperDiv = null;
+	
+	return {
+		//initialize and invoke p-slot AJAX call
+		init: function (wrapperDivSelector) {
+			wrapperDiv = $(wrapperDivSelector);
+			
+			if(wrapperDiv != null) {
+				this.fetchPSlotContent();
+				initialized = true;
+			}
+		},
+
+		//make AJAX call and fetch p-slot content
+		fetchPSlotContent: function () {
+			$.ajax({
+				url: "/gs-json/interact/pSlot",
+				type: "POST",
+				dataType: 'json',
+				data: {
+					slotName: SLOT_NAME,
+					brandCode: BRAND_CODE,
+					languageCode: LANAGUAGE_CODE,
+					countryCode: COUNTRY_CODE,
+					akamaiCountryCode: AKAMAI_COUNTRY_CODE,
+
+					isSecure: IS_SECURE,
+					bkgBrand: BKG_BRAND_CODE,
+					checkInDate: CHECK_IN_DATE,
+					checkOutDate: CHECK_OUT_DATE,
+					rateCode: RATE_CODE,
+					bkgAdultQty: BKG_ADULT_QTY,
+					bkgKidQty: BKG_KID_QTY,
+
+					bkgCityCode: BKG_CITY_CODE,
+					bkgStateCode: BKG_STATE_CODE,
+					bkgCountryCode: BKG_COUNTRY_CODE,
+					bkgRegionCode: BKG_REGION_CODE,
+				},
+				//async: false, // do not want to block page execution
+				complete: function (jqXHR) {
+					var responseObj = $.parseJSON(jqXHR.responseText);
+					if (responseObj) {
+						hasOffer = true;
+						Interact.displayOfferContent(responseObj);
+					} else {
+						hasOffer = false;
+					}
+				},
+				error: function (jqXHR) {
+					//in case of error, do nothing
+					hasOffer = false;
+				}
+			});
+		},
+
+		displayOfferContent: function (offer) {
+            var hasImg = false;
+	            
+            if(offer.contentHtml) {
+                
+                /* adding check for day content */
+                try {
+                    wrapperDiv.html(offer.contentHtml);
+                } catch(err) {
+                    $.noop;
+                    /*console.log("SR pslot error, source xhr content");*/
+                }
+                
+                hasImg = $(wrapperDiv).find('img').length;
+	              
+                if (hasImg) {
+                    wrapperDiv.show();
+                } else {
+                    $.noop;
+                }
+            }
+            
+		},
+		
+
+		//returns a flag if AJAX has returned any offer or not
+		hasOffer : function() {
+			return hasOffer;
+		},
+
+		//returns a flag for this script initialization
+		isInitialized : function() {
+			return initialized;
+		}
+	};
+}(window.jQuery));
+
+
+$(document).ready(function() {
+	Interact.init(".pslotContentWrapper");
+});

@@ -1,0 +1,132 @@
+var RoomKey = (function ($) { // See also GLOBAL_ROOMKEY alias below...
+
+	var _private = { // Private Closure, changeable only via _public at runtime...
+
+			// private vars (private vars cannot access public vars inside self...)
+			version: "1.0.2",
+
+			// private functions
+			setVersion: function (num) {
+				_private.version = num;
+			},
+
+			// dev testing...
+			debug: true // Set to 'false' to suppress TRACE messages in console...
+		};
+
+	var _public  = { // Shared access, changeable at runtime...
+
+		// entry points...
+		onStartUp: {},
+		onDocumentReady: {},
+	
+		// modules...
+
+		// public vars
+		copyright: "Copyright \u00A92013 IHG\u00AE - InterContinental Hotels Group, PLC",
+
+		// Read-only version number.
+		getVersion: function () {
+			return _private.version;
+		},
+
+		// Console Debug Output.
+		// Usage: RoomKey.TRACE('msg') === console.log('msg')
+		TRACE: (_private.debug && window.console && window.console.log && window.console.log.bind) ? window.console.log.bind(window.console) : function () {}
+	};
+
+		
+	function getCookie(name) {
+		var nameEQ = name + "=";
+		var ca = document.cookie.split(';');
+		for(var i=0; i < ca.length; i++) {
+			var c = $.trim(ca[i]);
+			if (c.indexOf(nameEQ) == 0) {
+				return c.substring(nameEQ.length, c.length);
+			}
+		}
+		return null;
+	};
+	
+	_public.loadPopunder = function(roomkey_config, isForcePopunder) {
+		isForcePopunder = isForcePopunder || false;
+		if (isForcePopunder === true || isForcePopunder === "true") {
+			isForcePopunder = true;
+		}
+		var cookieVal = getCookie("hotelicopterCookie");
+		if (cookieVal == null) {
+        	RoomKey.TRACE('RoomKey Popunder : cookie not found');
+			return;
+		}
+		
+		var cookieValTokens = cookieVal.split("**");
+		var isEligibleForRoomkey = cookieValTokens[0].split('^')[1] === "true";
+		var isInSplitTraffic = cookieValTokens[1].split('^')[1] === "true";
+		var isOverridePopunder = cookieValTokens[2].split('^')[1];
+		
+		// SP2-ROOMKEY
+		if(getCookie("roomKeyCookie") != null) {
+			isEligibleForRoomkey = false;
+		} 
+		
+		// SP2-ROOMKEY
+		if(isEligibleForRoomkey && isOverridePopunder !== "false" && (isOverridePopunder === "true" || isForcePopunder || isInSplitTraffic)) {
+			 try {
+		          CopterConnect.load(
+		            roomkey_config.apiCode_val, {
+		            location : roomkey_config.location_val,
+		            state : roomkey_config.state_val,
+		            country : roomkey_config.country_val,
+		            lat : roomkey_config.lat_val,
+		            lng : roomkey_config.lng_val,
+		            property_id : "",
+		            check_in : roomkey_config.check_in_val,
+		            check_out : roomkey_config.check_out_val,
+		            rooms : roomkey_config.rooms_val,
+		            guests : roomkey_config.guests_val,
+		            price_from : 0,
+		            price_to : 0,
+		            star_from : 1,
+		            star_to : 5,
+		            brand : roomkey_config.brand_val,
+		            amenities : "",
+		            currency : roomkey_config.currency_val,
+		            language : roomkey_config.language_val,
+		            source_page : roomkey_config.source_page_val,
+		            visitor_type : "",
+		            custom_data : "",
+		            window_name : 'IHG_Roomkey_pop',
+		            locale : roomkey_config.locale,
+		            allow_tab_under : "true"
+		          });
+		          
+		          // Omniture tracking
+		          s.tl(this,'o','room key pop under called');
+		          
+		          // SP2-ROOMKEY
+		          var creationDate = new Date();
+				  var expDate = new Date();
+				  var days = 14;
+				  expDate.setTime(expDate.getTime() + (days*24*60*60*1000));
+				  var urlPath = window.location.href;
+				  var domain = urlPath.substring(0, urlPath.indexOf(".com/"));
+				  domain = domain.substring(domain.lastIndexOf(".")+1)+".com";
+				  document.cookie = "roomKeyCookie=" + creationDate.getTime() + "; expires=" + expDate.toGMTString() + "; domain=" + domain + "; path=/";
+				  
+				  // SP2-ROOMKEY
+		        } catch(err) {
+		        	RoomKey.TRACE('RoomKey Failed: '+err.getMessage());
+		        }
+		}  else {
+        	RoomKey.TRACE('RoomKey Popunder not being called. Either the cookie / request param are empty, or the switch for hotelicopter is turned off or the current browser is FF 4 or above');
+		}
+	};
+	
+	// Return public methods.
+	return _public;
+	
+}(window.jQuery));
+
+//Alias as GLOBAL_*_* to protect namespace...
+var GLOBAL_ROOMKEY = RoomKey;
+
