@@ -1,3 +1,13 @@
-.row.bottomBtnRow {
-    bottom: -45px;
+.row.iconBadgeRow {
+    margin-top: 20px;
+}
+
+.row.taoHotelName {
+    margin-left: 35px;
+}
+
+.priceInfoArea img {
+    max-width: 80px;
+    margin: 0 auto 12px;
+    display: block;
 }
