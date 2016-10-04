@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="521197ba-e163-43f7-9ee2-e254e3296d97" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/expB-backup.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Content Simplification/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Content Simplification/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Content Simplification/js/expB.js" afterPath="$PROJECT_DIR$/../Content Simplification/js/expB.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/expB.js" afterPath="$PROJECT_DIR$/js/expB.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../IHG/tests/Extended Stay Preferences/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../../IHG/tests/Extended Stay Preferences/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../IHG/tests/Extended Stay Preferences/JS/ExpB.js" afterPath="$PROJECT_DIR$/../../../IHG/tests/Extended Stay Preferences/JS/ExpB.js" />
     </list>
     <ignored path="Trip Tease Module.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,7 +32,7 @@
           <file leaf-file-name="expB.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/expB.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2042">
+                <state relative-caret-position="68">
                   <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
@@ -47,7 +44,7 @@
           <file leaf-file-name="expB-backup.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/expB-backup.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
+                <state relative-caret-position="357">
                   <caret line="25" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="585" selection-end-column="0" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
@@ -59,7 +56,7 @@
           <file leaf-file-name="expB-brion.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/expB-brion.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
+                <state relative-caret-position="1190">
                   <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
@@ -264,17 +261,19 @@
       <workItem from="1474306270357" duration="685000" />
       <workItem from="1474550881736" duration="3121000" />
       <workItem from="1474895706221" duration="4889000" />
+      <workItem from="1475154675136" duration="7000" />
+      <workItem from="1475233555784" duration="124000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39309000" />
+    <option name="totallyTimeSpent" value="39440000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14383562" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14383562" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -308,6 +307,82 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/expB.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3553">
+          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/expB-backup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="585" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/expB-brion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/expC.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/expB.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3553">
+          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/expB-backup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="585" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/expB-brion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/expC.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/expB.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1870">
@@ -560,7 +635,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/expB-brion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="1190">
           <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -570,7 +645,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/expB-backup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="357">
           <caret line="25" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="585" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -588,7 +663,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/expB.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2042">
+        <state relative-caret-position="68">
           <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />

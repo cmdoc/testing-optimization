@@ -1,10 +1,9 @@
-﻿// =================== START =======================
+// =================== START =======================
 //jshint strict:false
 //jshint jquery:true
 //jshint browser:true
 //jshint camelcase:false
 /*globals roomkey_config,Paperboy*/
-
 
 function taoTripTeaseModule() {
 
@@ -108,28 +107,49 @@ function taoTripTeaseModule() {
                 // widget won't show/hide the button
                 // 1. find the widget
                 var widget = jQuery('.price-fighter-widget')[event.id];
-                // 2. find the corresponding .priceInfoArea
-                var taoPriceInfoArea = jQuery(widget).closest('.priceInfoArea');
-                // 3. find the button
-                var button = jQuery(taoPriceInfoArea).find('.taoCompare');
-                // 4. hide it
+                // 2. find the button
+                var button = jQuery(widget).closest('.priceInfoArea').find('.taoCompare');
+                // 3. hide it
                 button.hide();
 
-                var priceNow = jQuery(taoPriceInfoArea).find('.priceNow'); // PL this should rather be
-                var taoWrapper = jQuery(taoPriceInfoArea).find('.taoPriceNowWrapper'); // PL this should rather be
+                jQuery('.priceInfoArea').each(function(){
 
-                // Remove price info styling
-                taoWrapper.css({
-                    'background': 'none',
-                    'border': 'none',
-                    'padding': '0',
-                    'overflow': 'visible'
+                    // var taoWrapper = jQuery('.taoPriceNowWrapper');
+                    // var priceNow = jQuery('.priceNow');
+
+                    var priceNow = jQuery(this).find('.priceNow'); // PL this should rather be
+                    var taoWrapper = jQuery(this).find('.taoPriceNowWrapper'); // PL this should rather be
+
+                    if(jQuery(this).children('.taoCompare:hidden')) {
+
+                        // Remove price info styling
+                        taoWrapper.css({
+                            'background': 'none',
+                            'border': 'none',
+                            'padding': '0',
+                            'overflow': 'visible'
+                        });
+
+                        // If parent is 'taoPriceNowWrapper' unwrap it
+                        if(priceNow.parent().is('section.taoPriceNowWrapper')) {
+                            jQuery('.priceNow').unwrap();
+                        }
+
+                    }
+
+                    var taoPRICING = jQuery(this).find('.taoNightlyRate, .priceNow, .taoCompare');
+
+                    // If child of 'priceInfoArea' have 'visible' CTAs
+                    // wrap the desired elements
+                    if(jQuery(this).children('.taoComapre:visible')) {
+                        jQuery(taoPRICING).wrapAll('<section class="taoPriceNowWrapper"></section>');
+
+                        // Otherwise, if any child is 'hidden' unwrap the desired elements
+                    } else if(jQuery(this).children('.taoComapre:hidden')) {
+                        jQuery(taoPRICING).unwrap();
+                    }
+
                 });
-
-                // If parent is 'taoPriceNowWrapper' unwrap it
-                if(priceNow.parent().is('section.taoPriceNowWrapper')) {
-                    jQuery(priceNow).unwrap();
-                }
 
             }
 
@@ -561,3 +581,6 @@ var taoAllHotelCodes = [
 ];
 // =================== END =======================
 
+/**
+ * Created by daquinc on 9/30/2016.
+ */
