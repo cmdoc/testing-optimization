@@ -1,7 +1,3 @@
-.row.iconBadgeRow {
-    margin-top: 20px;
-}
-
 .row.taoHotelName {
     margin-left: 35px;
 }
@@ -13,9 +9,13 @@
 }
 
 .bottomBtnRow {
-     margin-top: 65px;
-     bottom: inherit;
- }
+    margin-top: 32px;
+    bottom: inherit;
+}
+
+div.taoHotelName > div.row.starRow {
+    margin-left: 0 !important;
+}
 
 div.row.priceBookSave {
     margin-top: 0;

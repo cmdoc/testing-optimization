@@ -14,8 +14,53 @@ Bootstrapper.MVT.injectCSS(".detailSpecsTop { display: none; }");
 Bootstrapper.MVT.injectCSS(".detailsLink { display: none; }");
 Bootstrapper.MVT.injectCSS(".priceBookSave { display: none; }");
 
-
+// doc ready!
 jQuery("document").ready(function(){
+
+    // On doc ready, call the taoRearrange() function
+    taoRearrange();
+
+    // Watch for a click on Show More or Show All. On ajaxComplete(), rerun the
+    // taoRearrange() function.
+    jQuery("body").on("click", "#showMoreLink, #showAllLink", function () {
+        jQuery(document).ajaxComplete(function (event, request, settings) {
+            taoRearrange();
+        });
+    });
+
+    // Click track functions
+    jQuery(".detailsBtn").on("click", function () {
+        mboxPixelTrack('mboxClickTrack', 'clicked=detailsClick');
+    });
+
+    jQuery(".mapsBtn").on("click", function () {
+        mboxPixelTrack('mboxClickTrack', 'clicked=mapsClick');
+    });
+
+    jQuery(".photoViewerWrapper").on("click", function () {
+        mboxPixelTrack('mboxClickTrack', 'clicked=galleryClick');
+    });
+
+});
+
+///////////////////////////////////////////////////////////////////////////////
+// F U N C T I O N S
+function mboxPixelTrack(mbox) {
+    // Code stolen from Adobe's Proactive Chat. This should track click events.
+    var d = new Date();
+    var ub = mboxFactoryDefault.getUrlBuilder().clone();
+    ub.addParameter("mbox", mbox);
+    ub.addParameter('mboxTime', d.getTime() - (d.getTimezoneOffset() * 60000));
+    ub.addParameters(Array.prototype.slice.call(arguments).slice(1));
+    var img = new Image();
+    img.src = ub.buildUrl().replace("/mbox/undefined", "/mbox/ajax");
+    img.style.display = "none";
+    if (document.body) {
+        document.body.insertBefore(img, document.body.firstChild);
+    }
+}
+
+function taoRearrange () {
 
     // Move the hotel name to the new location. To do this, we have to loop
     // through each hotel name. For each hotel name, add a .taoHotelName css
@@ -72,34 +117,4 @@ jQuery("document").ready(function(){
     // With the thumbnail moved, we can remove .detailSpecsTop
     jQuery(".detailSpecsTop").remove();
 
-    // Click track functions
-    jQuery(".detailsBtn").on("click", function () {
-        mboxPixelTrack('mboxClickTrack', 'clicked=detailsClick');
-    });
-
-    jQuery(".mapsBtn").on("click", function () {
-        mboxPixelTrack('mboxClickTrack', 'clicked=mapsClick');
-    });
-
-    jQuery(".photoViewerWrapper").on("click", function () {
-        mboxPixelTrack('mboxClickTrack', 'clicked=galleryClick');
-    });
-
-});
-
-///////////////////////////////////////////////////////////////////////////////
-// F U N C T I O N S
-function mboxPixelTrack(mbox) {
-    // Code stolen from Adobe's Proactive Chat. This should track click events.
-    var d = new Date();
-    var ub = mboxFactoryDefault.getUrlBuilder().clone();
-    ub.addParameter("mbox", mbox);
-    ub.addParameter('mboxTime', d.getTime() - (d.getTimezoneOffset() * 60000));
-    ub.addParameters(Array.prototype.slice.call(arguments).slice(1));
-    var img = new Image();
-    img.src = ub.buildUrl().replace("/mbox/undefined", "/mbox/ajax");
-    img.style.display = "none";
-    if (document.body) {
-        document.body.insertBefore(img, document.body.firstChild);
-    }
 }

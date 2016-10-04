@@ -7,7 +7,12 @@
 }
 
 .priceInfoArea img {
-    max-width: 80px;
-    margin: 0 auto 12px;
+    max-width: 90px;
+    margin: 0 auto 10px;
     display: block;
+}
+
+div.row.priceBookSave {
+    margin-top: 0;
+    margin-bottom: 0;
 }

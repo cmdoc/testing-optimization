@@ -1,10 +1,10 @@
-// Hide the hotel description, address, phone numbers, "Nightly Rate,"
-// original price information, the icon badge row and the whole detail
-// specs row above the thumbnail.
-Bootstrapper.MVT.injectCSS(".row.hotelDesc { display: none; }");
+// Hide the icon badge row, address, phone numbers, "Nightly Rate,"
+// original price information, and the whole detail specs row above the
+// thumbnail.
+Bootstrapper.MVT.injectCSS(".row.iconBadgeRow { display: none; }");
 Bootstrapper.MVT.injectCSS(".row.addressRow { display: none; }");
 Bootstrapper.MVT.injectCSS(".row.phoneRow { display: none; }");
-Bootstrapper.MVT.injectCSS(".row.iconBadgeRow { display: none; }");
+Bootstrapper.MVT.injectCSS(".row.distanceRow { display: none; }");
 Bootstrapper.MVT.injectCSS(".avgrate { display: none; }");
 Bootstrapper.MVT.injectCSS(".col-md-12.priceBefore { display: none; }");
 Bootstrapper.MVT.injectCSS(".detailSpecsTop { display: none; }");
@@ -15,7 +15,7 @@ Bootstrapper.MVT.injectCSS(".detailsLink { display: none; }");
 Bootstrapper.MVT.injectCSS(".priceBookSave { display: none; }");
 
 // doc ready!
-jQuery("document").ready(function(){
+jQuery("document").ready(function() {
 
     // On doc ready, call the taoRearrange() function
     taoRearrange();
@@ -27,9 +27,6 @@ jQuery("document").ready(function(){
             taoRearrange();
         });
     });
-
-    // With the thumbnail moved, we can remove .detailSpecsTop
-    jQuery(".detailSpecsTop").remove();
 
     // Click track functions
     jQuery(".detailsBtn").on("click", function () {
@@ -79,6 +76,11 @@ function taoRearrange () {
     // Now that the loop is done, show the hotel name
     jQuery(".detailsLink").show();
 
+    // Move the star ratings up to between the hotel name and description.
+    jQuery(".row.starRow").each(function(){
+        jQuery(this).insertBefore(jQuery(this).parent().find(".row.hotelDesc"));
+    });
+
     // Remove the "Nightly Rate" from the right side of the row
     jQuery(".avgrate").parent().remove();
 
@@ -116,5 +118,8 @@ function taoRearrange () {
     jQuery(".detailSpecsTop img").each(function () {
         jQuery(this).prependTo(jQuery(this).closest(".resRow").find(".priceInfoArea"));
     });
+
+    // With the thumbnail moved, we can remove .detailSpecsTop
+    jQuery(".detailSpecsTop").remove();
 
 }
