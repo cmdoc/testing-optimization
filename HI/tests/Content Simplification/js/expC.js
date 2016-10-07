@@ -91,7 +91,7 @@ function taoRearrange () {
         // into the new location
         $taoActualSavings.find("span").each(function (i) {
             jQuery(this).appendTo($taoPriceBookSaveTitle.find(".col-md-12"));
-            if (i == 1 || i == 2) {
+            if (i == 2) {
                 $taoPriceBookSaveTitle.find(".col-md-12").append(document.createTextNode("\u00A0"));
             }
         });

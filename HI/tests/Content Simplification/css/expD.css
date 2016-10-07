@@ -9,8 +9,8 @@
 }
 
 .bottomBtnRow {
-    margin-top: 32px;
-    bottom: inherit;
+    bottom: 0;
+    position: absolute;
 }
 
 div.taoHotelName > div.row.starRow {
@@ -20,4 +20,8 @@ div.taoHotelName > div.row.starRow {
 div.row.priceBookSave {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+div.detailSpecsBottom .col-md-7.details {
+    height: 182px;
 }
