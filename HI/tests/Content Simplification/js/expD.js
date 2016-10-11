@@ -23,9 +23,22 @@ jQuery("document").ready(function() {
     // Watch for a click on Show More or Show All. On ajaxComplete(), rerun the
     // taoRearrange() function.
     jQuery("body").on("click", "#showMoreLink, #showAllLink", function () {
+
+        localStorage.setItem("taoShowClick", "true");
+
         jQuery(document).ajaxComplete(function (event, request, settings) {
-            taoRearrange();
+
+            if (localStorage.getItem("taoShowClick") == "true") {
+
+                debugger;
+                taoRearrange();
+
+            }
+
+            localStorage.setItem("taoShowClick", "false");
+
         });
+
     });
 
     // Click track functions
@@ -89,6 +102,11 @@ function taoRearrange () {
     // we find the actual savings and move it up the "Book Now" node. Finally,
     // remove the node the actual savings was in.
     jQuery(".priceBookSaveTitle").each(function () {
+
+        // Before we do anything, replace the 'and' with '&'
+        var taoTemp = jQuery(this).find("span").text().replace("and","&");
+        jQuery(this).find("span").text(taoTemp);
+
         var $taoPriceBookSaveTitle = jQuery(this);
         var $taoActualSavings = $taoPriceBookSaveTitle.parent().find(".col-md-12").eq(1);
 
