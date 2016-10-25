@@ -1,0 +1,32 @@
+.taoSOGrates {
+     display: none;
+ }
+
+.taoSOGrates .secondaryRates {
+    display: block;
+}
+
+.taoSpecialOfferGroup .regularRates,
+.taoSpecialOfferGroup .secondaryRates {
+    background-color: #fff;
+}
+
+.taoSOGpadding {
+    padding-bottom: 40px;
+    background-color: #ddd;
+}
+
+.taoSOGHeader input.cssButton.bcex {
+    width: 181px !important;
+    text-transform: none !important;
+    font-weight: bold;
+    padding-left: 40px !important;
+}
+
+.taoSOGHeader {
+    background-color: #ddd;
+}
+
+.taoSOGHeaderPadding {
+    padding-bottom: 3px;
+}
