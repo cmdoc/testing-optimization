@@ -9,9 +9,9 @@ jQuery("document").ready(function(){
 
         // create a div for any rates we find that we need to move
         var $taoSpecialOfferGroupingDiv = jQuery("<div class='taoSpecialOfferGroup'></div>");
-        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGHeader taoSOGHeaderPadding'><input class='cssButton bcex' value='Special Offers &amp; Deals'></div>");
+        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGHeader taoSOGHeaderPadding'>Special Offers &amp; Deals</div>");
         $taoSpecialOfferGroupingDiv.append("<div class='taoSOGrates' id='taoSOG" + i + "'></div>");
-        $taoThisRoom.prepend($taoSpecialOfferGroupingDiv);
+        $taoSpecialOfferGroupingDiv.insertBefore($taoThisRoom.find(".viewAllRatesLink"));
 
         // Go through all of the rates for this room and move the special
         // offers and secondary rates to the new div
@@ -28,22 +28,14 @@ jQuery("document").ready(function(){
 
         });
 
-        // Add a Hide button to the new div
-        jQuery("#taoSOG" + i).append("<div class='taoSOGFooter'><input class='cssButton bcex' value='Hide Special Offers &amp; Deals'>");
-
     });
 
     // Put in all the code and functionality to cause the new button to open
     // and close the grouped rates.
-    jQuery(".taoSOGHeader, .taoSOGFooter").on("click", "input", function () {
+    jQuery(".taoSOGHeader").on("click", function () {
 
         // find the parent div
         var $taoSOGDiv = jQuery(this).closest(".taoSpecialOfferGroup");
-
-        // toggle the .taoSOGpadding and .taoSOGHeaderPadding classes so the
-        // open or closed group has the right padding
-        $taoSOGDiv.toggleClass("taoSOGpadding");
-        $taoSOGDiv.find(".taoSOGHeader").toggleClass("taoSOGHeaderPadding");
 
         // toggle the rates being offered in this .taoSpecialOfferGroup
         $taoSOGDiv.find(".taoSOGrates").toggle(500);
