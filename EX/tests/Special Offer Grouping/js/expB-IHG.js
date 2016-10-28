@@ -34,7 +34,7 @@ jQuery("document").ready(function(){
         });
 
         // Add a Hide button to the new div
-        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGFooter'><input class='cssButton bcex' value='Hide Special Offers &amp; Deals'>" + taoCircleMinus + "</div>");
+        jQuery("#taoSOG" + i).append("<div class='taoSOGFooter'><input class='cssButton bcex' value='Hide Special Offers &amp; Deals'>" + taoCircleMinus + "</div>");
 
     });
 
@@ -62,7 +62,7 @@ jQuery("document").ready(function(){
         $taoSOGDiv.find(".taoSOGHeader").toggleClass("taoSOGHeaderPadding");
 
         // toggle the rates being offered in this .taoSpecialOfferGroup
-        $taoSOGDiv.find(".taoSOGrates, .taoSOGFooter").toggle(500);
+        $taoSOGDiv.find(".taoSOGrates").toggle(500);
 
         // put the focus on the body to remove odd behavior of button
         // highlighting and text cursor appearing in text of button.

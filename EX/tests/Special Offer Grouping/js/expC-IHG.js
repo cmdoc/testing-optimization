@@ -1,5 +1,8 @@
 jQuery("document").ready(function(){
 
+    // Create an image tag for the down caret for use in the SOG header
+    var taoDownCaret = "<svg class='taoDownCaret'><use xlink:href='#tao_down_caret' /></svg>";
+
     // Start working on the page, hitting one rate type at a time
     jQuery(".rateTypeLineItems").each(function(i) {
 

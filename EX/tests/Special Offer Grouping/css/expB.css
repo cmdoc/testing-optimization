@@ -1,6 +1,7 @@
 .taoSOGrates {
     display: none;
     margin-top: -2px;
+    border: 2px solid #0055a5;
  }
 
 .taoSOGrates .secondaryRates {
@@ -33,6 +34,7 @@
     position: relative;
     float: right;
     right: 154px;
+    bottom: 2px;
 }
 
 .taoSOGHeader {
@@ -47,3 +49,22 @@
     border-top: 0;
 }
 
+.taoSOGFooter {
+    display: none;
+}
+
+.taoSOGHeader svg {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    top: 6px;
+    right: 178px;
+}
+
+.taoSOGFooter svg {
+    height: 20px;
+    width: 20px;
+    position: relative;
+    top: 8px;
+    left: 593px;
+}
