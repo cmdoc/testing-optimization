@@ -1,5 +1,8 @@
 jQuery("document").ready(function(){
 
+    // Create an image tag for the down caret for use in the SOG header
+    var taoDownCaret = "<img class='taoDownCaret' src='//prodcache.internal.ihg.com/content/dam/etc/media_library/branded/cn/images/transparent_1x1.gif' border='0'>";
+
     // Start working on the page, hitting one rate type at a time
     jQuery(".rateTypeLineItems").each(function(i) {
 
@@ -9,7 +12,7 @@ jQuery("document").ready(function(){
 
         // create a div for any rates we find that we need to move
         var $taoSpecialOfferGroupingDiv = jQuery("<div class='taoSpecialOfferGroup'></div>");
-        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGHeader taoSOGHeaderPadding'>Special Offers &amp; Deals</div>");
+        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGHeader taoSOGHeaderPadding'>Special Offers &amp; Deals " + taoDownCaret + "</div>");
         $taoSpecialOfferGroupingDiv.append("<div class='taoSOGrates' id='taoSOG" + i + "'></div>");
         $taoSpecialOfferGroupingDiv.insertBefore($taoThisRoom.find(".viewAllRatesLink"));
 
@@ -40,9 +43,8 @@ jQuery("document").ready(function(){
         // toggle the rates being offered in this .taoSpecialOfferGroup
         $taoSOGDiv.find(".taoSOGrates").toggle(500);
 
-        // put the focus on the body to remove odd behavior of button
-        // highlighting and text cursor appearing in text of button.
-        $taoSOGDiv.click();
+        // find the caret image and toggle the class
+        jQuery(this).find("img").toggleClass("taoDownCaret");
 
     });
 

@@ -30,7 +30,7 @@
 }
 
 .taoSOGHeader {
-    background-color: #0055a5;
+    background-color: #db6928;
     border-top: 3px solid #ddd;
     color: #fff;
     font-weight: bold;
@@ -49,14 +49,14 @@
 }
 
 .taoSOGHeader img.taoDownCaret {
-    background: url(//prodcache.internal.ihg.com/content/dam/etc/media_library/branded/ex/cn/icons/sprite/roomrates-sprite.png) no-repeat scroll -2px -64px transparent;
+    background: url(//prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/cn/icons/sprite/roomrates-sprite.png) no-repeat scroll -2px -64px transparent;
     height: 22px;
     margin-bottom: 0;
     width: 30px;
 }
 
 .taoSOGHeader img {
-    background: url(//prodcache.internal.ihg.com/content/dam/etc/media_library/branded/ex/cn/icons/sprite/roomrates-sprite.png) no-repeat scroll -2px -3px transparent;
+    background: url(//prodcache.internal.ihg.com/content/dam/etc/media_library/branded/6c/cn/icons/sprite/roomrates-sprite.png) no-repeat scroll -2px -3px transparent;
     height: 22px;
     margin-bottom: 0;
     width: 30px;
