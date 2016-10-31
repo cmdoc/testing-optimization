@@ -47,3 +47,8 @@
 #roomRateRoomType .viewAllRatesLink {
     border-top: none;
 }
+
+svg.taoCaret {
+    height: 10px;
+    width: 24px;
+}

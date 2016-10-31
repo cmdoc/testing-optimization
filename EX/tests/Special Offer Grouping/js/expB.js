@@ -45,7 +45,7 @@ jQuery("document").ready(function(){
         // find the parent div
         var $taoSOGDiv = jQuery(this).closest(".taoSpecialOfferGroup");
 
-        // identify the svg tags in the header and footer.
+        // identify the svg tags in the header.
         var $taoSOGHeaderSVG = $taoSOGDiv.find(".taoSOGHeader svg use");
 
         // Figure out what SVG icon is being referred to and change it to

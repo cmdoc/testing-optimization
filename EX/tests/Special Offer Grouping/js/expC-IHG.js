@@ -1,7 +1,8 @@
 jQuery("document").ready(function(){
 
     // Create an image tag for the down caret for use in the SOG header
-    var taoDownCaret = "<svg class='taoDownCaret'><use xlink:href='#tao_down_caret' /></svg>";
+    var taoDownCaret = "<svg class='taoCaret'><use xlink:href='#tao_down_caret' /></svg>";
+    var taoUpCaret = "<svg class='taoCaret'><use xlink:href='#tao_up_caret' /></svg>";
 
     // Start working on the page, hitting one rate type at a time
     jQuery(".rateTypeLineItems").each(function(i) {
@@ -43,8 +44,16 @@ jQuery("document").ready(function(){
         // toggle the rates being offered in this .taoSpecialOfferGroup
         $taoSOGDiv.find(".taoSOGrates").toggle(500);
 
-        // find the caret image and toggle the class
-        jQuery(this).find("img").toggleClass("taoDownCaret");
+        // identify the svg tags in the header and footer.
+        var $taoSOGHeaderSVG = $taoSOGDiv.find(".taoSOGHeader svg use");
+
+        // Figure out what SVG icon is being referred to and change it to
+        // reference the other one
+        if ($taoSOGHeaderSVG.attr("xlink:href") == "#tao_down_caret") {
+            $taoSOGHeaderSVG.attr("xlink:href", "#tao_up_caret");
+        } else {
+            $taoSOGHeaderSVG.attr("xlink:href", "#tao_down_caret");
+        }
 
     });
 
