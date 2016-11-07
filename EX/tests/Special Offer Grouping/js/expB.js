@@ -14,7 +14,7 @@ jQuery("document").ready(function(){
 
         // create a div for any rates we find that we need to move
         var $taoSpecialOfferGroupingDiv = jQuery("<div class='taoSpecialOfferGroup'></div>");
-        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGHeader taoSOGHeaderPadding'><input class='cssButton bcex' value='Special Offers &amp; Deals'>" + taoCirclePlus + "</div>");
+        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGHeader taoSOGHeaderPadding'><span class='cssButton bcex' type='button'>Special Offers &amp; Deals</span>" + taoCirclePlus + "</div>");
         $taoSpecialOfferGroupingDiv.append("<div class='taoSOGrates' id='taoSOG" + i + "'></div>");
         $taoThisRoom.prepend($taoSpecialOfferGroupingDiv);
 
@@ -34,13 +34,13 @@ jQuery("document").ready(function(){
         });
 
         // Add a Hide button to the new div
-        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGFooter'><input class='cssButton bcex' value='Hide Special Offers &amp; Deals'>" + taoCircleMinus + "</div>");
+        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGFooter'><input class='cssButton bcex' type='button' value='Hide Special Offers &amp; Deals'>" + taoCircleMinus + "</div>");
 
     });
 
     // Put in all the code and functionality to cause the new button to open
     // and close the grouped rates.
-    jQuery(".taoSOGHeader, .taoSOGFooter").on("click", "input", function () {
+    jQuery(".taoSOGHeader span, .taoSOGFooter input, svg.taoCirclePlus, svg.taoCircleMinus").on("click", function () {
 
         // find the parent div
         var $taoSOGDiv = jQuery(this).closest(".taoSpecialOfferGroup");
@@ -63,10 +63,6 @@ jQuery("document").ready(function(){
 
         // toggle the rates being offered in this .taoSpecialOfferGroup
         $taoSOGDiv.find(".taoSOGrates, .taoSOGFooter").toggle(500);
-
-        // put the focus on the body to remove odd behavior of button
-        // highlighting and text cursor appearing in text of button.
-        $taoSOGDiv.click();
 
     });
 

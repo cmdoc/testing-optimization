@@ -26,11 +26,11 @@
 }
 
 .taoSOGHeader input.cssButton.bcex {
-    width: 141px !important;
+    width: 194px !important;
 }
 
 .taoSOGFooter input.cssButton.bcex {
-    width: 167px !important;
+    width: 218px !important;
     position: relative;
     float: right;
     right: 154px;
@@ -58,13 +58,22 @@
     width: 20px;
     position: relative;
     top: 6px;
-    right: 178px;
+    right: 194px;
 }
 
 .taoSOGFooter svg {
     height: 20px;
     width: 20px;
     position: relative;
-    top: 8px;
+    top: 6px;
     left: 593px;
 }
+
+svg.taoCirclePlus, svg.taoCircleMinus {
+    cursor: pointer;
+}
+
+.taoSOGHeader span {
+    padding: 9px 12px 9px 34px;
+}
+
