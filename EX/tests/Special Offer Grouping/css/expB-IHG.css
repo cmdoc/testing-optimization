@@ -55,7 +55,7 @@
     display: none;
 }
 
-.taoSOGHeader svg {
+.taoSOGHeader img {
     height: 20px;
     width: 20px;
     position: relative;
@@ -63,7 +63,7 @@
     right: 160px;
 }
 
-.taoSOGFooter svg {
+.taoSOGFooter img {
     height: 20px;
     width: 20px;
     position: relative;
@@ -71,7 +71,7 @@
     left: 593px;
 }
 
-svg.taoCirclePlus, svg.taoCircleMinus {
+.taoCirclePlus, .taoCircleMinus {
      cursor: pointer;
  }
 

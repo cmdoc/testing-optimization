@@ -25,11 +25,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.6951301">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="expB.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="expB.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/expB.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="5" column="227" selection-start-line="5" selection-start-column="227" selection-end-line="5" selection-end-column="227" />
+                <state relative-caret-position="66">
+                  <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
                   <folding>
                     <marker date="1478707988597" expanded="true" signature="1352:1357" ph="&amp;" />
                   </folding>
@@ -37,13 +37,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="expB-IHG.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="expB-IHG.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/expB-IHG.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="799">
-                  <caret line="65" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+                <state relative-caret-position="102">
+                  <caret line="6" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
                   <folding>
-                    <marker date="1478549876248" expanded="true" signature="907:912" ph="&amp;" />
+                    <marker date="1478715188927" expanded="true" signature="1352:1357" ph="&amp;" />
                   </folding>
                 </state>
               </provider>
@@ -64,51 +64,11 @@
           <file leaf-file-name="expC-IHG.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/expC-IHG.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="612">
-                  <caret line="36" column="76" selection-start-line="0" selection-start-column="0" selection-end-line="63" selection-end-column="3" />
+                <state relative-caret-position="102">
+                  <caret line="6" column="54" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
                   <folding>
                     <marker date="1477927510166" expanded="true" signature="815:820" ph="&amp;" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IHG_minus_icon.svg" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/optimized_images/IHG_minus_icon.svg">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IHG_plus_icon.svg" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/optimized_images/IHG_plus_icon.svg">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="119">
-                  <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EX_plus_icon.svg" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/optimized_images/EX_plus_icon.svg">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="119">
-                  <caret line="7" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="6" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EX_minus_icon.svg" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/optimized_images/EX_minus_icon.svg">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -117,21 +77,21 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="expB.css" pinned="false" current-in-tab="true">
+          <file leaf-file-name="expB.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/css/expB.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="544">
-                  <caret line="62" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+                  <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="expB-IHG.css" pinned="false" current-in-tab="false">
+          <file leaf-file-name="expB-IHG.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/css/expB-IHG.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="663">
-                  <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+                <state relative-caret-position="482">
+                  <caret line="65" column="17" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
                   <folding />
                 </state>
               </provider>
@@ -180,10 +140,10 @@
         <option value="$PROJECT_DIR$/optimized_images/IHG_minus_icon.svg" />
         <option value="$PROJECT_DIR$/js/expC-IHG.js" />
         <option value="$PROJECT_DIR$/css/expC-IHG.css" />
+        <option value="$PROJECT_DIR$/js/expB.js" />
+        <option value="$PROJECT_DIR$/css/expB.css" />
         <option value="$PROJECT_DIR$/css/expB-IHG.css" />
         <option value="$PROJECT_DIR$/js/expB-IHG.js" />
-        <option value="$PROJECT_DIR$/css/expB.css" />
-        <option value="$PROJECT_DIR$/js/expB.js" />
       </list>
     </option>
   </component>
@@ -269,6 +229,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Special Offer Grouping" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Special Offer Grouping" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -375,12 +349,12 @@
       <workItem from="1478203754853" duration="804000" />
       <workItem from="1478531308097" duration="3536000" />
       <workItem from="1478546266046" duration="2284000" />
-      <workItem from="1478618703905" duration="6279000" />
+      <workItem from="1478618703905" duration="10104000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53303000" />
+    <option name="totallyTimeSpent" value="57128000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -420,22 +394,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/optimized_images/EX_plus_icon.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/optimized_images/EX_minus_icon.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/expB.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1139">
@@ -519,7 +477,7 @@
         <state relative-caret-position="323">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <marker date="1478549876248" expanded="true" signature="907:912" ph="&amp;" />
+            <marker date="1478715188927" expanded="true" signature="1352:1357" ph="&amp;" />
           </folding>
         </state>
       </provider>
@@ -623,7 +581,7 @@
         <state relative-caret-position="323">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <marker date="1478549876248" expanded="true" signature="907:912" ph="&amp;" />
+            <marker date="1478715188927" expanded="true" signature="1352:1357" ph="&amp;" />
           </folding>
         </state>
       </provider>
@@ -766,10 +724,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/expC.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="51" selection-end-column="3" />
+          <folding>
+            <marker date="1477674564488" expanded="true" signature="564:569" ph="&amp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/expC-IHG.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/taoEXplus.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EX_minus_sign_icon.svg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/optimized_images/EX_minus_icon.svg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -777,7 +766,7 @@
     <entry file="file://$PROJECT_DIR$/optimized_images/EX_plus_icon.svg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="6" />
+          <caret line="7" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -798,48 +787,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/expC.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="51" selection-end-column="3" />
-          <folding>
-            <marker date="1477674564488" expanded="true" signature="564:569" ph="&amp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/expC-IHG.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="1" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/expC-IHG.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="76" selection-start-line="0" selection-start-column="0" selection-end-line="63" selection-end-column="3" />
+        <state relative-caret-position="102">
+          <caret line="6" column="54" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
           <folding>
             <marker date="1477927510166" expanded="true" signature="815:820" ph="&amp;" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/expB-IHG.css">
+    <entry file="file://$PROJECT_DIR$/js/expB.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/expB-IHG.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="65" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+        <state relative-caret-position="66">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
-            <marker date="1478549876248" expanded="true" signature="907:912" ph="&amp;" />
+            <marker date="1478707988597" expanded="true" signature="1352:1357" ph="&amp;" />
           </folding>
         </state>
       </provider>
@@ -847,17 +810,25 @@
     <entry file="file://$PROJECT_DIR$/css/expB.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
-          <caret line="62" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/expB.js">
+    <entry file="file://$PROJECT_DIR$/css/expB-IHG.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="227" selection-start-line="5" selection-start-column="227" selection-end-line="5" selection-end-column="227" />
+        <state relative-caret-position="482">
+          <caret line="65" column="17" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/expB-IHG.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
-            <marker date="1478707988597" expanded="true" signature="1352:1357" ph="&amp;" />
+            <marker date="1478715188927" expanded="true" signature="1352:1357" ph="&amp;" />
           </folding>
         </state>
       </provider>

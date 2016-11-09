@@ -57,12 +57,16 @@
     position: relative;
     top: 6px;
     right: 194px;
+    height: 20px;
+    width: 20px;
 }
 
 .taoSOGFooter img {
     position: relative;
     top: 6px;
     left: 593px;
+    height: 20px;
+    width: 20px;
 }
 
 .taoCirclePlus, .taoCircleMinus {
