@@ -2,8 +2,10 @@ jQuery("document").ready(function(){
 
     // Create image tags for the plus and minus icons for use in the SOGHeader
     // and SOGFooter
-    var taoCirclePlus = "<svg class='taoCirclePlus'><use xlink:href='#tao_circle_plus' /></svg>";
-    var taoCircleMinus = "<svg class='taoCircleMinus'><use xlink:href='#tao_circle_minus' /></svg>";
+    var taoCirclePlusHref = "https://ihg-my.sharepoint.com/personal/garrod_gibb_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=eRvhlMA2lqMe8T83kC%2bmHY8u4%2fHg1zCbRUwFkCjn1oA%3d&docid=1f335072843d14c6e958de62671988c6f&rev=1";
+    var taoCircleMinusHref = "https://ihg-my.sharepoint.com/personal/garrod_gibb_ihg_com/_layouts/15/guestaccess.aspx?guestaccesstoken=wzYe750GEHAvk1mQZR9UDUsivboz5iGVoO4pvPZCwOo%3d&docid=1892de4bf2a2245ed8c86127862a8e5cd&rev=1";
+    var taoCirclePlus = "<img class='taoCirclePlus' href='"+ taoCirclePlusHref + "' />";
+    var taoCircleMinus = "<img class='taoCircleMinus' href='"+ taoCircleMinusHref + "' />";
 
     // Start working on the page, hitting one rate type at a time
     jQuery(".rateTypeLineItems").each(function(i) {
@@ -40,20 +42,20 @@ jQuery("document").ready(function(){
 
     // Put in all the code and functionality to cause the new button to open
     // and close the grouped rates.
-    jQuery(".taoSOGHeader span, .taoSOGFooter input, svg.taoCirclePlus, svg.taoCircleMinus").on("click", function () {
+    jQuery(".taoSOGHeader span, .taoSOGFooter input, img.taoCirclePlus, img.taoCircleMinus").on("click", function () {
 
         // find the parent div
         var $taoSOGDiv = jQuery(this).closest(".taoSpecialOfferGroup");
 
-        // identify the svg tags in the header.
-        var $taoSOGHeaderSVG = $taoSOGDiv.find(".taoSOGHeader svg use");
+        // identify the img tags in the header.
+        var $taoSOGHeaderImg = $taoSOGDiv.find(".taoSOGHeader img");
 
-        // Figure out what SVG icon is being referred to and change it to
+        // Figure out what icon is being referred to and change it to
         // reference the other one
-        if ($taoSOGHeaderSVG.attr("xlink:href") == "#tao_circle_plus") {
-            $taoSOGHeaderSVG.attr("xlink:href", "#tao_circle_minus");
+        if ($taoSOGHeaderImg.hasClass("taoCirclePlus")) {
+            $taoSOGHeaderImg.attr("href", taoCircleMinusHref).removeClass("taoCirclePlus").addClass("taoCircleMinus");
         } else {
-            $taoSOGHeaderSVG.attr("xlink:href", "#tao_circle_plus");
+            $taoSOGHeaderImg.attr("href", taoCirclePlusHref).removeClass("taoCircleMinus").addClass("taoCirclePlus");
         }
 
         // toggle the .taoSOGpadding and .taoSOGHeaderPadding classes so the

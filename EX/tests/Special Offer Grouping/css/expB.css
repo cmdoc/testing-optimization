@@ -53,23 +53,19 @@
     display: none;
 }
 
-.taoSOGHeader svg {
-    height: 20px;
-    width: 20px;
+.taoSOGHeader img {
     position: relative;
     top: 6px;
     right: 194px;
 }
 
-.taoSOGFooter svg {
-    height: 20px;
-    width: 20px;
+.taoSOGFooter img {
     position: relative;
     top: 6px;
     left: 593px;
 }
 
-svg.taoCirclePlus, svg.taoCircleMinus {
+.taoCirclePlus, .taoCircleMinus {
     cursor: pointer;
 }
 
