@@ -1,12 +1,5 @@
 jQuery("document").ready(function(){
 
-    // Create image tags for the plus and minus icons for use in the SOGHeader
-    // and SOGFooter
-    var taoCirclePlusHref = "http://prod.internal.ihg.com/content/dam/etc/media_library/branded/6c/cn/icons/IHG_plus_sign_icon.png";
-    var taoCircleMinusHref = "http://prod.internal.ihg.com/content/dam/etc/media_library/branded/6c/cn/icons/IHG_minus_sign_icon.png";
-    var taoCirclePlus = "<img class='taoCirclePlus' href='"+ taoCirclePlusHref + "' />";
-    var taoCircleMinus = "<img class='taoCircleMinus' href='"+ taoCircleMinusHref + "' />";
-
     // Start working on the page, hitting one rate type at a time
     jQuery(".rateTypeLineItems").each(function(i) {
 
@@ -16,7 +9,7 @@ jQuery("document").ready(function(){
 
         // create a div for any rates we find that we need to move
         var $taoSpecialOfferGroupingDiv = jQuery("<div class='taoSpecialOfferGroup'></div>");
-        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGHeader taoSOGHeaderPadding'><span class='cssButton bcex' type='button'>Special Offers &amp; Deals</span>" + taoCirclePlus + "</div>");
+        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGHeader taoSOGHeaderPadding'><span class='cssButton bcex taoCirclePlus' type='button'>Special Offers &amp; Deals</span></div>");
         $taoSpecialOfferGroupingDiv.append("<div class='taoSOGrates' id='taoSOG" + i + "'></div>");
         $taoThisRoom.prepend($taoSpecialOfferGroupingDiv);
 
@@ -36,7 +29,7 @@ jQuery("document").ready(function(){
         });
 
         // Add a Hide button to the new div
-        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGFooter'><input class='cssButton bcex' type='button' value='Hide Special Offers &amp; Deals'>" + taoCircleMinus + "</div>");
+        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGFooter'><input class='cssButton bcex taoCircleMinus' type='button' value='Hide Special Offers &amp; Deals'></div>");
 
     });
 
@@ -52,20 +45,20 @@ jQuery("document").ready(function(){
 
     // Put in all the code and functionality to cause the new button to open
     // and close the grouped rates.
-    jQuery(".taoSOGHeader span, .taoSOGFooter input, img.taoCirclePlus, img.taoCircleMinus").on("click", function () {
+    jQuery(".taoSOGHeader span, .taoSOGFooter input, .taoCirclePlus, .taoCircleMinus").on("click", function () {
 
         // find the parent div
         var $taoSOGDiv = jQuery(this).closest(".taoSpecialOfferGroup");
 
         // identify the svg tags in the header and footer.
-        var $taoSOGHeaderImg = $taoSOGDiv.find(".taoSOGHeader img");
+        var $taoSOGHeaderSpan = $taoSOGDiv.find(".taoSOGHeader span");
 
         // Figure out what icon is being referred to and change it to
         // reference the other one
-        if ($taoSOGHeaderImg.hasClass("taoCirclePlus")) {
-            $taoSOGHeaderImg.attr("href", taoCircleMinusHref).removeClass("taoCirclePlus").addClass("taoCircleMinus");
+        if ($taoSOGHeaderSpan.hasClass("taoCirclePlus")) {
+            $taoSOGHeaderSpan.removeClass("taoCirclePlus").addClass("taoCircleMinus");
         } else {
-            $taoSOGHeaderImg.attr("href", taoCirclePlusHref).removeClass("taoCircleMinus").addClass("taoCirclePlus");
+            $taoSOGHeaderSpan.removeClass("taoCircleMinus").addClass("taoCirclePlus");
         }
 
         // toggle the .taoSOGpadding and .taoSOGHeaderPadding classes so the

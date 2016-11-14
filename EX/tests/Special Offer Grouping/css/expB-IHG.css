@@ -31,12 +31,15 @@
 }
 
 .taoSOGFooter input.cssButton.bcex {
-    width: 218px !important;
+    width: 208px !important;
     position: relative;
     float: right;
     right: 154px;
-    background-color: #db6928;
     bottom: 2px;
+}
+
+.taoSOGFooter input.taoCircleMinus {
+    background: url(http://prod.internal.ihg.com/content/dam/etc/media_library/branded/6c/cn/icons/IHG_minus_sign_icon.png) 10px 7px no-repeat #d96932;
 }
 
 .taoSOGHeader {
@@ -75,7 +78,12 @@
      cursor: pointer;
  }
 
-.taoSOGHeader span {
+.taoSOGHeader span.taoCirclePlus {
     padding: 9px 12px 9px 34px;
-    background-color: #d96932;
+    background: url(http://prod.internal.ihg.com/content/dam/etc/media_library/branded/6c/cn/icons/IHG_plus_sign_icon.png) 7px 6px no-repeat #d96932;
+}
+
+.taoSOGHeader span.taoCircleMinus {
+    padding: 9px 12px 9px 34px;
+    background: url(http://prod.internal.ihg.com/content/dam/etc/media_library/branded/6c/cn/icons/IHG_minus_sign_icon.png) 7px 6px no-repeat #d96932;
 }
