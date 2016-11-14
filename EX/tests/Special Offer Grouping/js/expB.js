@@ -40,6 +40,16 @@ jQuery("document").ready(function(){
 
     });
 
+    // Loop through all of the new .taoSpecialOfferGroup DIVs and remove those
+    // that don't have any rates (in other words, they are empty).
+    jQuery(".taoSpecialOfferGroup").each(function() {
+
+        if (jQuery(this).find(".taoSOGrates .regularRates").length == 0) {
+            jQuery(this).remove();
+        }
+
+    });
+
     // Put in all the code and functionality to cause the new button to open
     // and close the grouped rates.
     jQuery(".taoSOGHeader span, .taoSOGFooter input, img.taoCirclePlus, img.taoCircleMinus").on("click", function () {
