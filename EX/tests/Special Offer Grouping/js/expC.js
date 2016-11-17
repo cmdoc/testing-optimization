@@ -1,5 +1,8 @@
 jQuery("document").ready(function(){
 
+    // Create an image tag for the down caret for use in the SOG header
+    var taoDownCaret = "<img class='taoDownCaret' src='//prodcache.internal.ihg.com/content/dam/etc/media_library/branded/cn/images/transparent_1x1.gif' border='0'>";
+
     // Start working on the page, hitting one rate type at a time
     jQuery(".rateTypeLineItems").each(function(i) {
 
@@ -43,6 +46,9 @@ jQuery("document").ready(function(){
         // find the caret image and toggle the class
         jQuery(this).find("img").toggleClass("taoDownCaret");
 
+        // finally, trigger a click tracking event in Adobe
+        mboxPixelTrack('mboxClickTrack', 'clicked=SOG_click');
+
     });
 
     // Empty out the .viewAllRatesLink DIVs because this test replaces that
@@ -50,3 +56,20 @@ jQuery("document").ready(function(){
     jQuery(".viewAllRatesLink").empty();
 
 });
+
+///////////////////////////////////////////////////////////////////////////////
+// F U N C T I O N S
+function mboxPixelTrack(mbox) {
+    // Code stolen from Adobe's Proactive Chat. This should track click events.
+    var d = new Date();
+    var ub = mboxFactoryDefault.getUrlBuilder().clone();
+    ub.addParameter("mbox", mbox);
+    ub.addParameter('mboxTime', d.getTime() - (d.getTimezoneOffset() * 60000));
+    ub.addParameters(Array.prototype.slice.call(arguments).slice(1));
+    var img = new Image();
+    img.src = ub.buildUrl().replace("/mbox/undefined", "/mbox/ajax");
+    img.style.display = "none";
+    if (document.body) {
+        document.body.insertBefore(img, document.body.firstChild);
+    }
+}
