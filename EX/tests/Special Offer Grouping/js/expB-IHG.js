@@ -69,6 +69,9 @@ jQuery("document").ready(function(){
         // toggle the rates being offered in this .taoSpecialOfferGroup
         $taoSOGDiv.find(".taoSOGrates, .taoSOGFooter").toggle(500);
 
+        // finally, trigger a click tracking event in Adobe
+        mboxPixelTrack('mboxClickTrack', 'clicked=SOG_click');
+
     });
 
     // Empty out the .viewAllRatesLink DIVs because this test replaces that
@@ -76,3 +79,20 @@ jQuery("document").ready(function(){
     jQuery(".viewAllRatesLink").empty();
 
 });
+
+///////////////////////////////////////////////////////////////////////////////
+// F U N C T I O N S
+function mboxPixelTrack(mbox) {
+    // Code stolen from Adobe's Proactive Chat. This should track click events.
+    var d = new Date();
+    var ub = mboxFactoryDefault.getUrlBuilder().clone();
+    ub.addParameter("mbox", mbox);
+    ub.addParameter('mboxTime', d.getTime() - (d.getTimezoneOffset() * 60000));
+    ub.addParameters(Array.prototype.slice.call(arguments).slice(1));
+    var img = new Image();
+    img.src = ub.buildUrl().replace("/mbox/undefined", "/mbox/ajax");
+    img.style.display = "none";
+    if (document.body) {
+        document.body.insertBefore(img, document.body.firstChild);
+    }
+}
