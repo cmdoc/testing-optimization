@@ -72,14 +72,14 @@ jQuery("document").ready(function(){
 
                     // Grab the Best Flex rate bullet points and put them in the
                     // right place
-                    var $taoBFBulletPoints = $taoUpsellContainer_0.find(".rateInfoArea");
+                    var $taoBFBulletPoints = $taoUpsellContainer_0.find(".rateInfoArea").clone();
                     $taoBestFlexRate.find(".rateInfoArea").remove();
                     $taoBestFlexRate.find("div.rateTypeLineItem div.rateTypeLineItemLeft").append($taoBFBulletPoints);
 
                     // Now grab the rate details link and put it in place of the
                     // last bullet point, which should replace the "Most Popular
                     // Rate" line item
-                    var $taoBFRateDetails = $taoUpsellContainer_0.find(".baseRateInfo");
+                    var $taoBFRateDetails = $taoUpsellContainer_0.find(".baseRateInfo").clone();
                     $taoBestFlexRate.find(".defaultRateInfo div:last-child li").html($taoBFRateDetails);
 
                     // Replace the rate title
@@ -88,12 +88,12 @@ jQuery("document").ready(function(){
                     $taoBestFlexRate.find("div.rateInfoArea").prepend(taoRateTitleSpan);
 
                     // Grab the "Book This Room" button and put it into the new row
-                    var $taoBFButton = $taoUpsellContainer_0.find(".rateSelectionArea").eq(0);
+                    var $taoBFButton = $taoUpsellContainer_0.find(".rateSelectionArea").eq(0).clone();
                     $taoBestFlexRate.find(".rateSelectionArea").remove();
                     $taoBestFlexRate.find(".rateTypeLineItemRight").append($taoBFButton);
 
                     // Grab the pricing info and put it in
-                    var $taoBFPricing = $taoUpsellContainer_0.find(".mainRateDisplay span.price").eq(0);
+                    var $taoBFPricing = $taoUpsellContainer_0.find(".mainRateDisplay span.price").eq(0).clone();
                     $taoBestFlexRate.find("span.price").remove();
                     $taoBestFlexRate.find("div.priceInfoArea").append($taoBFPricing);
 
@@ -112,18 +112,18 @@ jQuery("document").ready(function(){
 
                     // make a clone of the template
                     var $taoMRBestFlexRate = taoCloneRateRowTemplate($taoRateRowTemplate);
-debugger;
+//debugger;
                     // Grab the Best Flex rate bullet points and put them in the
                     // right place
-                    var $taoMRBFBulletPoints = $taoUpsellContainer_0.find(".rateInfoArea");
-                    // $taoMRBestFlexRate.find(".rateInfoArea").remove();
-                    // $taoMRBestFlexRate.find("div.rateTypeLineItem div.rateTypeLineItemLeft").append($taoMRBFBulletPoints);
+                    var $taoMRBFBulletPoints = $taoUpsellContainer_0.find(".rateInfoArea").clone();
+                    $taoMRBestFlexRate.find(".rateInfoArea").remove();
+                    $taoMRBestFlexRate.find("div.rateTypeLineItem div.rateTypeLineItemLeft").append($taoMRBFBulletPoints);
 
                     // Now grab the rate details link and put it in place of the
                     // last bullet point, which should replace the "Most Popular
                     // Rate" line item
-                    var $taoMRBFRateDetails = $taoUpsellContainer_0.find(".memberRateInfo");
-                    // $taoMRBestFlexRate.find(".defaultRateInfo div:last-child li").html($taoMRBFRateDetails);
+                    var $taoMRBFRateDetails = $taoUpsellContainer_0.find(".memberRateInfo").clone();
+                    $taoMRBestFlexRate.find(".defaultRateInfo div:last-child li").html($taoMRBFRateDetails);
 
                     // Replace the rate title
                     var taoRateTitle = "YOUR RATE by IHG&reg; Rewards Club";
@@ -131,14 +131,14 @@ debugger;
                     $taoMRBestFlexRate.find("div.rateInfoArea").prepend(taoRateTitleSpan);
 
                     // Grab the "Book This Room" button and put it into the new row
-                    var $taoMRBFButton = $taoUpsellContainer_0.find(".rateSelectionArea").eq(1);
-                    // $taoMRBestFlexRate.find(".rateSelectionArea").remove();
-                    // $taoMRBestFlexRate.find(".rateTypeLineItemRight").append($taoMRBFButton);
+                    var $taoMRBFButton = $taoUpsellContainer_0.find(".rateSelectionArea").eq(1).clone();
+                    $taoMRBestFlexRate.find(".rateSelectionArea").remove();
+                    $taoMRBestFlexRate.find(".rateTypeLineItemRight").append($taoMRBFButton);
 
                     // Grab the pricing info and put it in
-                    var $taoMRBFPricing = $taoUpsellContainer_0.find(".mainRateDisplay span.price").eq(1);
-                    // $taoMRBestFlexRate.find("span.price").remove();
-                    // $taoMRBestFlexRate.find("div.priceInfoArea").append($taoMRBFPricing);
+                    var $taoMRBFPricing = $taoUpsellContainer_0.find(".mainRateDisplay span.price").eq(1).clone();
+                    $taoMRBestFlexRate.find("span.price").remove();
+                    $taoMRBestFlexRate.find("div.priceInfoArea").append($taoMRBFPricing);
 
                     // Finally, stick the new Best Flex rate row in the right place
                     jQuery("#tao3RP" + i).prepend($taoMRBestFlexRate);
