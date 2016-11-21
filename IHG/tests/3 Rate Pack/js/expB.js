@@ -3,8 +3,6 @@ jQuery("document").ready(function(){
     /****** V A R I A B L E S ******/
     // Create an image tag for the down caret for use in the SOG header
     var taoDownCaret = "<svg class='taoCaret'><use xlink:href='#tao_down_caret' /></svg>";
-    var taoUpCaret = "<svg class='taoCaret'><use xlink:href='#tao_up_caret' /></svg>";
-
     // Find the Best Flex +1,000 points row (IKME3) and save it to a variable
     var $taoRateRowTemplate = jQuery("div.regularRates div.rateTypeLineItem input[value='IKME3']").eq(0).closest("div.regularRates");
 
@@ -14,6 +12,9 @@ jQuery("document").ready(function(){
         // Put this .rateTypeLineItems instance into a variable for future
         // referencing.
         var $taoThisRoom = jQuery(this);
+
+        // Grab the red circle with checkmark and store it for later use
+        var $taoCheckMark = jQuery(this).find(".bestFlexibleHeaderImage").clone();
 
         // create a 3 Rate Pack (3RP div) for the IGCOR, IDME1, or IKME3 rates.
         var $tao3RatePackDiv = jQuery("<div class='tao3RatePack' id='tao3RP" + i + "'></div>");
@@ -30,13 +31,23 @@ jQuery("document").ready(function(){
         // specific locations -- either the 3RP div or SOG div
         $taoThisRoom.find(".regularRates, .secondaryRates").each(function() {
 
+            /****** IVANI ******/
             if (jQuery(this).find("div.spotlightPointsAndCash").length > 0) {
                 // This is the Points & Cash rate, put it first in the SOG div
                 jQuery("#taoSOG" + i).prepend(jQuery(this));
 
+            /****** IKME3 ******/
             } else if (jQuery(this).find("input[name='rateCodeValueForRow']").val() == "IKME3") {
-                // This the +1,000 Points Your Rate rate. Put it last in the
-                // 3RP div.
+                // This is the +1,000 Points YOUR RATE rate.
+
+                // Remove "nightly rate" and "Bonus Points"
+                jQuery(this).find("div.avgratediv").remove();
+                jQuery(this).find("img.bonusLogo").remove();
+
+                // Move the checkmark from the first row to this rate
+                jQuery(this).find("div.rateInfoArea").prepend($taoCheckMark);
+
+                // Put it last in the 3RP div.
                 jQuery("#tao3RP" + i).append(jQuery(this));
 
             } else if (jQuery(this).find("div.upSellContainer").length > 0) {
@@ -143,6 +154,8 @@ jQuery("document").ready(function(){
                     // Finally, stick the new Best Flex rate row in the right place
                     jQuery("#tao3RP" + i).prepend($taoMRBestFlexRate);
                 }
+
+                jQuery(this).hide();
 
             } else {
 

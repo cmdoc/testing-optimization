@@ -66,3 +66,11 @@ svg.taoCaret {
     height: 10px;
     width: 24px;
 }
+
+.tao3RatePack .bestFlexibleHeaderImage {
+    padding-top: 4px;
+}
+
+div.tao3RatePack span.rateCategory.roomOrder {
+    float: none;
+}
