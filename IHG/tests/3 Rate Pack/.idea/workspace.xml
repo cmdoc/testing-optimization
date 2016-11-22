@@ -22,17 +22,15 @@
     <favorites_list name="3 Rate Pack" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.68037385">
+    <splitter split-orientation="horizontal" split-proportion="0.71984434">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="expB.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/expB.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="884">
-                  <caret line="79" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-                  <folding>
-                    <marker date="1479497503999" expanded="true" signature="1437:1442" ph="&amp;" />
-                  </folding>
+                <state relative-caret-position="323">
+                  <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -257,12 +255,12 @@
       <workItem from="1478882076957" duration="3476000" />
       <workItem from="1479315331571" duration="2376000" />
       <workItem from="1479395179982" duration="1612000" />
-      <workItem from="1479410413662" duration="15625000" />
+      <workItem from="1479410413662" duration="19215000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36542000" />
+    <option name="totallyTimeSpent" value="40132000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -306,9 +304,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1479497503999" expanded="true" signature="1437:1442" ph="&amp;" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -316,9 +312,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1479497503999" expanded="true" signature="1437:1442" ph="&amp;" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -326,9 +320,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1479497503999" expanded="true" signature="1437:1442" ph="&amp;" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -336,9 +328,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1479497503999" expanded="true" signature="1437:1442" ph="&amp;" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -346,9 +336,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding>
-            <marker date="1479497503999" expanded="true" signature="1437:1442" ph="&amp;" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -377,11 +365,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/expB.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="79" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding>
-            <marker date="1479497503999" expanded="true" signature="1437:1442" ph="&amp;" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
