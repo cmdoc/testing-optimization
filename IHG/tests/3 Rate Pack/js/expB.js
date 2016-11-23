@@ -213,10 +213,16 @@ jQuery("document").ready(function(){
                         var $taoThisBigButtonRateRow = taoCloneRateRowTemplate($taoRateRowTemplate);
 
                         // Grab the rate title, description, and bullet points
-                        // and put them in the right place.
+                        // and put them in the right place. Be sure to remove
+                        // the visible rate description and ellipsis link to
+                        // more rate details. Also check to see if there is a
+                        // radio button input lingering around and remove it.
                         var $taoBulletPoints = $taoThisUpsellContainer.find("#rateInfo_" + taoCurrentLongRateCode).clone();
+                        $taoBulletPoints.find(".rateDesc").remove();
+                        $taoBulletPoints.find("div > span.spotlight_expandedDetails_link").remove();
                         $taoThisBigButtonRateRow.find(".rateInfoArea").remove();
                         $taoThisBigButtonRateRow.find("div.rateTypeLineItem div.rateTypeLineItemLeft").append($taoBulletPoints);
+                        $taoThisBigButtonRateRow.find("div.rateTypeLineItemLeft > input[type=radio]").remove();
 
                         // Grab the "Book This Room" button and put it into the new row
                         var $taoButton = jQuery(this).parent().clone();
@@ -224,7 +230,7 @@ jQuery("document").ready(function(){
                         $taoThisBigButtonRateRow.find(".rateTypeLineItemRight").append($taoButton);
 
                         // Grab the pricing info and put it in
-                        var $taoPricing = jQuery(this).parent().siblings(".priceInfoArea").find(".mainRateDisplay span.price").clone();
+                        var $taoPricing = jQuery(this).parent().siblings(".priceInfoArea").find(".upsellTotal_" + taoCurrentLongRateCode + " span.price").clone();
                         $taoThisBigButtonRateRow.find("span.price").remove();
                         $taoThisBigButtonRateRow.find("div.priceInfoArea").append($taoPricing);
 
@@ -233,7 +239,7 @@ jQuery("document").ready(function(){
 
                         // Add it to the processed rates array
                         taoProcessedRates.push(taoCurrentShortRateCode);
-
+debugger;
                     });
 
                     /****** CHECKBOXES ******/
