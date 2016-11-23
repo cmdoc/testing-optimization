@@ -13,8 +13,21 @@ jQuery("document").ready(function(){
         // referencing.
         var $taoThisRoom = jQuery(this);
 
-        // Grab the red circle with checkmark and store it for later use
+        // Create an array of rates that have already been processed.
+        var taoProcessedRates = [];
+
+        // Grab the red circle with checkmark and store it for later use.
+        // Then remove all instances of the checkmark. Sometimes the image
+        // is in a .bestFlexibleNoTabImage class instead. So check to see
+        // if the initial variable is empty. If so, look for it in the other
+        // place.
         var $taoCheckMark = jQuery(this).find(".bestFlexibleHeaderImage").clone();
+        if ($taoCheckMark.length < 1) {
+            $taoCheckMark = jQuery(this).find(".bestFlexibleNoTabImage").clone();
+            jQuery(this).find(".bestFlexibleNoTabImage").remove();
+        } else {
+            jQuery(this).find(".bestFlexibleHeaderImage").remove();
+        }
 
         // create a 3 Rate Pack (3RP div) for the IGCOR, IDME1, or IKME3 rates.
         var $tao3RatePackDiv = jQuery("<div class='tao3RatePack' id='tao3RP" + i + "'></div>");
@@ -23,7 +36,7 @@ jQuery("document").ready(function(){
         // create a Special Offers Group (SOG div) for any rates that are not
         // IGCOR, IDME1, or IKME3.
         var $taoSpecialOfferGroupingDiv = jQuery("<div class='taoSpecialOfferGroup'></div>");
-        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGHeader taoSOGHeaderPadding'>Special Offers &amp; Deals " + taoDownCaret + "</div>");
+        $taoSpecialOfferGroupingDiv.append("<div class='taoSOGHeader taoSOGHeaderPadding'>View More Rates " + taoDownCaret + "</div>");
         $taoSpecialOfferGroupingDiv.append("<div class='taoSOGrates' id='taoSOG" + i + "'></div>");
         $taoSpecialOfferGroupingDiv.insertBefore($taoThisRoom.find(".viewAllRatesLink"));
 
@@ -31,13 +44,19 @@ jQuery("document").ready(function(){
         // specific locations -- either the 3RP div or SOG div
         $taoThisRoom.find(".regularRates, .secondaryRates").each(function() {
 
+            // create a var for this rate row
+            var $taoThisRateRow = jQuery(this);
+
             /****** IVANI ******/
-            if (jQuery(this).find("div.spotlightPointsAndCash").length > 0) {
+            if ($taoThisRateRow.find("div.spotlightPointsAndCash").length > 0) {
                 // This is the Points & Cash rate, put it first in the SOG div
                 jQuery("#taoSOG" + i).prepend(jQuery(this));
 
+                // Add it to the processed rates array
+                taoProcessedRates.push("IVANI");
+
             /****** IKME3 ******/
-            } else if (jQuery(this).find("input[name='rateCodeValueForRow']").val() == "IKME3") {
+            } else if ($taoThisRateRow.find("input[name='rateCodeValueForRow']").val() == "IKME3") {
                 // This is the +1,000 Points YOUR RATE rate.
 
                 // Remove "nightly rate" and "Bonus Points"
@@ -50,7 +69,10 @@ jQuery("document").ready(function(){
                 // Put it last in the 3RP div.
                 jQuery("#tao3RP" + i).append(jQuery(this));
 
-            } else if (jQuery(this).find("div.upSellContainer").length > 0) {
+                // Add it to the processed rates array
+                taoProcessedRates.push("IKME3");
+
+            } else if ($taoThisRateRow.find("div.upSellContainer").length > 0) {
                 // This is the messy option.  This row contains multiple rates,
                 // so we have to find each type (some will always exist and
                 // others will sometimes exist) and create a new row of proper
@@ -62,12 +84,11 @@ jQuery("document").ready(function(){
                 // IGCOR or IDME1 rate) or in the SOG div (if it is not IGCOR
                 // or IDME1).
 
-                // Create a clone of each upsellContainer. We will use these
-                // quite a lot, so no need to keep searching for them every
-                // time.
+                // Create a clone of the first upsellContainer. We will use
+                // this quite a lot in building the IGCOR and IKME1 rates, so
+                // no need to keep searching for it every time. Just grab it
+                // once and keep using that same instance.
                 var $taoUpsellContainer_0 = jQuery(this).find("#upsellContainer_0").clone();
-                var $taoUpsellContainer_1 = jQuery(this).find("#upsellContainer_1").clone();
-                var $taoUpsellContainer_2 = jQuery(this).find("#upsellContainer_2").clone();
 
                 /****** IGCOR ******/
                 // Let's tackle the easiest first -- the Best Flex rate.
@@ -110,6 +131,10 @@ jQuery("document").ready(function(){
 
                     // Finally, stick the new Best Flex rate row in the right place
                     jQuery("#tao3RP" + i).prepend($taoBestFlexRate);
+
+                    // Add it to the processed rates array
+                    taoProcessedRates.push("IGCOR");
+
                 }
 
                 /****** IDME1 ******/
@@ -123,7 +148,7 @@ jQuery("document").ready(function(){
 
                     // make a clone of the template
                     var $taoMRBestFlexRate = taoCloneRateRowTemplate($taoRateRowTemplate);
-//debugger;
+
                     // Grab the Best Flex rate bullet points and put them in the
                     // right place
                     var $taoMRBFBulletPoints = $taoUpsellContainer_0.find(".rateInfoArea").clone();
@@ -153,15 +178,91 @@ jQuery("document").ready(function(){
 
                     // Finally, stick the new Best Flex rate row in the right place
                     jQuery("#tao3RP" + i).prepend($taoMRBestFlexRate);
+
+                    // Add it to the processed rates array
+                    taoProcessedRates.push("IDME1");
+
                 }
 
-                jQuery(this).hide();
+                // Now loop through all of the upsell containers and find the
+                // other rates that either have a big button, checkbox, or
+                // radio button.
+                // TODO: build out looping code here.
+                // TODO: for big buttons, skip any that are IGCOR or IKME1
+                jQuery(this).find(".upSellContainer").each(function() {
+
+                    // Create a clone of this upsell container
+                    var $taoThisUpsellContainer = jQuery(this).clone();
+
+                    /****** BUTTONS ******/
+                    // Let's hit the big buttons first
+                    $taoThisUpsellContainer.find("input[value='Book This Room']").each(function() {
+
+                        // Grab the short and long rate codes for this button
+                        var taoCurrentShortRateCode = taoDetermineButtonRateCode(jQuery(this).attr("name"), 'short');
+                        var taoCurrentLongRateCode = taoDetermineButtonRateCode(jQuery(this).attr("name"), 'long');
+
+                        // Skip this button if we have already processed this
+                        // rate code.
+                        if (taoProcessedRates.indexOf(taoCurrentShortRateCode) > -1) {
+                            return true;
+                        }
+
+                        // OK, so we haven't processed this code yet! Let's
+                        // start by making a clone of the template.
+                        var $taoThisBigButtonRateRow = taoCloneRateRowTemplate($taoRateRowTemplate);
+
+                        // Grab the rate title, description, and bullet points
+                        // and put them in the right place.
+                        var $taoBulletPoints = $taoThisUpsellContainer.find("#rateInfo_" + taoCurrentLongRateCode).clone();
+                        $taoThisBigButtonRateRow.find(".rateInfoArea").remove();
+                        $taoThisBigButtonRateRow.find("div.rateTypeLineItem div.rateTypeLineItemLeft").append($taoBulletPoints);
+
+                        // Grab the "Book This Room" button and put it into the new row
+                        var $taoButton = jQuery(this).parent().clone();
+                        $taoThisBigButtonRateRow.find(".rateSelectionArea").remove();
+                        $taoThisBigButtonRateRow.find(".rateTypeLineItemRight").append($taoButton);
+
+                        // Grab the pricing info and put it in
+                        var $taoPricing = jQuery(this).parent().siblings(".priceInfoArea").find(".mainRateDisplay span.price").clone();
+                        $taoThisBigButtonRateRow.find("span.price").remove();
+                        $taoThisBigButtonRateRow.find("div.priceInfoArea").append($taoPricing);
+
+                        // append this new rate row to the SOG div
+                        jQuery("#taoSOG" + i).append($taoThisBigButtonRateRow);
+
+                        // Add it to the processed rates array
+                        taoProcessedRates.push(taoCurrentShortRateCode);
+
+                    });
+
+                    /****** CHECKBOXES ******/
+                    // The big buttons are done, so let's move on to all of
+                    // the checkboxes.
+
+
+                    /****** RADIO BUTTONS ******/
+                    // Okay -- big buttons and checkboxes are done, so let's
+                    // get all of the radio buttons
+
+                });
+
+
+
+
+
+
+
+
+                // Finally, remove this row because we don't need it anymore.
+                // $taoThisRateRow.remove();
+                // $taoThisRateRow.hide(); // this line is for testing purposes
 
             } else {
 
                 // This is one of the many "other" rates. Put this at the end
                 // of the SOG div
-                jQuery("#taoSOG" + i).append(jQuery(this));
+                jQuery("#taoSOG" + i).append($taoThisRateRow);
 
             }
 
@@ -231,4 +332,19 @@ function taoCloneRateRowTemplate ($row) {
     $clone.find("div.rateTypeLineItem > span").eq(0).remove();
 
     return $clone;
+
+}
+
+function taoDetermineButtonRateCode(name, length) {
+    // takes the name from a big button and pulls out the rate code. Returns
+    // either the shortened 5-digit code or the full 9-digit code.
+    var values = name.split('_');
+    var fullRateCode = values[1];
+
+    if (length == 'short') {
+        return fullRateCode.substr(4, 8);
+    } else {
+        return fullRateCode;
+    }
+
 }
