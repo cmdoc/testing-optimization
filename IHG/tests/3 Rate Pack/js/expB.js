@@ -187,8 +187,6 @@ jQuery("document").ready(function(){
                 // Now loop through all of the upsell containers and find the
                 // other rates that either have a big button, checkbox, or
                 // radio button.
-                // TODO: build out looping code here.
-                // TODO: for big buttons, skip any that are IGCOR or IKME1
                 jQuery(this).find(".upSellContainer").each(function() {
 
                     // Create a clone of this upsell container
@@ -239,26 +237,72 @@ jQuery("document").ready(function(){
 
                         // Add it to the processed rates array
                         taoProcessedRates.push(taoCurrentShortRateCode);
-debugger;
+
                     });
 
-                    /****** CHECKBOXES ******/
+                    /****** CHECKBOXES  &  RADIO BUTTONS ******/
                     // The big buttons are done, so let's move on to all of
                     // the checkboxes.
+                    $taoThisUpsellContainer.find(".breakfastOpt").each(function() {
 
+                        // Grab the short and long rate codes for this button
+                        var taoCurrentShortRateCode = taoDetermineButtonRateCode(jQuery(this).find("input[type=hidden]").val(), 'short');
+                        var taoCurrentLongRateCode = taoDetermineButtonRateCode(jQuery(this).find("input[type=hidden]").val(), 'long');
 
-                    /****** RADIO BUTTONS ******/
-                    // Okay -- big buttons and checkboxes are done, so let's
-                    // get all of the radio buttons
+                        // Skip this button if we have already processed this
+                        // rate code.
+                        if (taoProcessedRates.indexOf(taoCurrentShortRateCode) > -1) {
+                            return true;
+                        }
+
+                        // OK, so we haven't processed this code yet! Let's
+                        // start by making a clone of the template.
+                        var $taoThisCheckboxRateRow = taoCloneRateRowTemplate($taoRateRowTemplate);
+
+                        // Grab the rate title, description, and bullet points
+                        // and put them in the right place. Be sure to remove
+                        // the visible rate description and ellipsis link to
+                        // more rate details. Also check to see if there is a
+                        // radio button input lingering around and remove it.
+                        var $taoBulletPoints = $taoThisUpsellContainer.find("div#rateInfo_" + taoCurrentLongRateCode).clone();
+                        $taoBulletPoints.removeClass("hide");
+                        $taoBulletPoints.find(".rateDesc").remove();
+                        $taoBulletPoints.find("div > span.spotlight_expandedDetails_link").remove();
+                        $taoThisCheckboxRateRow.find(".rateInfoArea").remove();
+                        $taoThisCheckboxRateRow.find("div.rateTypeLineItem div.rateTypeLineItemLeft").append($taoBulletPoints);
+
+                        // Grab the "Book This Room" button and put it into
+                        // the new row.
+                        var $taoButton = jQuery(this).parent().siblings(".rateSelectionArea").clone();
+                        // Make sure the button has the rate for this checkbox
+                        var taoNewButtonCode = taoReplaceRateCodeForButton($taoButton.find("input").attr("name"), taoCurrentLongRateCode);
+                        $taoButton.find("input").attr("name", taoNewButtonCode);
+                        $taoThisCheckboxRateRow.find(".rateSelectionArea").remove();
+                        $taoThisCheckboxRateRow.find(".rateTypeLineItemRight").append($taoButton);
+
+                        // Grab the pricing information and put it in. There
+                        // is one rate area that uses a different class name,
+                        // so $taoPricing may be empty. If so, look for the
+                        // different name.
+                        var $taoPricing = jQuery(this).siblings("span.upsellTotal_" + taoCurrentLongRateCode).clone();
+
+                        if ($taoPricing.find("span").length == 0) {
+                            $taoPricing = jQuery(this).siblings("span.memberExclusiveUpsellTotal_" + taoCurrentLongRateCode).clone();
+                        }
+
+                        $taoPricing = $taoPricing.find("span.price");
+                        $taoThisCheckboxRateRow.find("span.price").remove();
+                        $taoThisCheckboxRateRow.find("div.priceInfoArea").append($taoPricing);
+
+                        // append this new rate row to the SOG div
+                        jQuery("#taoSOG" + i).append($taoThisCheckboxRateRow);
+
+                        // Add it to the processed rates array
+                        taoProcessedRates.push(taoCurrentShortRateCode);
+
+                    });
 
                 });
-
-
-
-
-
-
-
 
                 // Finally, remove this row because we don't need it anymore.
                 // $taoThisRateRow.remove();
@@ -347,10 +391,26 @@ function taoDetermineButtonRateCode(name, length) {
     var values = name.split('_');
     var fullRateCode = values[1];
 
+    // If fullRateCode is undefined, then we passed a smaller name variable
+    // that contains just the long version of the rate code.
+    if (fullRateCode == undefined) {
+        fullRateCode = values[0];
+    }
+
     if (length == 'short') {
         return fullRateCode.substr(4, 8);
     } else {
         return fullRateCode;
     }
+
+}
+
+function taoReplaceRateCodeForButton(currentCode, replacementCode) {
+    // takes the long value for a button and inserts a new code. Returns long
+    // value with new code inserted.
+    var values = currentCode.split('_');
+    var newCode = currentCode.replace(values[1], replacementCode);
+
+    return newCode;
 
 }
