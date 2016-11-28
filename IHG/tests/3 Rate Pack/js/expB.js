@@ -13,8 +13,14 @@ jQuery("document").ready(function(){
         // referencing.
         var $taoThisRoom = jQuery(this);
 
-        // Create an array of rates that have already been processed.
+        // Create an array of rates that have already been processed, an array
+        // of just the prices for all rates in this room, and an associative
+        // array of the price (key) and DOM node for the rate row (value).
+        // These last two arrays will be used to sort all rates in the SOG
+        // from cheapest to most expensive.
         var taoProcessedRates = [];
+        var taoJustPrices = {};
+        var taoJustRateRows = {};
 
         // Grab the red circle with checkmark and store it for later use.
         // Then remove all instances of the checkmark. Sometimes the image
@@ -226,14 +232,22 @@ jQuery("document").ready(function(){
                         var $taoButton = jQuery(this).parent().clone();
                         $taoThisBigButtonRateRow.find(".rateSelectionArea").remove();
                         $taoThisBigButtonRateRow.find(".rateTypeLineItemRight").append($taoButton);
-
+debugger;
                         // Grab the pricing info and put it in
                         var $taoPricing = jQuery(this).parent().siblings(".priceInfoArea").find(".upsellTotal_" + taoCurrentLongRateCode + " span.price").clone();
                         $taoThisBigButtonRateRow.find("span.price").remove();
                         $taoThisBigButtonRateRow.find("div.priceInfoArea").append($taoPricing);
 
+                        // Separate out price and insert it into taoJustPrice.
+                        // Put price and the new row into taoAllPricesAndRates.
+                        var taoPrice = parseFloat($taoPricing.find("span.cc_number").text());
+
                         // append this new rate row to the SOG div
-                        jQuery("#taoSOG" + i).append($taoThisBigButtonRateRow);
+                        // jQuery("#taoSOG" + i).append($taoThisBigButtonRateRow);
+
+                        // Add this to taoJustPrices and taoAllPricesandRates
+                        taoJustPrices[taoCurrentShortRateCode] = taoPrice;
+                        taoJustRateRows[taoCurrentShortRateCode] = $taoThisBigButtonRateRow;
 
                         // Add it to the processed rates array
                         taoProcessedRates.push(taoCurrentShortRateCode);
@@ -304,7 +318,26 @@ jQuery("document").ready(function(){
 
                 });
 
-                // Finally, remove this row because we don't need it anymore.
+                // TODO: call function to go through two objects and sort the
+                // SOG rates by price, lowest to highest. Finally, remove the
+                // top row because we don't need it anymore.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 // $taoThisRateRow.remove();
                 // $taoThisRateRow.hide(); // this line is for testing purposes
 
@@ -413,4 +446,29 @@ function taoReplaceRateCodeForButton(currentCode, replacementCode) {
 
     return newCode;
 
+}
+
+function taoDisplaySOG(ratePrices, rateRows) {
+    // This function looks at the taoJustPrices and taoJustRateRows and figures
+    // out the sorted order for rates, lowest to highest.
+
+    // First, sort the prices and get them in order -- lowest to highest
+    var sortedPrices = Object.values(ratePrices).sort();
+
+    sortedPrices.forEach(function(price, i) {
+        Object.keys(ratePrices).forEach(function (rateCode) {
+            if (ratePrices[rateCode] == price) {
+
+                // TODO: take rateCode, look it up in rateRows, and add the DOM node to the SOG div.
+
+
+
+
+
+
+
+
+            }
+        });
+    });
 }
