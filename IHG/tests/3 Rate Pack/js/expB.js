@@ -232,7 +232,7 @@ jQuery("document").ready(function(){
                         var $taoButton = jQuery(this).parent().clone();
                         $taoThisBigButtonRateRow.find(".rateSelectionArea").remove();
                         $taoThisBigButtonRateRow.find(".rateTypeLineItemRight").append($taoButton);
-debugger;
+
                         // Grab the pricing info and put it in
                         var $taoPricing = jQuery(this).parent().siblings(".priceInfoArea").find(".upsellTotal_" + taoCurrentLongRateCode + " span.price").clone();
                         $taoThisBigButtonRateRow.find("span.price").remove();
@@ -242,10 +242,10 @@ debugger;
                         // Put price and the new row into taoAllPricesAndRates.
                         var taoPrice = parseFloat($taoPricing.find("span.cc_number").text());
 
-                        // append this new rate row to the SOG div
-                        // jQuery("#taoSOG" + i).append($taoThisBigButtonRateRow);
-
-                        // Add this to taoJustPrices and taoAllPricesandRates
+                        // Add this to taoJustPrices and taoJustRateRows. We
+                        // take these arrays later and build out the SOG when
+                        // we are done with all of the rates for this row has
+                        // been processed.
                         taoJustPrices[taoCurrentShortRateCode] = taoPrice;
                         taoJustRateRows[taoCurrentShortRateCode] = $taoThisBigButtonRateRow;
 
@@ -254,7 +254,7 @@ debugger;
 
                     });
 
-                    /****** CHECKBOXES  &  RADIO BUTTONS ******/
+                    /****** CHECKBOXES & RADIO BUTTONS ******/
                     // The big buttons are done, so let's move on to all of
                     // the checkboxes.
                     $taoThisUpsellContainer.find(".breakfastOpt").each(function() {
@@ -299,17 +299,23 @@ debugger;
                         // so $taoPricing may be empty. If so, look for the
                         // different name.
                         var $taoPricing = jQuery(this).siblings("span.upsellTotal_" + taoCurrentLongRateCode).clone();
-
                         if ($taoPricing.find("span").length == 0) {
                             $taoPricing = jQuery(this).siblings("span.memberExclusiveUpsellTotal_" + taoCurrentLongRateCode).clone();
                         }
-
                         $taoPricing = $taoPricing.find("span.price");
                         $taoThisCheckboxRateRow.find("span.price").remove();
                         $taoThisCheckboxRateRow.find("div.priceInfoArea").append($taoPricing);
 
-                        // append this new rate row to the SOG div
-                        jQuery("#taoSOG" + i).append($taoThisCheckboxRateRow);
+                        // Separate out price and insert it into taoJustPrice.
+                        // Put price and the new row into taoAllPricesAndRates.
+                        var taoPrice = parseFloat($taoPricing.find("span.cc_number").text());
+
+                        // Add this to taoJustPrices and taoJustRateRows. We
+                        // take these arrays later and build out the SOG when
+                        // we are done with all of the rates for this row has
+                        // been processed.
+                        taoJustPrices[taoCurrentShortRateCode] = taoPrice;
+                        taoJustRateRows[taoCurrentShortRateCode] = $taoThisCheckboxRateRow;
 
                         // Add it to the processed rates array
                         taoProcessedRates.push(taoCurrentShortRateCode);
@@ -318,36 +324,33 @@ debugger;
 
                 });
 
-                // TODO: call function to go through two objects and sort the
-                // SOG rates by price, lowest to highest. Finally, remove the
-                // top row because we don't need it anymore.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                // $taoThisRateRow.remove();
-                // $taoThisRateRow.hide(); // this line is for testing purposes
+                // Now that all of the rearranging and sorting is done for this
+                // DIV containing an upsellContainer, remove this row because
+                // we don't need it anymore.
+                $taoThisRateRow.remove();
+                // jQuery(".regularRates").eq(0).hide(); // this line is for testing purposes
 
             } else {
 
-                // This is one of the many "other" rates. Put this at the end
-                // of the SOG div
-                jQuery("#taoSOG" + i).append($taoThisRateRow);
+                // This is one of the many "other" rates and needs to be put
+                // into the SOG. First, find the rateCode and the price.
+                var taoPrice = parseFloat($taoThisRateRow.find("span.cc_number").text());
+                var taoShortRateCode = taoDetermineButtonRateCode($taoThisRateRow.find("input[value='Book This Room']").attr("name"), 'short');
+
+                // Second, we can insert it into the taoJustRates and
+                // taoJustRateRows arrays for later placement in the SOG.
+                taoJustPrices[taoShortRateCode] = taoPrice;
+                taoJustRateRows[taoShortRateCode] = $taoThisRateRow;
+
+                // Third, add it to the processed rates array
+                taoProcessedRates.push(taoShortRateCode);
 
             }
+
+            // FINALLY! We have gone through all of the rates for this room.
+            // Now we are ready to loop through the taoJustPrices and
+            // taoJustRateRows arrays and build out the SOG.
+            taoDisplaySOG(taoJustPrices, taoJustRateRows, i);
 
         }); // end of looping through .regularRates and .secondaryRates rows
 
@@ -440,7 +443,7 @@ function taoDetermineButtonRateCode(name, length) {
 
 function taoReplaceRateCodeForButton(currentCode, replacementCode) {
     // takes the long value for a button and inserts a new code. Returns long
-    // value with new code inserted.
+    // value with replacement code inserted.
     var values = currentCode.split('_');
     var newCode = currentCode.replace(values[1], replacementCode);
 
@@ -448,27 +451,39 @@ function taoReplaceRateCodeForButton(currentCode, replacementCode) {
 
 }
 
-function taoDisplaySOG(ratePrices, rateRows) {
+function taoDisplaySOG(ratePrices, rateRows, counter) {
     // This function looks at the taoJustPrices and taoJustRateRows and figures
     // out the sorted order for rates, lowest to highest.
+    //     ratePrices - array containing key=>value pairs of rateCode=>price
+    //     rateRows - array containing key=>value pairs of rateCode=>DOM node
+    //         for rate row
+    //     counter - integer containing counter for #taoSOG (as in #taoSOG3,
+    //         #taoSOG4, etc)
 
-    // First, sort the prices and get them in order -- lowest to highest
+    // First, sort the prices and get them in order -- lowest to highest. The
+    // sortedPrices array contains just the prices
     var sortedPrices = Object.values(ratePrices).sort();
 
-    sortedPrices.forEach(function(price, i) {
+    // Second, go through the sortedPrices array and find the rates that match
+    // the prices.
+    sortedPrices.forEach(function(price) {
         Object.keys(ratePrices).forEach(function (rateCode) {
             if (ratePrices[rateCode] == price) {
 
-                // TODO: take rateCode, look it up in rateRows, and add the DOM node to the SOG div.
-
-
-
-
-
-
-
+                // Third, now that we have matched the rate to the price, take
+                // the DOM node of the corresponding rateRow and append it to
+                // the SOG. This should make everything line up from cheapest
+                // to most expensive. Remember, the RC Points option (IVANI) is
+                // already in the SOG so it will appear first.
+                var $correctRow = rateRows[rateCode];
+debugger;
+                // append this new rate row to the correct SOG div
+                jQuery("#taoSOG" + counter).append($correctRow);
 
             }
+
         });
+
     });
+
 }
