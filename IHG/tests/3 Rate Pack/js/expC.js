@@ -8,7 +8,9 @@ jQuery("document").ready(function(){
     // New rate subtitle for member rates:
     var taoNewRateSubTitle = "Not a member yet? It's free and easy to join when you book.";
     // New flexible and refundable member rate title
-    var taoFlexibleRefundable = "Flexible &amp; Refundable Member Rate";
+    var taoFlexibleRefundableMR = "Flexible &amp; Refundable Member Rate";
+    // New flexible and refundable regular rate title
+    var taoFlexibleRefundable = "Flexible &amp; Refundable Regular Rate";
 
     // Start working on the page, hitting one rate type at a time
     jQuery(".rateTypeLineItems").each(function(i) {
@@ -77,7 +79,7 @@ jQuery("document").ready(function(){
                 jQuery(this).find("div.rateInfoArea").prepend($taoCheckMark);
 
                 // Change the heading for the rate name
-                var taoNewIvaniRateTitle = taoFlexibleRefundable + " + 1,000 Bonus Points per Night";
+                var taoNewIvaniRateTitle = taoFlexibleRefundableMR + " + 1,000 Bonus Points per Night";
                 var taoNewIvaniSubTitle = taoNewRateSubTitle;
                 jQuery(this).find("div.rateInfoArea span.rateCategory").text(taoNewIvaniRateTitle);
                 jQuery("<span class='taoSubTitle'>" + taoNewIvaniSubTitle + "</span>").insertAfter(jQuery(this).find("div.rateInfoArea span.rateCategory"));
@@ -133,7 +135,7 @@ jQuery("document").ready(function(){
                     $taoBestFlexRate.find(".defaultRateInfo div:last-child li").html($taoBFRateDetails);
 
                     // Replace the rate title
-                    var taoRateTitle = "Best Flexible Rate";
+                    var taoRateTitle = taoFlexibleRefundable;
                     var taoRateTitleSpan = "<span class='rateCategory roomOrder'>" + taoRateTitle + "</span>";
                     $taoBestFlexRate.find("div.rateInfoArea").prepend(taoRateTitleSpan);
 
@@ -182,8 +184,8 @@ jQuery("document").ready(function(){
                     $taoMRBestFlexRate.find(".defaultRateInfo div:last-child li").html($taoMRBFRateDetails);
 
                     // Replace the rate title
-                    var taoRateTitle = "YOUR RATE by IHG&reg; Rewards Club";
-                    var taoRateTitleSpan = "<span class='rateCategory roomOrder'>" + taoRateTitle + "</span>";
+                    var taoRateTitle = taoFlexibleRefundableMR + " - Our Best Value";
+                    var taoRateTitleSpan = "<span class='rateCategory roomOrder'>" + taoRateTitle + "</span><span class='taoSubTitle'>" + taoNewRateSubTitle + "</span>";
                     $taoMRBestFlexRate.find("div.rateInfoArea").prepend(taoRateTitleSpan);
 
                     // Grab the "Book This Room" button and put it into the new row
