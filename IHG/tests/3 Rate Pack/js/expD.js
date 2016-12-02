@@ -1,7 +1,7 @@
 jQuery("document").ready(function(){
 
     /****** V A R I A B L E S ******/
-        // Create an image tag for the down caret for use in the SOG header
+    // Create an image tag for the down caret for use in the SOG header
     var taoDownCaret = "<svg class='taoCaret'><use xlink:href='#tao_down_caret' /></svg>";
     // Find the Best Flex +1,000 points row (IKME3) and save it to a variable
     var $taoRateRowTemplate = jQuery("div.regularRates div.rateTypeLineItem input[value='IKME3']").eq(0).closest("div.regularRates");
@@ -69,8 +69,11 @@ jQuery("document").ready(function(){
                 jQuery(this).find("div.avgratediv").remove();
                 jQuery(this).find("img.bonusLogo").remove();
 
+                // Move the checkmark from the first row to this rate
+                jQuery(this).find("div.rateInfoArea").prepend($taoCheckMark);
+
                 // Put it last in the 3RP div.
-                jQuery("#tao3RP" + i).append(jQuery(this));
+                jQuery(this).insertAfter(jQuery("#tao3RP" + i + " div.regularRates").eq(0));
 
                 // Add it to the processed rates array
                 taoProcessedRates.push("IKME3");
@@ -134,11 +137,16 @@ jQuery("document").ready(function(){
                     $taoBestFlexRate.find("span.price").remove();
                     $taoBestFlexRate.find("div.priceInfoArea").append($taoBFPricing);
 
-                    // Move the checkmark from the first row to this rate
-                    $taoBestFlexRate.find("div.rateInfoArea").prepend($taoCheckMark);
+                    // Separate out price and insert it into taoJustPrice.
+                    // Put price and the new row into taoAllPricesAndRates.
+                    var taoPrice = parseFloat($taoBFPricing.find("span.cc_number").text());
 
-                    // Finally, stick the new Best Flex rate row in the right place
-                    jQuery("#tao3RP" + i).prepend($taoBestFlexRate);
+                    // Add this to taoJustPrices and taoJustRateRows. We
+                    // take these arrays later and build out the SOG when
+                    // we are done with all of the rates for this row has
+                    // been processed.
+                    taoJustPrices["IGCOR"] = taoPrice;
+                    taoJustRateRows["IGCOR"] = $taoBestFlexRate;
 
                     // Add it to the processed rates array
                     taoProcessedRates.push("IGCOR");
@@ -246,12 +254,18 @@ jQuery("document").ready(function(){
                         // Put price and the new row into taoAllPricesAndRates.
                         var taoPrice = parseFloat($taoPricing.find("span.cc_number").text());
 
-                        // Add this to taoJustPrices and taoJustRateRows. We
-                        // take these arrays later and build out the SOG when
-                        // we are done with all of the rates for this row has
-                        // been processed.
-                        taoJustPrices[taoCurrentShortRateCode] = taoPrice;
-                        taoJustRateRows[taoCurrentShortRateCode] = $taoThisBigButtonRateRow;
+                        // See if this is the IKPCM rate. If so, Put it at the
+                        // end of the 3RP div. Otherwise, add it to
+                        // taoJustPrices and taoJustRateRows. We take these
+                        // arrays later and build out the SOG when we are done
+                        // with all of the rates for this row has been
+                        // processed.
+                        if (taoCurrentShortRateCode == "IKPCM") {
+                            jQuery("#tao3RP" + i).append($taoThisBigButtonRateRow);
+                        } else {
+                            taoJustPrices[taoCurrentShortRateCode] = taoPrice;
+                            taoJustRateRows[taoCurrentShortRateCode] = $taoThisBigButtonRateRow;
+                        }
 
                         // Add it to the processed rates array
                         taoProcessedRates.push(taoCurrentShortRateCode);
@@ -314,12 +328,18 @@ jQuery("document").ready(function(){
                         // Put price and the new row into taoAllPricesAndRates.
                         var taoPrice = parseFloat($taoPricing.find("span.cc_number").text());
 
-                        // Add this to taoJustPrices and taoJustRateRows. We
-                        // take these arrays later and build out the SOG when
-                        // we are done with all of the rates for this row has
-                        // been processed.
-                        taoJustPrices[taoCurrentShortRateCode] = taoPrice;
-                        taoJustRateRows[taoCurrentShortRateCode] = $taoThisCheckboxRateRow;
+                        // See if this is the IKPCM rate. If so, Put it at the
+                        // end of the 3RP div. Otherwise, add it to
+                        // taoJustPrices and taoJustRateRows. We take these
+                        // arrays later and build out the SOG when we are done
+                        // with all of the rates for this row has been
+                        // processed.
+                        if (taoCurrentShortRateCode == "IKPCM") {
+                            jQuery("#tao3RP" + i).append($taoThisCheckboxRateRow);
+                        } else {
+                            taoJustPrices[taoCurrentShortRateCode] = taoPrice;
+                            taoJustRateRows[taoCurrentShortRateCode] = $taoThisCheckboxRateRow;
+                        }
 
                         // Add it to the processed rates array
                         taoProcessedRates.push(taoCurrentShortRateCode);
