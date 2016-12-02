@@ -28,8 +28,8 @@
           <file leaf-file-name="expB.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/expB.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="408">
-                  <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+                <state relative-caret-position="343">
+                  <caret line="473" column="84" selection-start-line="473" selection-start-column="84" selection-end-line="473" selection-end-column="84" />
                   <folding />
                 </state>
               </provider>
@@ -260,12 +260,12 @@
       <workItem from="1480339152907" duration="15513000" />
       <workItem from="1480431515129" duration="4056000" />
       <workItem from="1480553570240" duration="507000" />
-      <workItem from="1480555659432" duration="3591000" />
+      <workItem from="1480555659432" duration="5666000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83925000" />
+    <option name="totallyTimeSpent" value="86000000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -452,8 +452,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/expB.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+        <state relative-caret-position="343">
+          <caret line="473" column="84" selection-start-line="473" selection-start-column="84" selection-end-line="473" selection-end-column="84" />
           <folding />
         </state>
       </provider>

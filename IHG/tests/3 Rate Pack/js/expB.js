@@ -291,7 +291,7 @@ jQuery("document").ready(function(){
 
                         // Grab the "Book This Room" button and put it into
                         // the new row.
-                        var $taoButton = jQuery(this).parent().siblings(".rateSelectionArea").clone();
+                        var $taoButton = jQuery(this).closest("div.rateTypeLineItemRight, div.memberRateTypeLineItem, div.memberRateTypeLineItemRight").find(".rateSelectionArea").clone();
                         // Make sure the button has the rate for this checkbox
                         var taoNewButtonCode = taoReplaceRateCodeForButton($taoButton.find("input").attr("name"), taoCurrentLongRateCode);
                         $taoButton.find("input").attr("name", taoNewButtonCode);
@@ -471,7 +471,7 @@ function taoDisplaySOG(ratePrices, rateRows, counter) {
 
     // First, sort the prices and get them in order -- lowest to highest. The
     // sortedPrices array contains just the prices
-    var sortedPrices = Object.values(ratePrices).sort();
+    var sortedPrices = Object.values(ratePrices).sort(function(a, b){return a - b});
 
     // Second, go through the sortedPrices array and find the rates that match
     // the prices.
