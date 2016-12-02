@@ -75,6 +75,10 @@ div.tao3RatePack span.rateCategory.roomOrder {
     float: none;
 }
 
+.taoSubTitle {
+    display: block;
+}
+
 div.spotlightContentWrapper div.rateInfoArea {
     max-width: none;
 }
