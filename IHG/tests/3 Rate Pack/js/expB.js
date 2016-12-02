@@ -109,10 +109,12 @@ jQuery("document").ready(function(){
                     var $taoBestFlexRate = taoCloneRateRowTemplate($taoRateRowTemplate);
 
                     // Grab the Best Flex rate bullet points and put them in the
-                    // right place
+                    // right place. Sometimes these bullet points have an extra
+                    // rate title area, so be sure to remove it if it is there.
                     var $taoBFBulletPoints = $taoUpsellContainer_0.find(".rateInfoArea").clone();
                     $taoBestFlexRate.find(".rateInfoArea").remove();
                     $taoBestFlexRate.find("div.rateTypeLineItem div.rateTypeLineItemLeft").append($taoBFBulletPoints);
+                    $taoBestFlexRate.find("div.bestFlexibleNoTabText").remove();
 
                     // Now grab the rate details link and put it in place of the
                     // last bullet point, which should replace the "Most Popular
@@ -156,10 +158,12 @@ jQuery("document").ready(function(){
                     var $taoMRBestFlexRate = taoCloneRateRowTemplate($taoRateRowTemplate);
 
                     // Grab the Best Flex rate bullet points and put them in the
-                    // right place
+                    // right place. Sometimes these bullet points have an extra
+                    // rate title area, so be sure to remove it if it is there.
                     var $taoMRBFBulletPoints = $taoUpsellContainer_0.find(".rateInfoArea").clone();
                     $taoMRBestFlexRate.find(".rateInfoArea").remove();
                     $taoMRBestFlexRate.find("div.rateTypeLineItem div.rateTypeLineItemLeft").append($taoMRBFBulletPoints);
+                    $taoMRBestFlexRate.find("div.bestFlexibleNoTabText").remove();
 
                     // Now grab the rate details link and put it in place of the
                     // last bullet point, which should replace the "Most Popular
@@ -333,16 +337,21 @@ jQuery("document").ready(function(){
             } else {
 
                 // This is one of the many "other" rates and needs to be put
-                // into the SOG. First, find the rateCode and the price.
+                // into the SOG. First, remove any "Nightly Rate" or "Bonus
+                // Points" text blocks.
+                $taoThisRateRow.find("span.avgrate").remove();
+                $taoThisRateRow.find("img.bonusLogo").remove();
+
+                // Second, find the rateCode and the price.
                 var taoPrice = parseFloat($taoThisRateRow.find("span.cc_number").text());
                 var taoShortRateCode = taoDetermineButtonRateCode($taoThisRateRow.find("input[value='Book This Room']").attr("name"), 'short');
 
-                // Second, we can insert it into the taoJustRates and
+                // Third, we can insert it into the taoJustRates and
                 // taoJustRateRows arrays for later placement in the SOG.
                 taoJustPrices[taoShortRateCode] = taoPrice;
                 taoJustRateRows[taoShortRateCode] = $taoThisRateRow;
 
-                // Third, add it to the processed rates array
+                // Fourth, add it to the processed rates array
                 taoProcessedRates.push(taoShortRateCode);
 
             }
@@ -410,7 +419,7 @@ function taoCloneRateRowTemplate ($row) {
     //   2. "Nightly Rate" text
     //   3. hidden inputs we don't need
     //   4. more hidden inputs we don't need
-    //   4. hidden span we don't need
+    //   5. hidden span we don't need
     $clone.find("img.bonusLogo").remove();
     $clone.find("div.avgratediv").remove();
     $clone.find("div.rateTypeLineItem > input[type='hidden']").remove();
@@ -452,7 +461,7 @@ function taoReplaceRateCodeForButton(currentCode, replacementCode) {
 }
 
 function taoDisplaySOG(ratePrices, rateRows, counter) {
-    // This function looks at the taoJustPrices and taoJustRateRows and figures
+    // This function looks at the ratePrices and rateRows and figures
     // out the sorted order for rates, lowest to highest.
     //     ratePrices - array containing key=>value pairs of rateCode=>price
     //     rateRows - array containing key=>value pairs of rateCode=>DOM node
@@ -476,7 +485,7 @@ function taoDisplaySOG(ratePrices, rateRows, counter) {
                 // to most expensive. Remember, the RC Points option (IVANI) is
                 // already in the SOG so it will appear first.
                 var $correctRow = rateRows[rateCode];
-debugger;
+
                 // append this new rate row to the correct SOG div
                 jQuery("#taoSOG" + counter).append($correctRow);
 
