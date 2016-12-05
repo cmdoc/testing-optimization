@@ -22,11 +22,9 @@ jQuery("document").ready(function(){
         var taoJustPrices = {};
         var taoJustRateRows = {};
 
-        // Remove all instances of the red circle with checkmark inside.
-        // Sometimes the image
-        // is in a .bestFlexibleNoTabImage class instead. So check to see
-        // if the initial variable is empty. If so, look for it in the other
-        // place.
+        // Remove all instances of the red circle with check mark inside.
+        // Sometimes the image is in a .bestFlexibleNoTabImage class instead,
+        // so check that, too.
         jQuery(this).find(".bestFlexibleNoTabImage").remove();
         jQuery(this).find(".bestFlexibleHeaderImage").remove();
 

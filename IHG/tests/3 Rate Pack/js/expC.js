@@ -28,18 +28,11 @@ jQuery("document").ready(function(){
         var taoJustPrices = {};
         var taoJustRateRows = {};
 
-        // Grab the red circle with checkmark and store it for later use.
-        // Then remove all instances of the checkmark. Sometimes the image
-        // is in a .bestFlexibleNoTabImage class instead. So check to see
-        // if the initial variable is empty. If so, look for it in the other
-        // place.
-        var $taoCheckMark = jQuery(this).find(".bestFlexibleHeaderImage").clone();
-        if ($taoCheckMark.length < 1) {
-            $taoCheckMark = jQuery(this).find(".bestFlexibleNoTabImage").clone();
-            jQuery(this).find(".bestFlexibleNoTabImage").remove();
-        } else {
-            jQuery(this).find(".bestFlexibleHeaderImage").remove();
-        }
+        // Remove all instances of the red circle with check mark inside.
+        // Sometimes the image is in a .bestFlexibleNoTabImage class instead,
+        // so check that, too.
+        jQuery(this).find(".bestFlexibleNoTabImage").remove();
+        jQuery(this).find(".bestFlexibleHeaderImage").remove();
 
         // create a 3 Rate Pack (3RP div) for the IGCOR, IDME1, or IKME3 rates.
         var $tao3RatePackDiv = jQuery("<div class='tao3RatePack' id='tao3RP" + i + "'></div>");
@@ -74,9 +67,6 @@ jQuery("document").ready(function(){
                 // Remove "nightly rate" and "Bonus Points"
                 jQuery(this).find("div.avgratediv").remove();
                 jQuery(this).find("img.bonusLogo").remove();
-
-                // Move the checkmark from the first row to this rate
-                jQuery(this).find("div.rateInfoArea").prepend($taoCheckMark);
 
                 // Change the heading for the rate name
                 var taoNewIvaniRateTitle = taoFlexibleRefundableMR + " + 1,000 Bonus Points per Night";
