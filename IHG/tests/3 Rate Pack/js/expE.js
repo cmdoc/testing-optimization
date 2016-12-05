@@ -82,7 +82,7 @@ jQuery("document").ready(function(){
                 // Change the heading for the rate name
                 var taoNewIvaniRateTitle = taoFlexibleRefundableMR + " + 1,000 Bonus Points per Night";
                 var taoNewIvaniSubTitle = taoNewRateSubTitle;
-                jQuery(this).find("div.rateInfoArea span.rateCategory").text(taoNewIvaniRateTitle);
+                jQuery(this).find("div.rateInfoArea span.rateCategory").html(taoNewIvaniRateTitle);
                 jQuery("<span class='taoSubTitle'>" + taoNewIvaniSubTitle + "</span>").insertAfter(jQuery(this).find("div.rateInfoArea span.rateCategory"));
 
                 // Put it last in the 3RP div.
