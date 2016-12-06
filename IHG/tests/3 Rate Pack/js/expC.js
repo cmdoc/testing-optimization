@@ -388,6 +388,9 @@ jQuery("document").ready(function(){
             $taoSOGHeaderSVG.attr("xlink:href", "#tao_down_caret");
         }
 
+        // finally, trigger a click tracking event in Adobe
+        mboxPixelTrack('mboxClickTrack', 'clicked=SOG_click');
+
     });
 
     // Empty out the .viewAllRatesLink DIVs because this test replaces that
@@ -398,7 +401,6 @@ jQuery("document").ready(function(){
 
 /****** F U N C T I O N S ******/
 function mboxPixelTrack(mbox) {
-    // Code stolen from Adobe's Proactive Chat. This should track click events.
     var d = new Date();
     var ub = mboxFactoryDefault.getUrlBuilder().clone();
     ub.addParameter("mbox", mbox);

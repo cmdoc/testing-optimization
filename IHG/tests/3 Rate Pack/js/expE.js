@@ -409,6 +409,9 @@ jQuery("document").ready(function(){
             $taoSOGHeaderSVG.attr("xlink:href", "#tao_down_caret");
         }
 
+        // finally, trigger a click tracking event in Adobe
+        mboxPixelTrack('mboxClickTrack', 'clicked=SOG_click');
+
     });
 
     // Empty out the .viewAllRatesLink DIVs because this test replaces that
