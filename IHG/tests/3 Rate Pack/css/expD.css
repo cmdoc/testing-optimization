@@ -78,3 +78,29 @@ div.tao3RatePack span.rateCategory.roomOrder {
 div.spotlightContentWrapper div.rateInfoArea {
     max-width: none;
 }
+
+div.tao3RatePack span.rateCategory,
+div.tao3RatePack span.rateHeader,
+div.taoSpecialOfferGroup span.rateCategory,
+div.taoSpecialOfferGroup span.rateHeader {
+    font-size: 16px;
+}
+
+div.rateInfoArea img.bonusLogo.roomrates_img_bonus_points {
+    display: block;
+    float: none;
+}
+
+div.tao3RatePack div.rateTypeLineItem > div.rateTypeLineItemRight,
+div.taoSOGrates div.rateTypeLineItem > div.rateTypeLineItemRight {
+    width: 275px;
+}
+
+div.tao3RatePack .rateTypeLineItemLeft.sortByRoomViewClass,
+div.taoSOGrates .rateTypeLineItemLeft.sortByRoomViewClass{
+    max-width: 570px;
+}
+
+div.taoSOGrates div.rateTypeLineItemLeft.sortByRoomViewClass span.rateCategory.roomOrder {
+    max-width: none;
+}

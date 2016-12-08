@@ -65,9 +65,8 @@ jQuery("document").ready(function(){
             } else if ($taoThisRateRow.find("input[name='rateCodeValueForRow']").val() == "IKME3") {
                 // This is the +1,000 Points YOUR RATE rate.
 
-                // Remove "nightly rate" and "Bonus Points"
+                // Remove "nightly rate"
                 jQuery(this).find("div.avgratediv").remove();
-                jQuery(this).find("img.bonusLogo").remove();
 
                 // Change the heading for the rate name
                 var taoNewIvaniRateTitle = taoFlexibleRefundableMR + " + 1,000 Bonus Points per Night";
@@ -360,10 +359,8 @@ jQuery("document").ready(function(){
             } else {
 
                 // This is one of the many "other" rates and needs to be put
-                // into the SOG. First, remove any "Nightly Rate" or "Bonus
-                // Points" text blocks.
+                // into the SOG. First, remove any "Nightly Rate" text blocks.
                 $taoThisRateRow.find("span.avgrate").remove();
-                $taoThisRateRow.find("img.bonusLogo").remove();
 
                 // Second, find the rateCode and the price.
                 var taoPrice = parseFloat($taoThisRateRow.find("span.cc_number").text());
