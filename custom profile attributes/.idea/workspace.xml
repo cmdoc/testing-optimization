@@ -28,8 +28,8 @@
           <file leaf-file-name="DaysUntilCheckin.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/DaysUntilCheckin.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state relative-caret-position="204">
+                  <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -200,12 +200,12 @@
       <option name="presentableId" value="Default" />
       <updated>1480944765957</updated>
       <workItem from="1480944769358" duration="4216000" />
-      <workItem from="1481032170610" duration="1551000" />
+      <workItem from="1481032170610" duration="2598000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5767000" />
+    <option name="totallyTimeSpent" value="6814000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -271,8 +271,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DaysUntilCheckin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="204">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
