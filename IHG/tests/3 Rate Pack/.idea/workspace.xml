@@ -22,14 +22,14 @@
     <favorites_list name="3 Rate Pack" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6853582">
+    <splitter split-orientation="horizontal" split-proportion="0.80047363">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="expB.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/expB.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="361" column="71" selection-start-line="361" selection-start-column="71" selection-end-line="361" selection-end-column="71" />
+                <state relative-caret-position="340">
+                  <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
                   <folding />
                 </state>
               </provider>
@@ -38,8 +38,8 @@
           <file leaf-file-name="expC.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/expC.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="417" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="498" selection-end-column="1" />
+                <state relative-caret-position="323">
+                  <caret line="77" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="531" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -48,8 +48,8 @@
           <file leaf-file-name="expD.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/expD.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="697">
-                  <caret line="86" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="507" selection-end-column="1" />
+                <state relative-caret-position="5712">
+                  <caret line="336" column="0" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -58,8 +58,8 @@
           <file leaf-file-name="expE.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/expE.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="363" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="520" selection-end-column="1" />
+                <state relative-caret-position="80">
+                  <caret line="67" column="39" selection-start-line="0" selection-start-column="0" selection-end-line="553" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -72,7 +72,7 @@
           <file leaf-file-name="expB.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/css/expB.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="836">
+                <state relative-caret-position="1785">
                   <caret line="105" column="1" selection-start-line="105" selection-start-column="1" selection-end-line="105" selection-end-column="1" />
                   <folding />
                 </state>
@@ -82,7 +82,7 @@
           <file leaf-file-name="expC.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/css/expC.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="836">
+                <state relative-caret-position="1853">
                   <caret line="109" column="1" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
                   <folding />
                 </state>
@@ -92,7 +92,7 @@
           <file leaf-file-name="expD.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/css/expD.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="836">
+                <state relative-caret-position="1785">
                   <caret line="105" column="1" selection-start-line="105" selection-start-column="1" selection-end-line="105" selection-end-column="1" />
                   <folding />
                 </state>
@@ -102,7 +102,7 @@
           <file leaf-file-name="expE.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/css/expE.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="751">
+                <state relative-caret-position="760">
                   <caret line="109" column="1" selection-start-line="92" selection-start-column="0" selection-end-line="109" selection-end-column="1" />
                   <folding />
                 </state>
@@ -129,10 +129,10 @@
         <option value="$PROJECT_DIR$/css/expD.css" />
         <option value="$PROJECT_DIR$/css/expC.css" />
         <option value="$PROJECT_DIR$/css/expB.css" />
-        <option value="$PROJECT_DIR$/js/expB.js" />
-        <option value="$PROJECT_DIR$/js/expC.js" />
         <option value="$PROJECT_DIR$/js/expD.js" />
+        <option value="$PROJECT_DIR$/js/expB.js" />
         <option value="$PROJECT_DIR$/js/expE.js" />
+        <option value="$PROJECT_DIR$/js/expC.js" />
       </list>
     </option>
   </component>
@@ -173,7 +173,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -236,6 +235,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -331,18 +331,21 @@
       <workItem from="1480940512097" duration="1731000" />
       <workItem from="1480967538968" duration="2437000" />
       <workItem from="1481038580522" duration="1353000" />
-      <workItem from="1481131505107" duration="7856000" />
+      <workItem from="1481131505107" duration="7859000" />
+      <workItem from="1481214819278" duration="606000" />
+      <workItem from="1481222921258" duration="4241000" />
+      <workItem from="1481286926801" duration="5838000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110798000" />
+    <option name="totallyTimeSpent" value="121486000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15437302" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11011591" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -373,7 +376,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -723,7 +726,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/expB.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
+        <state relative-caret-position="1785">
           <caret line="105" column="1" selection-start-line="105" selection-start-column="1" selection-end-line="105" selection-end-column="1" />
           <folding />
         </state>
@@ -731,7 +734,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/expC.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
+        <state relative-caret-position="1853">
           <caret line="109" column="1" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
           <folding />
         </state>
@@ -739,7 +742,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/expD.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
+        <state relative-caret-position="1785">
           <caret line="105" column="1" selection-start-line="105" selection-start-column="1" selection-end-line="105" selection-end-column="1" />
           <folding />
         </state>
@@ -747,40 +750,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/expE.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
+        <state relative-caret-position="760">
           <caret line="109" column="1" selection-start-line="92" selection-start-column="0" selection-end-line="109" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/expB.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="361" column="71" selection-start-line="361" selection-start-column="71" selection-end-line="361" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/expC.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="417" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="498" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/expD.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="86" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="507" selection-end-column="1" />
+        <state relative-caret-position="5712">
+          <caret line="336" column="0" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/expB.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/expC.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="77" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="531" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/expE.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="363" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="520" selection-end-column="1" />
+        <state relative-caret-position="80">
+          <caret line="67" column="39" selection-start-line="0" selection-start-column="0" selection-end-line="553" selection-end-column="1" />
           <folding />
         </state>
       </provider>

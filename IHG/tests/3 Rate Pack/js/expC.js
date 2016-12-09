@@ -67,11 +67,13 @@ jQuery("document").ready(function(){
                 // Remove "nightly rate"
                 jQuery(this).find("div.avgratediv").remove();
 
-                // Change the heading for the rate name
-                var taoNewIvaniRateTitle = taoFlexibleRefundableMR + " + 1,000 Bonus Points per Night";
-                var taoNewIvaniSubTitle = taoNewRateSubTitle;
-                jQuery(this).find("div.rateInfoArea span.rateCategory").html(taoNewIvaniRateTitle);
-                jQuery("<span class='taoSubTitle'>" + taoNewIvaniSubTitle + "</span>").insertAfter(jQuery(this).find("div.rateInfoArea span.rateCategory"));
+                // Change the heading for the rate name -- see if this rate is
+                // refundable. If so, then change the heading of the rate.
+                if (taoRefundableRate($taoThisRateRow.find("li").eq(0).text())) {
+                    var taoNewIvaniRateTitle = taoFlexibleRefundableMR + " + 1,000 Bonus Points per Night";
+                    jQuery(this).find("div.rateInfoArea span.rateCategory").html(taoNewIvaniRateTitle);
+                }
+                jQuery("<span class='taoSubTitle'>" + taoNewRateSubTitle + "</span>").insertAfter(jQuery(this).find("div.rateInfoArea span.rateCategory"));
 
                 // Put it last in the 3RP div.
                 jQuery("#tao3RP" + i).append(jQuery(this));
@@ -123,9 +125,14 @@ jQuery("document").ready(function(){
                     var $taoBFRateDetails = $taoUpsellContainer_0.find(".baseRateInfo").clone();
                     $taoBestFlexRate.find(".defaultRateInfo div:last-child li").html($taoBFRateDetails);
 
-                    // Replace the rate title
-                    var taoRateTitle = taoFlexibleRefundable;
-                    var taoRateTitleSpan = "<span class='rateCategory roomOrder'>" + taoRateTitle + "</span>";
+                    // Change the heading for the rate name -- see if this rate is
+                    // refundable. If so, then change the heading of the rate.
+                    if (taoRefundableRate($taoThisRateRow.find("li").eq(0).text())) {
+                        taoRateTitle = taoFlexibleRefundable;
+                    } else {
+                        taoRateTitle = "Best Flexible Rate";
+                    }
+                    taoRateTitleSpan = "<span class='rateCategory roomOrder'>" + taoRateTitle + "</span>";
                     $taoBestFlexRate.find("div.rateInfoArea").prepend(taoRateTitleSpan);
 
                     // Grab the "Book This Room" button and put it into the new row
@@ -172,9 +179,14 @@ jQuery("document").ready(function(){
                     var $taoMRBFRateDetails = $taoUpsellContainer_0.find(".memberRateInfo").clone();
                     $taoMRBestFlexRate.find(".defaultRateInfo div:last-child li").html($taoMRBFRateDetails);
 
-                    // Replace the rate title
-                    var taoRateTitle = taoFlexibleRefundableMR + " - Our Best Value";
-                    var taoRateTitleSpan = "<span class='rateCategory roomOrder'>" + taoRateTitle + "</span><span class='taoSubTitle'>" + taoNewRateSubTitle + "</span>";
+                    // Change the heading for the rate name -- see if this rate is
+                    // refundable. If so, then change the heading of the rate
+                    if (taoRefundableRate($taoThisRateRow.find("li").eq(0).text())) {
+                        taoRateTitle = taoFlexibleRefundableMR + " - Our Best Value";
+                    } else {
+                        taoRateTitle = "YOUR RATE by IHG&reg; Rewards Club";
+                    }
+                    taoRateTitleSpan = "<span class='rateCategory roomOrder'>" + taoRateTitle + "</span><span class='taoSubTitle'>" + taoNewRateSubTitle + "</span>";
                     $taoMRBestFlexRate.find("div.rateInfoArea").prepend(taoRateTitleSpan);
 
                     // Grab the "Book This Room" button and put it into the new row
@@ -357,8 +369,14 @@ jQuery("document").ready(function(){
 
             // FINALLY! We have gone through all of the rates for this room.
             // Now we are ready to loop through the taoJustPrices and
-            // taoJustRateRows arrays and build out the SOG.
-            taoDisplaySOG(taoJustPrices, taoJustRateRows, i);
+            // taoJustRateRows arrays and build out the SOG. But first we need
+            // to see if there is anything to build. If not, just skip this
+            // step and remove the SOG we created.
+            if (Object.keys(taoJustPrices).length > 0) {
+                taoDisplaySOG(taoJustPrices, taoJustRateRows, i);
+            } else {
+                jQuery("#taoSOG" + i).parent().remove();
+            }
 
         }); // end of looping through .regularRates and .secondaryRates rows
 
@@ -495,5 +513,20 @@ function taoDisplaySOG(ratePrices, rateRows, counter) {
         });
 
     });
+
+}
+
+function taoRefundableRate(firstBulletPoint) {
+    // This takes the text of the first bullet point for the rate details and
+    // checks to see if it is a refundable rate or not.
+    if (firstBulletPoint == "Non-Refundable Rate") {
+
+        return false;
+
+    } else {
+
+        return true;
+
+    }
 
 }

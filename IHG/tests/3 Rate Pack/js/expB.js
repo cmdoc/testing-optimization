@@ -345,8 +345,14 @@ jQuery("document").ready(function(){
 
             // FINALLY! We have gone through all of the rates for this room.
             // Now we are ready to loop through the taoJustPrices and
-            // taoJustRateRows arrays and build out the SOG.
-            taoDisplaySOG(taoJustPrices, taoJustRateRows, i);
+            // taoJustRateRows arrays and build out the SOG. But first we need
+            // to see if there is anything to build. If not, just skip this
+            // step and remove the SOG we created.
+            if (Object.keys(taoJustPrices).length > 0) {
+                taoDisplaySOG(taoJustPrices, taoJustRateRows, i);
+            } else {
+                jQuery("#taoSOG" + i).parent().remove();
+            }
 
         }); // end of looping through .regularRates and .secondaryRates rows
 
