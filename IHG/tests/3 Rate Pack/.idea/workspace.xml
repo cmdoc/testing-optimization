@@ -38,7 +38,7 @@
           <file leaf-file-name="expC.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/expC.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
+                <state relative-caret-position="1309">
                   <caret line="77" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="531" selection-end-column="1" />
                   <folding />
                 </state>
@@ -102,7 +102,7 @@
           <file leaf-file-name="expE.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/css/expE.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="760">
+                <state relative-caret-position="737">
                   <caret line="109" column="1" selection-start-line="92" selection-start-column="0" selection-end-line="109" selection-end-column="1" />
                   <folding />
                 </state>
@@ -173,6 +173,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -235,8 +237,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,18 +334,19 @@
       <workItem from="1481131505107" duration="7859000" />
       <workItem from="1481214819278" duration="606000" />
       <workItem from="1481222921258" duration="4241000" />
-      <workItem from="1481286926801" duration="5838000" />
+      <workItem from="1481286926801" duration="6437000" />
+      <workItem from="1481550087347" duration="6000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121486000" />
+    <option name="totallyTimeSpent" value="122091000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11011591" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09114858" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -750,7 +751,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/expE.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
+        <state relative-caret-position="737">
           <caret line="109" column="1" selection-start-line="92" selection-start-column="0" selection-end-line="109" selection-end-column="1" />
           <folding />
         </state>
@@ -774,7 +775,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/expC.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
+        <state relative-caret-position="1309">
           <caret line="77" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="531" selection-end-column="1" />
           <folding />
         </state>
