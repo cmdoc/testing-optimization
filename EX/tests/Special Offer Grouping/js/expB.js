@@ -13,6 +13,16 @@ jQuery("document").ready(function(){
         $taoSpecialOfferGroupingDiv.append("<div class='taoSOGrates' id='taoSOG" + i + "'></div>");
         $taoThisRoom.prepend($taoSpecialOfferGroupingDiv);
 
+        // CD: grab all prices in $taoThisRoom and loop through them one by one, keeping the lowest price
+        var taoLowestPrice = 100000;
+        var taoCurrentPrice = 0;
+        $taoThisRoom.find("span.mainRateDisplay > span.price > span.cc_number, span#upsellTotal > span.price > span.cc_number, div.priceInfoArea > span.price > span.cc_number").each(function() {
+            taoCurrentPrice = parseFloat(jQuery(this).text());
+            if (taoCurrentPrice < taoLowestPrice) {
+                taoLowestPrice = taoCurrentPrice;
+            }
+        });
+
         // Go through all of the rates for this room and move the special
         // offers and secondary rates to the new div
         $taoThisRoom.find(".regularRates, .secondaryRates").each(function() {
@@ -21,8 +31,17 @@ jQuery("document").ready(function(){
             // div.spotlightPointsAndCash. We have some work to do with those.
             if (jQuery(this).find("div.upSellContainer").length == 0 && jQuery(this).find("div.spotlightPointsAndCash").length == 0) {
 
-                // Put this into the new div we just created
-                jQuery("#taoSOG" + i).append(jQuery(this));
+                // CD: If this rate is equal to the cheapest price, then move it to just before the Points & Cash rate.
+                var taoThisPrice = parseFloat(jQuery(this).find("span.cc_number").text());
+                if (taoThisPrice == taoLowestPrice) {
+                    // Insert before the points and cash rate.
+                    $taoThisRoom.find("div.rateTypeLineItems").prepend(jQuery(this));
+                    // jQuery(this).insertBefore($taoThisRoom.find("div.regularRates > div.spotlightPointsAndCash").parent());
+
+                } else {
+                    // Put this into the new div we just created
+                    jQuery("#taoSOG" + i).append(jQuery(this));
+                }
 
             }
 
@@ -45,12 +64,12 @@ jQuery("document").ready(function(){
 
     // Put in all the code and functionality to cause the new button to open
     // and close the grouped rates.
-    jQuery(".taoSOGHeader span, .taoSOGFooter input").on("click", function () {
+    jQuery(".taoSOGHeader span, .taoSOGFooter input, .taoCirclePlus, .taoCircleMinus").on("click", function () {
 
         // find the parent div
         var $taoSOGDiv = jQuery(this).closest(".taoSpecialOfferGroup");
 
-        // identify the img tags in the header.
+        // identify the svg tags in the header and footer.
         var $taoSOGHeaderSpan = $taoSOGDiv.find(".taoSOGHeader span");
 
         // Figure out what icon is being referred to and change it to

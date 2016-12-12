@@ -17,6 +17,16 @@ jQuery("document").ready(function(){
         $taoSpecialOfferGroupingDiv.append("<div class='taoSOGrates' id='taoSOG" + i + "'></div>");
         $taoSpecialOfferGroupingDiv.insertBefore($taoThisRoom.find(".viewAllRatesLink"));
 
+        // CD: grab all prices in $taoThisRoom and loop through them one by one, keeping the lowest price
+        var taoLowestPrice = 100000;
+        var taoCurrentPrice = 0;
+        $taoThisRoom.find("span.mainRateDisplay > span.price > span.cc_number, span#upsellTotal > span.price > span.cc_number, div.priceInfoArea > span.price > span.cc_number").each(function() {
+            taoCurrentPrice = parseFloat(jQuery(this).text());
+            if (taoCurrentPrice < taoLowestPrice) {
+                taoLowestPrice = taoCurrentPrice;
+            }
+        });
+
         // Go through all of the rates for this room and move the special
         // offers and secondary rates to the new div
         $taoThisRoom.find(".regularRates, .secondaryRates").each(function() {
