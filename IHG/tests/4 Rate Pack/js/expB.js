@@ -1,22 +1,26 @@
 jQuery("document").ready(function(){
 
-    /****** V A R I A B L E S ******/
-    // Here is the list of featured rates for the Rate Pack DIV. This is a
-    // collection of rate codes and titles
+    /****** FEATURED RATE PACK ******/
+    // These are the featured rates for the Rate Pack DIV. This is a collection
+    // of rate codes, put in the order they need to appear on the Rooms & Rates
+    // page.  If they need a new title, put it in the quotation marks. If not,
+    // then leave blank.
     var taoRatePack = {};
+    /******      RATE      NEW TITLE      ******/
     taoRatePack["IGCOR"] = "";
     taoRatePack["IDME1"] = "";
     taoRatePack["IKPCM"] = "";
     taoRatePack["IKME3"] = "";
+
+    /****** V A R I A B L E S ******/
     // Create an image tag for the down caret for use in the SOG header
     var taoDownCaret = "<svg class='taoCaret'><use xlink:href='#tao_down_caret' /></svg>";
-    // Find the Best Flex +1,000 points row (IKME3) and save it to a variable
+    // Find the Best Flex +1,000 points row (IKME3) and make it a template
     var $taoRateRowTemplate = jQuery("div.regularRates div.rateTypeLineItem input[value='IKME3']").eq(0).closest("div.regularRates");
 
     // Start working on the page, hitting one rate type at a time
     jQuery(".rateTypeLineItems").each(function(i) {
         
-
         // Put this .rateTypeLineItems instance into a variable for future
         // referencing.
         var $taoThisRoom = jQuery(this);
