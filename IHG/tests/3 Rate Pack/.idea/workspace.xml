@@ -102,7 +102,7 @@
           <file leaf-file-name="expE.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/css/expE.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="737">
+                <state relative-caret-position="760">
                   <caret line="109" column="1" selection-start-line="92" selection-start-column="0" selection-end-line="109" selection-end-column="1" />
                   <folding />
                 </state>
@@ -173,7 +173,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -237,6 +236,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -336,11 +336,12 @@
       <workItem from="1481222921258" duration="4241000" />
       <workItem from="1481286926801" duration="6437000" />
       <workItem from="1481550087347" duration="6000" />
+      <workItem from="1481597077770" duration="10000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122091000" />
+    <option name="totallyTimeSpent" value="122101000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -751,7 +752,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/expE.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="737">
+        <state relative-caret-position="760">
           <caret line="109" column="1" selection-start-line="92" selection-start-column="0" selection-end-line="109" selection-end-column="1" />
           <folding />
         </state>
