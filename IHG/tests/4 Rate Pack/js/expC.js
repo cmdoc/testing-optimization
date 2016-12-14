@@ -1,9 +1,21 @@
 jQuery("document").ready(function(){
 
+    /****** FEATURED RATE PACK ******/
+    // These are the featured rates for the Rate Pack DIV. This is a collection
+    // of rate codes, put in the order they need to appear on the Rooms & Rates
+    // page.  If they need a new title, put it in the quotation marks. If not,
+    // then leave blank.
+    var taoRatePack = {};
+    /******      RATE      NEW TITLE      ******/
+    taoRatePack["IGCOR"] = "";
+    taoRatePack["IDME1"] = "";
+    taoRatePack["IKME3"] = "";
+    taoRatePack["IKME4"] = "";
+
     /****** V A R I A B L E S ******/
         // Create an image tag for the down caret for use in the SOG header
     var taoDownCaret = "<svg class='taoCaret'><use xlink:href='#tao_down_caret' /></svg>";
-    // Find the Best Flex +1,000 points row (IKME3) and save it to a variable
+    // Find the Best Flex +1,000 points row (IKME3) and make it a template
     var $taoRateRowTemplate = jQuery("div.regularRates div.rateTypeLineItem input[value='IKME3']").eq(0).closest("div.regularRates");
 
     // Start working on the page, hitting one rate type at a time
@@ -28,8 +40,8 @@ jQuery("document").ready(function(){
         jQuery(this).find(".bestFlexibleNoTabImage").remove();
         jQuery(this).find(".bestFlexibleHeaderImage").remove();
 
-        // create a 3 Rate Pack (3RP div) for the IGCOR, IDME1, or IKME3 rates.
-        var $tao3RatePackDiv = jQuery("<div class='tao3RatePack' id='tao3RP" + i + "'></div>");
+        // create a 3 Rate Pack (RP div) for the IGCOR, IDME1, or IKME3 rates.
+        var $tao3RatePackDiv = jQuery("<div class='tao3RatePack' id='taoRP" + i + "'></div>");
         $tao3RatePackDiv.insertBefore($taoThisRoom.find(".viewAllRatesLink"));
 
         // create a Special Offers Group (SOG div) for any rates that are not
@@ -40,7 +52,7 @@ jQuery("document").ready(function(){
         $taoSpecialOfferGroupingDiv.insertBefore($taoThisRoom.find(".viewAllRatesLink"));
 
         // Go through all of the rates for this room and move them into their
-        // specific locations -- either the 3RP div or SOG div
+        // specific locations -- either the RP div or SOG div
         $taoThisRoom.find(".regularRates, .secondaryRates").each(function() {
 
             // create a var for this rate row
@@ -61,8 +73,16 @@ jQuery("document").ready(function(){
                 // Remove "nightly rate"
                 jQuery(this).find("div.avgratediv").remove();
 
-                // Put it last in the 3RP div.
-                jQuery("#tao3RP" + i).append(jQuery(this));
+                // Separate out price and insert it into taoJustPrice.
+                // Put price and the new row into taoJustRateRows.
+                var taoPrice = parseFloat(jQuery(this).find("span.cc_number").text());
+
+                // Add this to taoJustPrices and taoJustRateRows. We
+                // take these arrays later and build out the SOG when
+                // we are done with all of the rates for this row has
+                // been processed.
+                taoJustPrices["IKME3"] = taoPrice;
+                taoJustRateRows["IKME3"] = jQuery(this);
 
                 // Add it to the processed rates array
                 taoProcessedRates.push("IKME3");
@@ -75,7 +95,7 @@ jQuery("document").ready(function(){
                 // hidden inputs, rate details, titles, and other items that
                 // will make sure these rates will work when the user chooses
                 // to book that rate for this room. Finally, put the rates in
-                // their proper place, either in the 3RP div (if it is a
+                // their proper place, either in the RP div (if it is a
                 // IGCOR or IDME1 rate) or in the SOG div (if it is not IGCOR
                 // or IDME1).
 
@@ -126,8 +146,16 @@ jQuery("document").ready(function(){
                     $taoBestFlexRate.find("span.price").remove();
                     $taoBestFlexRate.find("div.priceInfoArea").append($taoBFPricing);
 
-                    // Finally, stick the new Best Flex rate row in the right place
-                    jQuery("#tao3RP" + i).prepend($taoBestFlexRate);
+                    // Separate out price and insert it into taoJustPrice.
+                    // Put price and the new row into taoJustRateRows.
+                    var taoPrice = parseFloat($taoBFPricing.find("span.cc_number").text());
+
+                    // Add this to taoJustPrices and taoJustRateRows. We
+                    // take these arrays later and build out the SOG when
+                    // we are done with all of the rates for this row has
+                    // been processed.
+                    taoJustPrices["IGCOR"] = taoPrice;
+                    taoJustRateRows["IGCOR"] = $taoBestFlexRate;
 
                     // Add it to the processed rates array
                     taoProcessedRates.push("IGCOR");
@@ -175,8 +203,16 @@ jQuery("document").ready(function(){
                     $taoMRBestFlexRate.find("span.price").remove();
                     $taoMRBestFlexRate.find("div.priceInfoArea").append($taoMRBFPricing);
 
-                    // Finally, stick the new Best Flex rate row in the right place
-                    jQuery("#tao3RP" + i).append($taoMRBestFlexRate);
+                    // Separate out price and insert it into taoJustPrice.
+                    // Put price and the new row into taoJustRateRows.
+                    var taoPrice = parseFloat($taoMRBFPricing.find("span.cc_number").text());
+
+                    // Add this to taoJustPrices and taoJustRateRows. We
+                    // take these arrays later and build out the SOG when
+                    // we are done with all of the rates for this row has
+                    // been processed.
+                    taoJustPrices["IDME1"] = taoPrice;
+                    taoJustRateRows["IDME1"] = $taoMRBestFlexRate;
 
                     // Add it to the processed rates array
                     taoProcessedRates.push("IDME1");
@@ -232,7 +268,7 @@ jQuery("document").ready(function(){
                         $taoThisBigButtonRateRow.find("div.priceInfoArea").append($taoPricing);
 
                         // Separate out price and insert it into taoJustPrice.
-                        // Put price and the new row into taoAllPricesAndRates.
+                        // Put price and the new row into taoJustRateRows.
                         var taoPrice = parseFloat($taoPricing.find("span.cc_number").text());
 
                         // Add this to taoJustPrices and taoJustRateRows. We
@@ -300,7 +336,7 @@ jQuery("document").ready(function(){
                         $taoThisCheckboxRateRow.find("div.priceInfoArea").append($taoPricing);
 
                         // Separate out price and insert it into taoJustPrice.
-                        // Put price and the new row into taoAllPricesAndRates.
+                        // Put price and the new row into taoJustRateRows.
                         var taoPrice = parseFloat($taoPricing.find("span.cc_number").text());
 
                         // Add this to taoJustPrices and taoJustRateRows. We
@@ -333,36 +369,55 @@ jQuery("document").ready(function(){
                 var taoPrice = parseFloat($taoThisRateRow.find("span.cc_number").text());
                 var taoShortRateCode = taoDetermineButtonRateCode($taoThisRateRow.find("input[value='Book This Room']").attr("name"), 'short');
 
-                // Third, see if this is the IKME4 rate. If so, Put it at the
-                // end of the 3RP div. Otherwise, add it to
-                // taoJustPrices and taoJustRateRows. We take these
-                // arrays later and build out the SOG when we are done
-                // with all of the rates for this row has been
-                // processed.
-                if (taoShortRateCode == "IKME4" ) {
-                    jQuery("#tao3RP" + i).append($taoThisRateRow);
-                } else {
-                    taoJustPrices[taoShortRateCode] = taoPrice;
-                    taoJustRateRows[taoShortRateCode] = $taoThisRateRow;
-                }
+                // Third, add this to taoJustPrices and taoJustRateRows. We
+                // take these arrays later and build out the SOG when
+                // we are done with all of the rates for this row has
+                // been processed.
+                taoJustPrices[taoShortRateCode] = taoPrice;
+                taoJustRateRows[taoShortRateCode] = $taoThisRateRow;
 
                 // Fourth, add it to the processed rates array
                 taoProcessedRates.push(taoShortRateCode);
 
             }
 
-            // FINALLY! We have gone through all of the rates for this room.
-            // Now we are ready to loop through the taoJustPrices and
-            // taoJustRateRows arrays and build out the SOG. But first we need
-            // to see if there is anything to build. If not, just skip this
-            // step and remove the SOG we created.
-            if (Object.keys(taoJustPrices).length > 0) {
-                taoDisplaySOG(taoJustPrices, taoJustRateRows, i);
-            } else {
-                jQuery("#taoSOG" + i).parent().remove();
-            }
-
         }); // end of looping through .regularRates and .secondaryRates rows
+
+        // FINALLY! We have gone through all of the rates for this room.
+        // Now we are ready to loop through the taoJustPrices and
+        // taoJustRateRows arrays and build out the RP and SOG.
+
+        // First, go through the taoRatePack array and display the featured
+        // rate blocks for this test. As we do so, remove/delete that key
+        // from the taoJustPrices and taoJustRateRows arrays. Second,
+        var taoRPRates = Object.keys(taoRatePack);
+        taoRPRates.forEach(function(rate) {
+            // Check to see if there is a new title to go with this rate.
+            // If so, then use it. Otherwise, just go with what we already
+            // have.
+            if (taoRatePack[rate] != "" ) {
+                var taoNewRateRow = taoChangeRateTitle(taoRatePack[rate], taoJustRateRows[rate]);
+                jQuery("#taoRP" + i).append(taoNewRateRow);
+            } else {
+                jQuery("#taoRP" + i).append(taoJustRateRows[rate]);
+
+            }
+            delete taoJustPrices[rate];
+            delete taoJustRateRows[rate];
+        });
+
+        // Second, see if there is anything to build in the SOG. If so,
+        // display those rates in ascending price order. If not, we need to
+        // see if the taoSOG is empty (it probably has an IVANI rate and
+        // isn't). If it is empty, then remove the SOG we created.
+        if (Object.keys(taoJustPrices).length > 0) {
+            taoDisplaySOG(taoJustPrices, taoJustRateRows, i);
+        } else {
+            var $taoThisSOG = jQuery("#taoSOG" + i);
+            if ($taoThisSOG.find(".regularRates, .secondaryRates").length == 0 ) {
+                $taoThisSOG.parent().remove();
+            }
+        }
 
     }); // end of looping through each room type
 
@@ -483,6 +538,7 @@ function taoDisplaySOG(ratePrices, rateRows, counter) {
         Object.keys(ratePrices).forEach(function (rateCode) {
             if (ratePrices[rateCode] == price) {
 
+
                 // Third, now that we have matched the rate to the price, take
                 // the DOM node of the corresponding rateRow and append it to
                 // the SOG. This should make everything line up from cheapest
@@ -499,4 +555,9 @@ function taoDisplaySOG(ratePrices, rateRows, counter) {
 
     });
 
+}
+
+function taoChangeRateTitle(newTitle, $rateRow) {
+    $rateRow.find("div.rateInfoArea span.rateCategory").html(newTitle);
+    return $rateRow;
 }

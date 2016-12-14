@@ -20,7 +20,7 @@ jQuery("document").ready(function(){
 
     // Start working on the page, hitting one rate type at a time
     jQuery(".rateTypeLineItems").each(function(i) {
-        
+
         // Put this .rateTypeLineItems instance into a variable for future
         // referencing.
         var $taoThisRoom = jQuery(this);
