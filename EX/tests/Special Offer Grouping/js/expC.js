@@ -67,10 +67,10 @@ jQuery("document").ready(function(){
 
         // Figure out what icon is being referred to and change it to
         // reference the other one
-        if ($taoSOGHeaderIcon.attr("class") == "tao_down_caret") {
-            $taoSOGHeaderIcon.attr("class", "tao_up_caret");
+        if ($taoSOGHeaderIcon.attr("class") == "taoDownCaret") {
+            $taoSOGHeaderIcon.attr("class", "taoUpCaret");
         } else {
-            $taoSOGHeaderIcon.attr("class", "tao_down_caret");
+            $taoSOGHeaderIcon.attr("class", "taoDownCaret");
         }
 
         // finally, trigger a click tracking event in Adobe
