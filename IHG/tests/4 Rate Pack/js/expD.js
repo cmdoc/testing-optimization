@@ -528,16 +528,25 @@ function taoDisplaySOG(ratePrices, rateRows, counter) {
     //     counter - integer containing counter for #taoSOG (as in #taoSOG3,
     //         #taoSOG4, etc)
 
-    // First, sort the prices and get them in order -- lowest to highest. The
-    // sortedPrices array contains just the prices
-    var sortedPrices = Object.values(ratePrices).sort(function(a, b){return a - b});
+    // First, we have to get all of the prices put into an array so we can
+    // sort them. So that means we create an array of all the keys in
+    // ratePrices and another one for all the sorted prices in ratePrices
+    var rateCodes = Object.keys(ratePrices);
+    var unsortedPrices = [];
 
-    // Second, go through the sortedPrices array and find the rates that match
+    for (var i = 0; i < rateCodes.length; i++) {
+        unsortedPrices.push(ratePrices[rateCodes[i]]);
+    }
+
+    // Second, sort the prices and get them in order -- lowest to highest. The
+    // sortedPrices array contains just the prices
+    var sortedPrices = unsortedPrices.sort(function(a, b){return a - b});
+
+    // Third, go through the sortedPrices array and find the rates that match
     // the prices.
     sortedPrices.forEach(function(price) {
         Object.keys(ratePrices).forEach(function (rateCode) {
             if (ratePrices[rateCode] == price) {
-
 
                 // Third, now that we have matched the rate to the price, take
                 // the DOM node of the corresponding rateRow and append it to
